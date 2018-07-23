@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
 import { SidebarModule } from './sidebar/sidebar.module';
@@ -9,7 +10,6 @@ import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
 import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import { DashboardComponent }   from './dashboard/dashboard.component';
-import { UserComponent }   from './user/user.component';
 import { TableComponent }   from './table/table.component';
 import { TypographyComponent }   from './typography/typography.component';
 import { IconsComponent }   from './icons/icons.component';
@@ -17,18 +17,24 @@ import { NotificationsComponent }   from './notifications/notifications.componen
 import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { MaterialModule } from './material.module';
 import { CDKModule } from './cdk.module';
+import { KupFormComponent }   from './kup-form/kup-form.component';
+import { KupLoginComponent }   from './kup-login/kup-login.component';
+import { KupSignupComponent }   from './kup-signup/kup-signup.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AlertService, AuthenticationService, UserService } from './_services/index';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    UserComponent,
     TableComponent,
     TypographyComponent,
     IconsComponent,
-    // MapsComponent,
     NotificationsComponent,
-    UpgradeComponent
+    UpgradeComponent,
+    KupFormComponent,
+    KupLoginComponent,
+    KupSignupComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +45,16 @@ import { CDKModule } from './cdk.module';
     FooterModule,
     FixedPluginModule,
     MaterialModule,
-    CDKModule
-    // NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'})
-
+    CDKModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AlertService,
+    AuthenticationService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

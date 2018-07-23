@@ -1,0 +1,514 @@
+
+<mat-horizontal-stepper #stepper="matHorizontalStepper">
+
+  <!-- SECTION 1 -->
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>MAKLUMAT AM PROJEK</ng-template>
+      <mat-card>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+              <p>Kategori Pemasangan Utiliti Baru:</p>
+              <mat-form-field class="example-full-width">
+                <mat-select formControlName="newutility" required>
+                  <mat-option>Pilih salah satu</mat-option>
+                  <mat-option value="Korek Gali berjarak kurang daripada 100m">Korek Gali berjarak kurang daripada 100m</mat-option>
+                  <mat-option value="Korek Gali berjarak antara 101m hingga 1000m">Korek Gali berjarak antara 101m hingga 1000m</mat-option>
+                  <mat-option value="Korek Gali berjarak lebih daripada 1000m">Korek Gali berjarak lebih daripada 1000m</mat-option>
+                  <mat-option value="Kaedah Pole, Pulling Cable dan lain-lain">Kaedah Pole, Pulling Cable dan lain-lain</mat-option>
+                </mat-select>
+            </mat-form-field></td>&emsp;
+          <td>
+            <p>Nama Projek:</p>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <input matInput placeholder="Nama Projek" formControlName="projname" required>
+            </mat-form-field></td>&emsp;
+          <td>
+            <p>Daerah:</p>
+            <mat-form-field class="example-full-width">
+              <mat-select formControlName="district" required>
+                <mat-option>Pilih salah satu</mat-option>
+                <mat-option value="Kuantan">Kuantan</mat-option>
+                <mat-option value="Bentong">Bentong</mat-option>
+                <mat-option value="Maran">Maran</mat-option>
+                <mat-option value="Temerloh">Temerloh</mat-option>
+                <mat-option value="Jerantut">Jerantut</mat-option>
+                <mat-option value="Rompin">Rompin</mat-option>
+                <mat-option value="Raub">Raub</mat-option>
+                <mat-option value="Lipis">Lipis</mat-option>
+                <mat-option value="Pekan">Pekan</mat-option>
+                <mat-option value="Cameron Highlands">Cameron Highlands</mat-option>
+                <mat-option value="Bera">Bera</mat-option>
+              </mat-select>
+          </mat-form-field></td>
+        </tr></table>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+           <td>
+             <p>Sektor Utiliti:</p>
+             <mat-form-field class="example-full-width">
+               <mat-select formControlName="sector" required>
+                 <mat-option>Pilih salah satu</mat-option>
+                 <mat-option value="Komunikasi">Komunikasi</mat-option>
+                 <mat-option value="Elektrik">Elektrik</mat-option>
+                 <mat-option value="Gas">Gas</mat-option>
+                 <mat-option value="Air">Air</mat-option>
+                 <mat-option value="Pembetungan">Pembetungan</mat-option>
+                 <mat-option value="Lain-lain">Lain-lain</mat-option>
+               </mat-select>
+           </mat-form-field></td>&emsp;
+           <td>
+             <p>Jangkaan Tarikh Mula Kerja:</p>
+             <mat-form-field class="example-full-width">
+               <input matInput placeholder="Sila Nyatakan" formControlName="startdate" required>
+           </mat-form-field>
+             <!--<mat-form-field class="example-full-width">
+               <input matInput [matDatepicker]="picker" placeholder="Pilih tarikh" formControlName="startdate" required>
+               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+               <mat-datepicker #picker></mat-datepicker>
+           </mat-form-field>--></td>&emsp;
+           <td>
+             <p>Jangkaan Tarikh Siap Kerja:</p>
+             <mat-form-field class="example-full-width">
+               <input matInput placeholder="Sila Nyatakan" formControlName="enddate" required>
+           </mat-form-field>
+             <!-- <mat-form-field class="example-full-width">
+              <input matInput [matDatepicker]="picker" placeholder="Pilih tarikh" formControlName="enddate" required>
+               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+               <mat-datepicker #picker></mat-datepicker>
+           </mat-form-field> --></td>&emsp;
+         </tr></table>
+
+         <table class="example-full-width" cellspacing="0"><tr>
+           <td>
+            <p>Jumlah Hari:</p>
+             <mat-form-field class="example-full-width">
+               <input matInput placeholder="Sila Nyatakan" formControlName="totaldays" required>
+           </mat-form-field></td>&emsp;
+           <td>
+            <p>Anggaran Kos Projek:</p>
+             <mat-form-field class="example-full-width">
+               <mat-select formControlName="estimation" required>
+                 <mat-option>Pilih salah satu</mat-option>
+                 <mat-option value="RM500,000 dan ke bawah">RM500,000 dan ke bawah</mat-option>
+                 <mat-option value="RM500,000 dan ke atas">RM500,000 dan ke atas</mat-option>
+               </mat-select>
+           </mat-form-field></td>
+           <td></td>
+         </tr></table>
+
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-card>
+    </form>
+  </mat-step>
+
+  <!-- SECTION 2 -->
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>MAKLUMAT JALAN</ng-template>
+      <mat-card>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <p>Nama Jalan:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="roadname1" required>
+          </mat-form-field></td>
+          <td>
+            <p>Koordinat Mula:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="startcor1" required>
+          </mat-form-field></td>
+          <td>
+            <p>Koordinat Akhir:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="endcor1" required>
+          </mat-form-field></td>
+          <td>
+            <p>Pihak yang meluluskan:</p>
+            <mat-form-field class="example-full-width">
+               <mat-select placeholder=" " formControlName="pihak1" required>
+                 <mat-option>-- Majlis Perbandaran/ Majlis Daerah --</mat-option>
+                 <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
+                 <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
+                 <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
+                 <mat-option value="Majlis Perbandaran Temerloh">Majlis Perbandaran Temerloh</mat-option>
+                 <mat-option value="Majlis Daerah Jerantut">Majlis Daerah Jerantut</mat-option>
+                 <mat-option value="Majlis Daerah Rompin">Majlis Daerah Rompin</mat-option>
+                 <mat-option value="Majlis Daerah Raub">Majlis Daerah Raub</mat-option>
+                 <mat-option value="Majlis Daerah Lipis">Majlis Daerah Lipis</mat-option>
+                 <mat-option value="Majlis Daerah Pekan">Majlis Daerah Pekan</mat-option>
+                 <mat-option value="Majlis Daerah Cameron Highlands">Majlis Daerah Cameron Highlands</mat-option>
+                 <mat-option value="Majlis Daerah Bera">Majlis Daerah Bera</mat-option>
+                 <mat-option>-- Jabatan Kerja Raya --</mat-option>
+                 <mat-option value="JKR Kuantan">JKR Kuantan</mat-option>
+                 <mat-option value="JKR Bentong">JKR Bentong</mat-option>
+                 <mat-option value="JKR Maran">JKR Maran</mat-option>
+                 <mat-option value="JKR Temerloh">JKR Temerloh</mat-option>
+                 <mat-option value="JKR Jerantut">JKR Jerantut</mat-option>
+                 <mat-option value="JKR Rompin">JKR Rompin</mat-option>
+                 <mat-option value="JKR Raub">JKR Raub</mat-option>
+                 <mat-option value="JKR Lipis">JKR Lipis</mat-option>
+                 <mat-option value="JKR Pekan">JKR Pekan</mat-option>
+                 <mat-option value="JKR Cameron Highlands">JKR Cameron Highlands</mat-option>
+                 <mat-option value="JKR Bera">JKR Bera</mat-option>
+               </mat-select>
+          </mat-form-field></td>
+          <td>
+            <p>Kaedah Kerja:</p>
+            <mat-form-field class="example-full-width">
+             <mat-select formControlName="method1" required>
+               <mat-option>Pilih salah satu</mat-option>
+               <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
+               <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
+               <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
+               <mat-option value="Pemasangan Paip">Pemasangan Paip</mat-option>
+               <mat-option value="Pemasangan Secara Terbuka">Pemasangan Secara Terbuka</mat-option>
+               <mat-option value="Tiang">Tiang</mat-option>
+               <mat-option value="Lain-lain">Lain-lain</mat-option>
+             </mat-select>
+          </mat-form-field></td>
+          <td>
+            <p>Panjang (m):</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="length1" required>
+          </mat-form-field></td>
+        </tr></table>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <p>Nama Jalan:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="roadname2">
+          </mat-form-field></td>
+          <td>
+            <p>Koordinat Mula:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="startcor2">
+          </mat-form-field></td>
+          <td>
+            <p>Koordinat Akhir:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="endcor2">
+          </mat-form-field></td>
+          <td>
+            <p>Pihak yang meluluskan:</p>
+            <mat-form-field class="example-full-width">
+               <mat-select placeholder=" " formControlName="pihak2">
+                 <mat-option>-- Majlis Perbandaran/ Majlis Daerah --</mat-option>
+                 <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
+                 <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
+                 <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
+                 <mat-option value="Majlis Perbandaran Temerloh">Majlis Perbandaran Temerloh</mat-option>
+                 <mat-option value="Majlis Daerah Jerantut">Majlis Daerah Jerantut</mat-option>
+                 <mat-option value="Majlis Daerah Rompin">Majlis Daerah Rompin</mat-option>
+                 <mat-option value="Majlis Daerah Raub">Majlis Daerah Raub</mat-option>
+                 <mat-option value="Majlis Daerah Lipis">Majlis Daerah Lipis</mat-option>
+                 <mat-option value="Majlis Daerah Pekan">Majlis Daerah Pekan</mat-option>
+                 <mat-option value="Majlis Daerah Cameron Highlands">Majlis Daerah Cameron Highlands</mat-option>
+                 <mat-option value="Majlis Daerah Bera">Majlis Daerah Bera</mat-option>
+                 <mat-option>-- Jabatan Kerja Raya --</mat-option>
+                 <mat-option value="JKR Kuantan">JKR Kuantan</mat-option>
+                 <mat-option value="JKR Bentong">JKR Bentong</mat-option>
+                 <mat-option value="JKR Maran">JKR Maran</mat-option>
+                 <mat-option value="JKR Temerloh">JKR Temerloh</mat-option>
+                 <mat-option value="JKR Jerantut">JKR Jerantut</mat-option>
+                 <mat-option value="JKR Rompin">JKR Rompin</mat-option>
+                 <mat-option value="JKR Raub">JKR Raub</mat-option>
+                 <mat-option value="JKR Lipis">JKR Lipis</mat-option>
+                 <mat-option value="JKR Pekan">JKR Pekan</mat-option>
+                 <mat-option value="JKR Cameron Highlands">JKR Cameron Highlands</mat-option>
+                 <mat-option value="JKR Bera">JKR Bera</mat-option>
+               </mat-select>
+          </mat-form-field></td>
+          <td>
+            <p>Kaedah Kerja:</p>
+            <mat-form-field class="example-full-width">
+             <mat-select formControlName="method2">
+               <mat-option>Pilih salah satu</mat-option>
+               <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
+               <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
+               <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
+               <mat-option value="Pemasangan Paip">Pemasangan Paip</mat-option>
+               <mat-option value="Pemasangan Secara Terbuka">Pemasangan Secara Terbuka</mat-option>
+               <mat-option value="Tiang">Tiang</mat-option>
+               <mat-option value="Lain-lain">Lain-lain</mat-option>
+             </mat-select>
+          </mat-form-field></td>
+          <td>
+            <p>Panjang (m):</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="length2">
+          </mat-form-field></td>
+        </tr></table>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <p>Nama Jalan:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="roadname3">
+          </mat-form-field></td>
+          <td>
+            <p>Koordinat Mula:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="startcor3">
+          </mat-form-field></td>
+          <td>
+            <p>Koordinat Akhir:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="endcor3">
+          </mat-form-field></td>
+          <td>
+            <p>Pihak yang meluluskan:</p>
+            <mat-form-field class="example-full-width">
+               <mat-select placeholder=" " formControlName="pihak3">
+                 <mat-option>-- Majlis Perbandaran/ Majlis Daerah --</mat-option>
+                 <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
+                 <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
+                 <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
+                 <mat-option value="Majlis Perbandaran Temerloh">Majlis Perbandaran Temerloh</mat-option>
+                 <mat-option value="Majlis Daerah Jerantut">Majlis Daerah Jerantut</mat-option>
+                 <mat-option value="Majlis Daerah Rompin">Majlis Daerah Rompin</mat-option>
+                 <mat-option value="Majlis Daerah Raub">Majlis Daerah Raub</mat-option>
+                 <mat-option value="Majlis Daerah Lipis">Majlis Daerah Lipis</mat-option>
+                 <mat-option value="Majlis Daerah Pekan">Majlis Daerah Pekan</mat-option>
+                 <mat-option value="Majlis Daerah Cameron Highlands">Majlis Daerah Cameron Highlands</mat-option>
+                 <mat-option value="Majlis Daerah Bera">Majlis Daerah Bera</mat-option>
+                 <mat-option>-- Jabatan Kerja Raya --</mat-option>
+                 <mat-option value="JKR Kuantan">JKR Kuantan</mat-option>
+                 <mat-option value="JKR Bentong">JKR Bentong</mat-option>
+                 <mat-option value="JKR Maran">JKR Maran</mat-option>
+                 <mat-option value="JKR Temerloh">JKR Temerloh</mat-option>
+                 <mat-option value="JKR Jerantut">JKR Jerantut</mat-option>
+                 <mat-option value="JKR Rompin">JKR Rompin</mat-option>
+                 <mat-option value="JKR Raub">JKR Raub</mat-option>
+                 <mat-option value="JKR Lipis">JKR Lipis</mat-option>
+                 <mat-option value="JKR Pekan">JKR Pekan</mat-option>
+                 <mat-option value="JKR Cameron Highlands">JKR Cameron Highlands</mat-option>
+                 <mat-option value="JKR Bera">JKR Bera</mat-option>
+               </mat-select>
+          </mat-form-field></td>
+          <td>
+            <p>Kaedah Kerja:</p>
+            <mat-form-field class="example-full-width">
+             <mat-select formControlName="method3" required>
+               <mat-option>Pilih salah satu</mat-option>
+               <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
+               <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
+               <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
+               <mat-option value="Pemasangan Paip">Pemasangan Paip</mat-option>
+               <mat-option value="Pemasangan Secara Terbuka">Pemasangan Secara Terbuka</mat-option>
+               <mat-option value="Tiang">Tiang</mat-option>
+               <mat-option value="Lain-lain">Lain-lain</mat-option>
+             </mat-select>
+          </mat-form-field></td>
+          <td>
+            <p>Panjang (m):</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="length3" required>
+          </mat-form-field></td>
+        </tr></table>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+           <td>
+             <p>Jumlah Panjang HDD (m):</p>
+             <mat-form-field class="example-full-width" align="left">
+               <input matInput placeholder="Sila Nyatakan" formControlName="hdd" required>
+           </mat-form-field></td>
+           <td>
+             <p>Ukuran Panjang Pengorek (m):</p>
+             <mat-form-field class="example-full-width">
+               <input matInput placeholder="Sila Nyatakan" formControlName="tunnelling" required>
+           </mat-form-field></td>
+           <td>
+             <p>Jumlah Jarak Keseluruhan (m):</p>
+             <mat-form-field class="example-full-width">
+               <input matInput placeholder="Sila Nyatakan" formControlName="total" required>
+           </mat-form-field></td>
+         </tr></table>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-card>
+    </form>
+  </mat-step>
+
+  <!-- SECTION 3 -->
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>MAKLUMAT ASAS PERUNDING KEJURUTERAAN AWAM</ng-template>
+      <mat-card>
+      <p>(Bagi projek yang melebihi RM500,000)</p>
+
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td>
+          <p>Nama Syarikat:</p>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Sila Nyatakan" formControlName="company" required>
+        </mat-form-field></td>
+        <td>
+          <p>Alamat Syarikat:</p>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Sila Nyatakan" formControlName="address" required>
+        </mat-form-field></td>
+      </tr></table>
+
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td>
+          <p>Nama Pegawai Bertanggungjawab:</p>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Sila Nyatakan" formControlName="pegawai" required>
+        </mat-form-field></td>
+        <td>
+          <p>Nombor Kad Pengenalan:</p>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Sila Nyatakan" formControlName="ic" required>
+        </mat-form-field></td>
+        <td>
+          <p>Jawatan:</p>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Sila Nyatakan" formControlName="role" required>
+        </mat-form-field></td>
+      </tr></table>
+
+      <table class="example-full-width" cellspacing="0"><tr>
+         <td>
+           <p>Emel:</p>
+           <mat-form-field class="example-full-width">
+             <input matInput placeholder="Sila Nyatakan" formControlName="email" required>
+         </mat-form-field></td>
+         <td>
+           <p>Nombor Telefon:</p>
+           <mat-form-field class="example-full-width">
+             <input matInput placeholder="Sila Nyatakan" formControlName="phoneno" required>
+         </mat-form-field></td>
+         <td>
+           <p>Nombor Faks:</p>
+           <mat-form-field class="example-full-width">
+             <input matInput placeholder="Sila Nyatakan" formControlName="fax" required>
+         </mat-form-field></td>
+       </tr></table>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-card>
+    </form>
+  </mat-step>
+
+  <!-- SECTION 4 -->
+  <mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel>MAKLUMAT PEMOHON</ng-template>
+      <mat-card>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <p>Nama Syarikat:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="company2" required>
+          </mat-form-field></td>
+          <td>
+            <p>Nombor Pendaftaran SSM:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="ssm2" required>
+          </mat-form-field></td>
+          <td>
+            <p>Alamat Syarikat:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="address2" required>
+          </mat-form-field></td>
+        </tr></table>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <p>Nama Pegawai Bertanggungjawab:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="pegawai2" required>
+          </mat-form-field></td>
+          <td>
+            <p>Nombor Kad Pengenalan:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="ic2" required>
+          </mat-form-field></td>
+          <td>
+            <p>Jawatan:</p>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Sila Nyatakan" formControlName="role2" required>
+          </mat-form-field></td>
+        </tr></table>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+           <td>
+             <p>Emel:</p>
+             <mat-form-field class="example-full-width">
+               <input matInput placeholder="Sila Nyatakan" formControlName="email2" required>
+           </mat-form-field></td>
+           <td>
+             <p>Nombor Telefon:</p>
+             <mat-form-field class="example-full-width">
+               <input matInput placeholder="Sila Nyatakan" formControlName="phoneno2" required>
+           </mat-form-field></td>
+           <td>
+             <p>Nombor Faks:</p>
+             <mat-form-field class="example-full-width">
+               <input matInput placeholder="Sila Nyatakan" formControlName="fax2" required>
+           </mat-form-field></td>
+         </tr></table>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+      </mat-card>
+    </form>
+  </mat-step>
+
+  <!-- SECTION 5 -->
+  <mat-step [stepControl]="fifthFormGroup">
+    <form [formGroup]="fifthFormGroup">
+      <ng-template matStepLabel>MUAT NAIK DOKUMEN PROJEK</ng-template>
+      <!-- <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+          <p>Pelan Lokasi:</p>
+          <mat-form-field>
+            <input type="file" (change)="onFileSelected($event)" #fileInput>
+            <button type="button" (click)="onUpload()">button</button>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <p>Pelan Tapak:</p>
+          <mat-form-field>
+            <input type="file" (change)="onFileSelected($event)" #fileInput>
+            <button type="button" (click)="onUpload()">button</button>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <p>Gambar Lokasi:</p>
+          <mat-form-field>
+            <input type="file" (change)="onFileSelected($event)" #fileInput>
+            <button type="button" (click)="onUpload()">button</button>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <p>Surat Permohonan Izin Lalu (Sila cetak, tandatangan dan memuat naik kembali permohonan izin lalu):</p>
+          <mat-form-field>
+            <input type="file" (change)="onFileSelected($event)" #fileInput>
+            <button type="button" (click)="onUpload()">button</button>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list> -->
+      <mat-checkbox>
+        Saya ingin mengesahkan bahawa semua maklumat yang dinyatakan di atas adalah benar<br>
+        dan saya bersetuju dengan terma & syarat yang telah ditetapkan.
+      </mat-checkbox>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
