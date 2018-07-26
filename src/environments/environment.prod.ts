@@ -1,3 +1,11 @@
 export const environment = {
-  production: true
+  production: true,
+  firebase: {
+    apiKey: "AIzaSyBXR5CAdGtz7w8XDK4ay5gKPJjA-6uKOvM",
+    authDomain: "kup-pahang-7ce04.firebaseapp.com",
+    databaseURL: "https://kup-pahang-7ce04.firebaseio.com",
+    projectId: "kup-pahang-7ce04",
+    storageBucket: "",
+    messagingSenderId: "441664411469"
+  }
 };

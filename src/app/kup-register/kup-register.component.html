@@ -1,0 +1,120 @@
+<mat-card>
+<h1>BORANG PENDAFTARAN PEMOHON KORIDOR UTILITI PAHANG</h1>
+
+<p><b>Bahagian 1: Maklumat Pemohon</b></p><br>
+
+<table class="example-full-width" cellspacing="0"><tr>
+  <td>
+    <p>Pendaftaran Sebagai:</p>
+    <mat-form-field class="example-full-width">
+      <mat-select required>
+        <mat-option>Pilih salah satu</mat-option>
+        <mat-option value="Syarikat">Syarikat</mat-option>
+        <mat-option value="Individu">Individu</mat-option>
+        <mat-option value="Konsultan">Konsultan</mat-option>
+        <mat-option value="Kontraktor">Kontraktor</mat-option>
+        <mat-option value="Pemaju">Pemaju</mat-option>
+      </mat-select>
+  </mat-form-field></td>
+  <td>
+    <p>Nama Syarikat:</p>
+    <mat-form-field class="example-full-width">
+    <input matInput placeholder="Nama Syarikat" equired>
+  </mat-form-field></td>
+  <td>
+    <p>Nombor Pendaftaran SSM:</p>
+    <mat-form-field class="example-full-width">
+    <input matInput placeholder="Nombor Pendaftaran SSM" required>
+  </mat-form-field></td>
+</tr></table>
+
+<table class="example-full-width" cellspacing="0"><tr>
+    <td>
+      <p>Alamat Syarikat:</p>
+      <mat-form-field class="example-full-width">
+      <input matInput placeholder="Alamat Syarikat" required>
+    </mat-form-field></td>
+    <td>
+      <p>Nama Pemohon:</p>
+      <mat-form-field class="example-full-width">
+      <input matInput placeholder="Nama Pemohon" required>
+    </mat-form-field></td>
+    <td>
+      <p>Nombor Kad Pengenalan:</p>
+      <mat-form-field class="example-full-width">
+      <input matInput placeholder="No Kad Pengenalan" required>
+    </mat-form-field></td>
+  </tr></table>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td>
+      <p>Jawatan:</p>
+      <mat-form-field class="example-full-width">
+      <input matInput placeholder="Jawatan" required>
+    </mat-form-field></td>
+    <td>
+      <p>Email:</p>
+      <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" required>
+    </mat-form-field></td>
+    <td>
+      <p>Nombor Telefon:</p>
+      <mat-form-field class="example-full-width">
+      <input matInput placeholder="No. Telefon" required>
+    </mat-form-field></td>
+    <td>
+      <p>Nombor Faks:</p>
+      <mat-form-field class="example-full-width">
+      <input matInput placeholder="No Faks" required>
+    </mat-form-field></td>
+  </tr></table>
+
+<!-- BAHAGIAN 2 -->
+<p><b>Bahagian 2: Muat Naik Dokumen Pemohon</b></p>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row card">
+                <div class="col-sm-12">
+                    <h4>Upload Section</h4>
+                    <div id="fileSelector">
+                        <input type="file" name="fileUplaod" id="fileUpload"
+                        multiple ng2FileSelect [uploader]="uploader">
+                    </div>
+                    <div>
+                        <div class="row uploadList" *ngFor="let item of uploader.queue">
+                            <div class="col-sm-4">{{item.file.name}}</div>
+                            <div class="col-sm-4">
+                                <div class="progress">
+                                    <div class="progress-bar bg-success"
+                                    [ngStyle]="{'width':item.progress+'%'}"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                    <button type="button" class="btn btn-dark" (click)="item.upload()">Upload</button>
+                                    <button type="button" class="btn btn-danger" (click)="item.remove()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="uploader?.queue?.length > 0">
+                            <button type="button" class="btn btn-primary" (click)="uploader.uploadAll()">Upload All</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row card">
+                <h4>Download Section</h4>
+
+                <div class="row" *ngFor="let item of attachmentList; let i = index"
+                style="margin:10px;padding:5px;background-color:rgb(231, 229, 229); border-radius:5px; line-height:40px;">
+                    <div class="col-sm-7">{{item.originalname}}</div>
+                    <div class="col-sm-5" style="text-align:center;"><button type="button" class="btn btn-primary" (click)="download(i)">Download</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+</mat-card>

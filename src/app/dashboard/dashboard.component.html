@@ -1,176 +1,168 @@
-    <!-- <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="content">
-                        <div class="row">
-                            <div class="col-xs-5">
-                                <div class="icon-big icon-warning text-center">
-                                    <i class="ti-server"></i>
-                                </div>
-                            </div>
-                            <div class="col-xs-7">
-                                <div class="numbers">
-                                    <p>Capacity</p>
-                                    105GB
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footer">
-                            <hr />
-                            <div class="stats">
-                                <i class="ti-reload"></i> Updated now
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="content">
-                        <div class="row">
-                            <div class="col-xs-5">
-                                <div class="icon-big icon-success text-center">
-                                    <i class="ti-wallet"></i>
-                                </div>
-                            </div>
-                            <div class="col-xs-7">
-                                <div class="numbers">
-                                    <p>Revenue</p>
-                                    $1,345
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footer">
-                            <hr />
-                            <div class="stats">
-                                <i class="ti-calendar"></i> Last day
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="content">
-                        <div class="row">
-                            <div class="col-xs-5">
-                                <div class="icon-big icon-danger text-center">
-                                    <i class="ti-pulse"></i>
-                                </div>
-                            </div>
-                            <div class="col-xs-7">
-                                <div class="numbers">
-                                    <p>Errors</p>
-                                    23
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footer">
-                            <hr />
-                            <div class="stats">
-                                <i class="ti-timer"></i> In the last hour
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="content">
-                        <div class="row">
-                            <div class="col-xs-5">
-                                <div class="icon-big icon-info text-center">
-                                    <i class="ti-twitter-alt"></i>
-                                </div>
-                            </div>
-                            <div class="col-xs-7">
-                                <div class="numbers">
-                                    <p>Followers</p>
-                                    +45
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footer">
-                            <hr />
-                            <div class="stats">
-                                <i class="ti-reload"></i> Updated now
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
+<div class="container-fluid">
+ <div class="row">
 
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="header">
-                        <h4 class="title">Users Behavior</h4>
-                        <p class="category">24 Hours performance</p>
-                    </div>
-                    <div class="content">
-                        <div id="chartHours" class="ct-chart"></div>
-                        <div class="footer">
-                            <div class="chart-legend">
-                                <i class="fa fa-circle text-info"></i> Open
-                                <i class="fa fa-circle text-danger"></i> Click
-                                <i class="fa fa-circle text-warning"></i> Click Second Time
-                            </div>
-                            <hr>
-                            <div class="stats">
-                                <i class="ti-reload"></i> Updated 3 minutes ago
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <!-- PERMOHONAN BARU -->
+  <div class="col-lg-3 col-sm-6">
+   <div class="card">
+    <div class="content">
+     <div class="row">
+      <div class="col-xs-5">
+       <div class="icon-big icon-success text-center">
+        <i class="ti-pencil-alt"></i>
+         </div>
+          </div>
+          <div class="col-xs-7">
+            <div class="numbers">
+            <p>Permohonan Baru</p>
+               10
             </div>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="header">
-                        <h4 class="title">Email Statistics</h4>
-                        <p class="category">Last Campaign Performance</p>
-                    </div>
-                    <div class="content">
-                        <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+       </div>
+      </div>
+     </div>
 
-                        <div class="footer">
-                            <div class="chart-legend">
-                                <i class="fa fa-circle text-info"></i> Open
-                                <i class="fa fa-circle text-danger"></i> Bounce
-                                <i class="fa fa-circle text-warning"></i> Unsubscribe
-                            </div>
-                            <hr>
-                            <div class="stats">
-                                <i class="ti-timer"></i> Campaign sent 2 days ago
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card ">
-                    <div class="header">
-                        <h4 class="title">2015 Sales</h4>
-                        <p class="category">All products including Taxes</p>
-                    </div>
-                    <div class="content">
-                        <div id="chartActivity" class="ct-chart"></div>
-
-                        <div class="footer">
-                            <div class="chart-legend">
-                                <i class="fa fa-circle text-info"></i> Tesla Model S
-                                <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                            </div>
-                            <hr>
-                            <div class="stats">
-                                <i class="ti-check"></i> Data information certified
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!--IZIN LALU -->
+  <div class="col-lg-3 col-sm-6">
+   <div class="card">
+    <div class="content">
+     <div class="row">
+      <div class="col-xs-5">
+       <div class="icon-big icon-success text-center">
+        <i class="ti-pencil-alt"></i>
+       </div>
+      </div>
+      <div class="col-xs-7">
+        <div class="numbers">
+          <p>Izin Lalu</p>
+              10
         </div>
-    </div> -->
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <!-- PERMIT KERJA -->
+   <div class="col-lg-3 col-sm-6">
+    <div class="card">
+     <div class="content">
+      <div class="row">
+       <div class="col-xs-5">
+        <div class="icon-big icon-danger text-center">
+         <i class="ti-alert"></i>
+        </div>
+       </div>
+       <div class="col-xs-7">
+        <div class="numbers">
+         <p>Permit Kerja</p>
+            10
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <!-- SIAP KERJA -->
+   <div class="col-lg-3 col-sm-6">
+    <div class="card">
+     <div class="content">
+      <div class="row">
+       <div class="col-xs-5">
+        <div class="icon-big icon-info text-center">
+         <i class="ti-thumb-up"></i>
+        </div>
+       </div>
+       <div class="col-xs-7">
+        <div class="numbers">
+         <p>Siap Kerja (CPC)</p>
+            10
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <!-- WANG CAGARAN -->
+   <div class="col-lg-3 col-sm-6">
+    <div class="card">
+     <div class="content">
+      <div class="row">
+       <div class="col-xs-5">
+        <div class="icon-big icon-info text-center">
+         <i class="ti-money"></i>
+        </div>
+       </div>
+       <div class="col-xs-7">
+        <div class="numbers">
+         <p>Wang Cagaran</p>
+            10
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+ </div>
+</div>
+<br>
+
+<!-- TABLE -->
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> ID Aplikasi </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef> Nama Projek </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <mat-header-cell *matHeaderCellDef> Syarikat </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    </ng-container>
+
+    <!-- Kategori Pemasangan -->
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef> Kategori Pemasangan </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+    </ng-container>
+
+    <!-- Tarikh Memohon -->
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef> Tarikh Memohon </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 20]"
+                [showFirstLastButtons]="true">
+ </mat-paginator>
+</div>
