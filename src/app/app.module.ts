@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
-import { RouterModule } from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { AppRoutes } from './app.routing';
+import { AppRoutes } from './app.routing.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
@@ -19,14 +18,18 @@ import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { MaterialModule } from './material.module';
 import { CDKModule } from './cdk.module';
 import { KupFormComponent }   from './kup-form/kup-form.component';
-import { KupLoginComponent }   from './kup-login/kup-login.component';
+import { KupLoginComponent, KupRegisterDialog }   from './kup-login/kup-login.component';
 import { KupSignupComponent }   from './kup-signup/kup-signup.component';
 import { KupRegisterComponent }   from './kup-register/kup-register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
-import {FileUploadModule} from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { MatDialogModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -40,11 +43,12 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     KupFormComponent,
     KupLoginComponent,
     KupSignupComponent,
-    KupRegisterComponent
+    KupRegisterComponent,
+    KupRegisterDialog
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(AppRoutes),
+    AppRoutes,
     SidebarModule,
     NavbarModule,
     BrowserAnimationsModule,
@@ -57,7 +61,13 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     HttpClientModule,
     FileUploadModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule,
+    MatDialogModule,
+  ],
+  entryComponents: [
+    KupRegisterDialog, KupLoginComponent
   ],
   providers: [
     AlertService,
