@@ -28,7 +28,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatButtonModule } from '@angular/material';
 
 
 @NgModule({
@@ -61,10 +61,10 @@ import { MatDialogModule } from '@angular/material';
     HttpClientModule,
     FileUploadModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireModule,
+    AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    MatDialogModule,
+    MatDialogModule, MatButtonModule
   ],
   entryComponents: [
     KupRegisterDialog, KupLoginComponent

@@ -47,8 +47,10 @@ export class KupLoginComponent implements OnInit {
       this.firebase.auth.signInWithEmailAndPassword(this.login.value.email, this.login.value.password)
         .then((data) => {
           console.log(data.user);
+          console.log(data.user.uid);
           console.log("Successful login");
-          this.router.navigate(['/dashboard']);
+          // alert('Login Successful');
+          this.router.navigate(['/dashboard', { id: data.user.uid }]);
         })
         .catch((error) => {
           // Handle Errors here.
@@ -70,7 +72,8 @@ export class KupLoginComponent implements OnInit {
         .then((data) => {
           console.log(data.user);
           console.log("Successful login");
-          // this.router.navigate(['/register']);
+          // alert('Register Successful');
+          this.router.navigate(['/register?id=' +data.user.uid]);
         })
         .catch((error) => {
         // Handle Errors here.
@@ -81,10 +84,7 @@ export class KupLoginComponent implements OnInit {
         } else {
           alert(errorMessage);
         }
-        if(error)
-          console.log(error);
-        else
-          console.log("Success in creating account");
+        console.log(error);
       });
       // const dialogRef = this.dialog.open(KupRegisterDialog, {
       //   width: '800px',

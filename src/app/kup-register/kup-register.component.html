@@ -2,7 +2,9 @@
 <h1>BORANG PENDAFTARAN PEMOHON KORIDOR UTILITI PAHANG</h1>
 
 <p><b>Bahagian 1: Maklumat Pemohon</b></p><br>
-
+<form [formGroup]='data'>
+  <input type="text" class="form-control" placeholder="Email" formControlName="email"/>
+</form>
 <table class="example-full-width" cellspacing="0"><tr>
   <td>
     <p>Pendaftaran Sebagai:</p>
@@ -117,4 +119,5 @@
         <div class="col-md-2"></div>
     </div>
 </div>
+<button mat-button (click)="saveRegister()">Save Details</button>
 </mat-card>
