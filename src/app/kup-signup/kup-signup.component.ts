@@ -21,5 +21,4 @@ export class KupSignupComponent {
   //       this.kupregister = kupregister;
   //       console.log(this.kupregister);
   //     });
-  }
 }
