@@ -21,6 +21,7 @@ import { CDKModule } from './cdk.module';
 import { KupFormComponent }   from './kup-form/kup-form.component';
 import { KupLoginComponent }   from './kup-login/kup-login.component';
 import { KupSignupComponent }   from './kup-signup/kup-signup.component';
+import { KupRegisterComponent }   from './kup-register/kup-register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import {FileUploadModule} from 'ng2-file-upload';
@@ -38,7 +39,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     UpgradeComponent,
     KupFormComponent,
     KupLoginComponent,
-    KupSignupComponent
+    KupSignupComponent,
+    KupRegisterComponent
   ],
   imports: [
     BrowserModule,

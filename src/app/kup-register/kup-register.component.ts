@@ -10,13 +10,13 @@ import { saveAs } from 'file-saver';
 
 const uri = 'http://localhost:4000/file/upload';
 @Component({
-  selector: 'app-kup-signup',
-  templateUrl: './kup-signup.component.html',
-  styleUrls: ['./kup-signup.component.css'],
+  selector: 'app-kup-register',
+  templateUrl: './kup-register.component.html',
+  styleUrls: ['./kup-register.component.css'],
   providers:[FileService]
-
 })
-export class KupSignupComponent {
+
+export class KupRegisterComponent {
   uploader:FileUploader = new FileUploader({url:uri});
   attachmentList:any = [];
 
