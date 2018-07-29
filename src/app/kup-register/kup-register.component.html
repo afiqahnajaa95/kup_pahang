@@ -1,10 +1,39 @@
 <mat-card>
 <h1>BORANG PENDAFTARAN PEMOHON KORIDOR UTILITI PAHANG</h1>
-
+{{data.value | json}}
 <p><b>Bahagian 1: Maklumat Pemohon</b></p><br>
 <form [formGroup]='data'>
-  <input type="text" class="form-control" placeholder="Email" formControlName="email"/>
-</form>
+  <p>Pendaftaran Sebagai:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="regas"/>
+  <p>Name Syarikat:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="co_name"/>
+  <p>No. Pendaftaran SSM:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="co_reg"/>
+  <p>Alamat Syarikat:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="co_add"/>
+  <p>Nama Pemohon:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="req_name"/>
+  <p>No. Kad Pengenalan:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="ic_no"/>
+  <p>Jawatan:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="req_pos"/>
+  <p>Emel:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="email"/>
+  <p>No. Telefon:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="co_no"/>
+  <p>No. Faks:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="fax_no"/>
+</form><hr>
+<p><b>Bahagian 2: Muat Naik Dokumen Pemohon</b></p>
+<p>Surat Perakuan Wakil Syarikat</p>
+  <input type="file" (change)="uploadFile($event, '/spws')"/><br>
+<p>Salinan Kad Pengenalan Pemohon</p>
+  <input type="file" (change)="uploadFile($event, '/skpp')"/><br>
+<p>Sijil Pendaftaran Perniagaan SSM</p>
+  <input type="file" (change)="uploadFile($event, '/spps')"/>
+<hr>
+<button mat-button (click)="saveRegister()">Save Details</button>
+<!--
 <table class="example-full-width" cellspacing="0"><tr>
   <td>
     <p>Pendaftaran Sebagai:</p>
@@ -71,10 +100,10 @@
     </mat-form-field></td>
   </tr></table>
 
-<!-- BAHAGIAN 2 -->
-<p><b>Bahagian 2: Muat Naik Dokumen Pemohon</b></p>
+BAHAGIAN 2 -->
+  <!-- <p><b>Bahagian 2: Muat Naik Dokumen Pemohon</b></p> -->
 
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -118,6 +147,5 @@
         </div>
         <div class="col-md-2"></div>
     </div>
-</div>
-<button mat-button (click)="saveRegister()">Save Details</button>
+</div> -->
 </mat-card>

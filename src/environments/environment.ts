@@ -10,7 +10,7 @@ export const environment = {
     authDomain: "kup-pahang-7ce04.firebaseapp.com",
     databaseURL: "https://kup-pahang-7ce04.firebaseio.com",
     projectId: "kup-pahang-7ce04",
-    storageBucket: "",
+    storageBucket: "kup-pahang-7ce04.appspot.com",
     messagingSenderId: "441664411469"
   }
 };

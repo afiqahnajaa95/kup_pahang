@@ -9,6 +9,7 @@ import { FileService } from './file.service';
 import { saveAs } from 'file-saver';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 const uri = 'http://localhost:4000/file/upload';
 
@@ -28,8 +29,10 @@ export class KupRegisterComponent {
   constructor(
     private _fileService:FileService,
     private route: ActivatedRoute,
+    private router: Router,
     private _formBuilder: FormBuilder,
-    public db: AngularFirestore
+    public db: AngularFirestore,
+    public storage: AngularFireStorage
   ){
     this.uploader.onCompleteItem = (item:any, response:any , status:any, headers:any) => {
       this.attachmentList.push(JSON.parse(response));
@@ -55,6 +58,7 @@ export class KupRegisterComponent {
   saveRegister(){
     console.log("Saving Data");
     this.db.collection('users').doc(this.id).set(this.data.value);
+    this.router.navigate(['/dashboard', { id: this.id }]);
   }
   download(index){
     var filename = this.attachmentList[index].uploadname;
@@ -64,5 +68,12 @@ export class KupRegisterComponent {
         data => saveAs(data, filename),
         error => console.error(error)
     );
+  }
+  uploadFile(event, path) {
+    const file = event.target.files[0];
+    const filePath = this.id+path;
+    console.log(filePath);
+    const ref = this.storage.ref(filePath);
+    const task = ref.put(file);
   }
 }
