@@ -8,11 +8,12 @@ import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { KupFormComponent }   from './kup-form/kup-form.component';
 import { KupLoginComponent }   from './kup-login/kup-login.component';
 import { KupSignupComponent }   from './kup-signup/kup-signup.component';
+import { KupRegisterComponent }   from './kup-register/kup-register.component';
 
 export const AppRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'login',
         pathMatch: 'full',
     },
     {
@@ -48,7 +49,11 @@ export const AppRoutes: Routes = [
         component: KupLoginComponent
     },
     {
-        path: 'register',
+        path: 'signup',
         component: KupSignupComponent
+    },
+    {
+        path: 'register',
+        component: KupRegisterComponent
     }
 ]

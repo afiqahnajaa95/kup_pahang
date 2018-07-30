@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray} from '@angular/forms';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
@@ -19,6 +19,9 @@ export class KupFormComponent {
     id: string;
     private itemDoc: AngularFirestoreDocument<any[]>;
     data: any;
+    private fieldArray: Array<any> = [];
+    private newAttribute: any = {};
+
     constructor(
       private _formBuilder: FormBuilder,
       public storage: AngularFireStorage,
@@ -90,9 +93,9 @@ export class KupFormComponent {
         fax2: ['', Validators.required]
       });
       this.fifthFormGroup = this._formBuilder.group({
-        secondCtrl: ['', Validators.required]
       });
     }
+<<<<<<< HEAD
     uploadFile(event, path) {
       const file = event.target.files[0];
       const filePath = this.id+path;
@@ -111,5 +114,15 @@ export class KupFormComponent {
       .then((result)=>{
         this.router.navigate(['/dashboard', { id: this.id }])
       });
+=======
+
+    addFieldValue() {
+        this.fieldArray.push(this.newAttribute)
+        this.newAttribute = {};
+    }
+
+    deleteFieldValue(index) {
+        this.fieldArray.splice(index, 1);
+>>>>>>> a98d04adf09a7bfed9fc4e58ddfd6840754d4d60
     }
   }

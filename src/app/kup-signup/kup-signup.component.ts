@@ -1,10 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-// import { AngularFireDatabase } from 'angularfire2/database';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertService, UserService } from '../_services/index';
 
 @Component({
   selector: 'app-kup-signup',
@@ -13,12 +9,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 
 export class KupSignupComponent {
-  // kupregister: any[];
-  //
-  // constructor(db: AngularFireDatabase){
-  //   db.list('/kupregister')
-  //     .subscribe(kupregister => {
-  //       this.kupregister = kupregister;
-  //       console.log(this.kupregister);
-  //     });
+    model: any = {};
+    loading = false;
+
+    constructor(
+        private router: Router,
+        private userService: UserService,
+        private alertService: AlertService) { }
+
+    register() {
+        this.loading = true;
+        this.userService.create(this.model)
+            .subscribe(
+                data => {
+                    this.alertService.success('Registration successful', true);
+                    this.router.navigate(['/login']);
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                });
+    }
 }

@@ -1,76 +1,36 @@
-<mat-card>
-<h1>BORANG PENDAFTARAN PEMOHON KORIDOR UTILITI PAHANG</h1>
+<div class="col-md-6 col-md-offset-3">
+        <div class="logo-img" >
+            <img src="../../assets/img/kup-logo123.png" alt="" align="center" width="100">
+        </div>
+        <br><br>
+</div>
+<br><br>
+<div class="col-md-6 col-md-offset-3">
+  <mat-card>
+    <p><label>Daftar Akaun Pemohon</label></p>
+    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
+            <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+        </div>
+        <mat-checkbox required>
+          Bersetuju dengan terma & syarat
+        </mat-checkbox><br>
+        <button mat-button [routerLink]="'/register'" align="center">SIGN UP</button>
+    </form>
+  </mat-card>
+</div>
 
-<p><b>Bahagian 1: Maklumat Pemohon</b></p><br>
-
-<table class="example-full-width" cellspacing="0"><tr>
-  <td>
-    <p>Pendaftaran Sebagai:</p>
-    <mat-form-field class="example-full-width">
-      <mat-select required>
-        <mat-option>Pilih salah satu</mat-option>
-        <mat-option value="Syarikat">Syarikat</mat-option>
-        <mat-option value="Individu">Individu</mat-option>
-        <mat-option value="Konsultan">Konsultan</mat-option>
-        <mat-option value="Kontraktor">Kontraktor</mat-option>
-        <mat-option value="Pemaju">Pemaju</mat-option>
-      </mat-select>
-  </mat-form-field></td>
-  <td>
-    <p>Nama Syarikat:</p>
-    <mat-form-field class="example-full-width">
-    <input matInput placeholder="Nama Syarikat" equired>
-  </mat-form-field></td>
-  <td>
-    <p>Nombor Pendaftaran SSM:</p>
-    <mat-form-field class="example-full-width">
-    <input matInput placeholder="Nombor Pendaftaran SSM" required>
-  </mat-form-field></td>
-</tr></table>
-
-<table class="example-full-width" cellspacing="0"><tr>
-    <td>
-      <p>Alamat Syarikat:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="Alamat Syarikat" required>
-    </mat-form-field></td>
-    <td>
-      <p>Nama Pemohon:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="Nama Pemohon" required>
-    </mat-form-field></td>
-    <td>
-      <p>Nombor Kad Pengenalan:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="No Kad Pengenalan" required>
-    </mat-form-field></td>
-  </tr></table>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td>
-      <p>Jawatan:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="Jawatan" required>
-    </mat-form-field></td>
-    <td>
-      <p>Email:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="Email" required>
-    </mat-form-field></td>
-    <td>
-      <p>Nombor Telefon:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="No. Telefon" required>
-    </mat-form-field></td>
-    <td>
-      <p>Nombor Faks:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="No Faks" required>
-    </mat-form-field></td>
-  </tr></table>
-
-<!-- BAHAGIAN 2 -->
-<p><b>Bahagian 2: Muat Naik Dokumen Pemohon</b></p>
-
-
-</mat-card>
+<div class="col-md-6 col-md-offset-3">
+  <br><br>
+   <p>Already have an account?</p>
+   <a class="create-account" [routerLink]="'/login'"><label>
+       SIGN IN
+    </label></a>
+</div>
