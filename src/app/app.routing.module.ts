@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router';
-
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { TableComponent }   from './table/table.component';
 import { TypographyComponent }   from './typography/typography.component';
@@ -13,7 +12,7 @@ import { KupSignupComponent }   from './kup-signup/kup-signup.component';
 import { KupRegisterComponent }   from './kup-register/kup-register.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+    { path: '', redirectTo: 'login', pathMatch: 'full'},
     { path: 'dashboard', component: DashboardComponent },
     { path: 'table', component: TableComponent },
     { path: 'typography', component: TypographyComponent },
