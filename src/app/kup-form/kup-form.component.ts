@@ -95,7 +95,6 @@ export class KupFormComponent {
       this.fifthFormGroup = this._formBuilder.group({
       });
     }
-<<<<<<< HEAD
     uploadFile(event, path) {
       const file = event.target.files[0];
       const filePath = this.id+path;
@@ -103,6 +102,7 @@ export class KupFormComponent {
       const ref = this.storage.ref(filePath);
       const task = ref.put(file);
     }
+
     saveFB(){
       console.log("Saving Data");
       this.db.collection('permohonanBaru').doc(this.id).set({time: 'new'});
@@ -114,8 +114,7 @@ export class KupFormComponent {
       .then((result)=>{
         this.router.navigate(['/dashboard', { id: this.id }])
       });
-=======
-
+    }
     addFieldValue() {
         this.fieldArray.push(this.newAttribute)
         this.newAttribute = {};
@@ -123,6 +122,5 @@ export class KupFormComponent {
 
     deleteFieldValue(index) {
         this.fieldArray.splice(index, 1);
->>>>>>> a98d04adf09a7bfed9fc4e58ddfd6840754d4d60
     }
   }
