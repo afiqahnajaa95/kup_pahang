@@ -9,7 +9,6 @@
         <table class="example-full-width" cellspacing="0"><tr>
           <td>
               <p>Kategori Pemasangan Utiliti Baru:</p>
-              {{ (data | async)?.email }}
               <mat-form-field class="example-full-width">
                 <mat-select placeholder="Pilih salah satu" formControlName="newutility" required>
                   <mat-option value="Korek Gali berjarak kurang daripada 100m">Korek Gali berjarak kurang daripada 100m</mat-option>
@@ -507,6 +506,7 @@
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="saveFB()">Hantar</button>
       </div>
     </form>
   </mat-step>

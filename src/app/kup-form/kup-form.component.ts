@@ -18,7 +18,7 @@ export class KupFormComponent {
     fifthFormGroup: FormGroup;
     id: string;
     private itemDoc: AngularFirestoreDocument<any[]>;
-    data: Observable<any[]>;
+    data: any;
     constructor(
       private _formBuilder: FormBuilder,
       public storage: AngularFireStorage,
@@ -28,10 +28,11 @@ export class KupFormComponent {
     ) {
       this.id = this.route.snapshot.paramMap.get('id');
       console.log(this.id);
-      this.itemDoc = db.doc<any[]>('users/'+this.id);
-      this.data = this.itemDoc.valueChanges();
-      console.log(this.data);
-    }
+      this.itemDoc = this.db.doc<any[]>('users/'+this.id);
+      this.itemDoc.valueChanges().subscribe((result) =>{
+      console.log(result);
+      this.data = result;
+    });}
 
     ngOnInit() {
       this.firstFormGroup = this._formBuilder.group({
@@ -98,5 +99,17 @@ export class KupFormComponent {
       console.log(filePath);
       const ref = this.storage.ref(filePath);
       const task = ref.put(file);
+    }
+    saveFB(){
+      console.log("Saving Data");
+      this.db.collection('permohonanBaru').doc(this.id).set({time: 'new'});
+      this.db.collection('permohonanBaru').doc(this.id).update(this.firstFormGroup.value);
+      this.db.collection('permohonanBaru').doc(this.id).update(this.secondFormGroup.value);
+      this.db.collection('permohonanBaru').doc(this.id).update(this.thirdFormGroup.value);
+      this.db.collection('permohonanBaru').doc(this.id).update(this.fourthFormGroup.value);
+      this.db.collection('permohonanBaru').doc(this.id).update(this.fifthFormGroup.value)
+      .then((result)=>{
+        this.router.navigate(['/dashboard', { id: this.id }])
+      });
     }
   }
