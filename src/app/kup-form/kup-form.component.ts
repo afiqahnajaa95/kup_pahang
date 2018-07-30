@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
+import { AngularFireStorage } from 'angularfire2/storage';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-kup-form',
@@ -12,8 +16,22 @@ export class KupFormComponent {
     thirdFormGroup: FormGroup;
     fourthFormGroup: FormGroup;
     fifthFormGroup: FormGroup;
-
-    constructor(private _formBuilder: FormBuilder) { }
+    id: string;
+    private itemDoc: AngularFirestoreDocument<any[]>;
+    data: Observable<any[]>;
+    constructor(
+      private _formBuilder: FormBuilder,
+      public storage: AngularFireStorage,
+      private route: ActivatedRoute,
+      private router: Router,
+      public db: AngularFirestore
+    ) {
+      this.id = this.route.snapshot.paramMap.get('id');
+      console.log(this.id);
+      this.itemDoc = db.doc<any[]>('users/'+this.id);
+      this.data = this.itemDoc.valueChanges();
+      console.log(this.data);
+    }
 
     ngOnInit() {
       this.firstFormGroup = this._formBuilder.group({
@@ -73,5 +91,12 @@ export class KupFormComponent {
       this.fifthFormGroup = this._formBuilder.group({
         secondCtrl: ['', Validators.required]
       });
+    }
+    uploadFile(event, path) {
+      const file = event.target.files[0];
+      const filePath = this.id+path;
+      console.log(filePath);
+      const ref = this.storage.ref(filePath);
+      const task = ref.put(file);
     }
   }

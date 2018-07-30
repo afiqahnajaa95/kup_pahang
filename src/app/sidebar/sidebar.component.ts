@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatMenuModule} from '@angular/material/menu';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { auth } from 'firebase';
+import { Router, ActivatedRoute } from '@angular/router';
 
 declare var $:any;
 
@@ -25,6 +28,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '#', title: 'Ditolak',  icon:'ti-face-sad', class: '' },
     { path: 'login', title: 'Login',  icon:'ti-hand-point-right', class: '' },
     { path: 'register', title: 'Register',  icon:'ti-hand-point-right', class: '' },
+    { path: 'login', title: 'Logout',  icon:'ti-hand-point-right', class: '' },
 ];
 
 @Component({
@@ -35,6 +39,14 @@ export const ROUTES: RouteInfo[] = [
 
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
+    id: any;
+
+    constructor(
+      public firebase: AngularFireAuth,
+      private route: ActivatedRoute,
+      private router: Router,
+    ){
+    }
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
     }
@@ -44,5 +56,16 @@ export class SidebarComponent implements OnInit {
         }
         return true;
     }
-
+    selected(path){
+      console.log("Button Trigger: "+path);
+      this.id = this.firebase.auth.currentUser;
+      console.log(this.id.uid);
+      if(path == 'login'){
+        console.log("Logging Out");
+        this.firebase.auth.signOut();
+        this.router.navigate(['/login']);
+      }else{
+        this.router.navigate(['/'+path, { id: this.id.uid }]);
+      }
+    }
 }

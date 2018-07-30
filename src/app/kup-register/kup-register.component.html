@@ -4,7 +4,13 @@
 <p><b>Bahagian 1: Maklumat Pemohon</b></p><br>
 <form [formGroup]='data'>
   <p>Pendaftaran Sebagai:</p>
-  <input type="text" class="form-control" placeholder="" formControlName="regas"/>
+  <mat-select placeholder="Pilih salah satu" formControlName="regas">
+    <mat-option value="Syarikat">Syarikat</mat-option>
+    <mat-option value="Individu">Individu</mat-option>
+    <mat-option value="Konsultan">Konsultan</mat-option>
+    <mat-option value="Kontraktor">Kontraktor</mat-option>
+    <mat-option value="Pemaju">Pemaju</mat-option>
+  </mat-select><br>
   <p>Name Syarikat:</p>
   <input type="text" class="form-control" placeholder="" formControlName="co_name"/>
   <p>No. Pendaftaran SSM:</p>

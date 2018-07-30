@@ -9,9 +9,9 @@
         <table class="example-full-width" cellspacing="0"><tr>
           <td>
               <p>Kategori Pemasangan Utiliti Baru:</p>
+              {{ (data | async)?.email }}
               <mat-form-field class="example-full-width">
-                <mat-select formControlName="newutility" required>
-                  <mat-option>Pilih salah satu</mat-option>
+                <mat-select placeholder="Pilih salah satu" formControlName="newutility" required>
                   <mat-option value="Korek Gali berjarak kurang daripada 100m">Korek Gali berjarak kurang daripada 100m</mat-option>
                   <mat-option value="Korek Gali berjarak antara 101m hingga 1000m">Korek Gali berjarak antara 101m hingga 1000m</mat-option>
                   <mat-option value="Korek Gali berjarak lebih daripada 1000m">Korek Gali berjarak lebih daripada 1000m</mat-option>
@@ -26,8 +26,7 @@
           <td>
             <p>Daerah:</p>
             <mat-form-field class="example-full-width">
-              <mat-select formControlName="district" required>
-                <mat-option>Pilih salah satu</mat-option>
+              <mat-select placeholder="Pilih salah satu" formControlName="district" required>
                 <mat-option value="Kuantan">Kuantan</mat-option>
                 <mat-option value="Bentong">Bentong</mat-option>
                 <mat-option value="Maran">Maran</mat-option>
@@ -47,8 +46,7 @@
            <td>
              <p>Sektor Utiliti:</p>
              <mat-form-field class="example-full-width">
-               <mat-select formControlName="sector" required>
-                 <mat-option>Pilih salah satu</mat-option>
+               <mat-select placeholder="Pilih salah satu" formControlName="sector" required>
                  <mat-option value="Komunikasi">Komunikasi</mat-option>
                  <mat-option value="Elektrik">Elektrik</mat-option>
                  <mat-option value="Gas">Gas</mat-option>
@@ -88,8 +86,7 @@
            <td>
             <p>Anggaran Kos Projek:</p>
              <mat-form-field class="example-full-width">
-               <mat-select formControlName="estimation" required>
-                 <mat-option>Pilih salah satu</mat-option>
+               <mat-select placeholder="Pilih salah satu" formControlName="estimation" required>
                  <mat-option value="RM500,000 dan ke bawah">RM500,000 dan ke bawah</mat-option>
                  <mat-option value="RM500,000 dan ke atas">RM500,000 dan ke atas</mat-option>
                </mat-select>
@@ -128,8 +125,7 @@
           <td>
             <p>Pihak yang meluluskan:</p>
             <mat-form-field class="example-full-width">
-               <mat-select placeholder=" " formControlName="pihak1" required>
-                 <mat-option>-- Majlis Perbandaran/ Majlis Daerah --</mat-option>
+               <mat-select placeholder="-- Majlis Perbandaran/ Majlis Daerah --" formControlName="pihak1" required>
                  <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
                  <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
                  <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
@@ -158,8 +154,7 @@
           <td>
             <p>Kaedah Kerja:</p>
             <mat-form-field class="example-full-width">
-             <mat-select formControlName="method1" required>
-               <mat-option>Pilih salah satu</mat-option>
+             <mat-select placeholder="Pilih salah satu" formControlName="method1" required>
                <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
                <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
                <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
@@ -195,8 +190,7 @@
           <td>
             <p>Pihak yang meluluskan:</p>
             <mat-form-field class="example-full-width">
-               <mat-select placeholder=" " formControlName="pihak2">
-                 <mat-option>-- Majlis Perbandaran/ Majlis Daerah --</mat-option>
+               <mat-select placeholder="-- Majlis Perbandaran/ Majlis Daerah --" formControlName="pihak2">
                  <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
                  <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
                  <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
@@ -225,8 +219,7 @@
           <td>
             <p>Kaedah Kerja:</p>
             <mat-form-field class="example-full-width">
-             <mat-select formControlName="method2">
-               <mat-option>Pilih salah satu</mat-option>
+             <mat-select placeholder="Pilih salah satu" formControlName="method2">
                <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
                <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
                <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
@@ -262,8 +255,7 @@
           <td>
             <p>Pihak yang meluluskan:</p>
             <mat-form-field class="example-full-width">
-               <mat-select placeholder=" " formControlName="pihak3">
-                 <mat-option>-- Majlis Perbandaran/ Majlis Daerah --</mat-option>
+               <mat-select placeholder="-- Majlis Perbandaran/ Majlis Daerah --" formControlName="pihak3">
                  <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
                  <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
                  <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
@@ -292,8 +284,7 @@
           <td>
             <p>Kaedah Kerja:</p>
             <mat-form-field class="example-full-width">
-             <mat-select formControlName="method3" required>
-               <mat-option>Pilih salah satu</mat-option>
+             <mat-select placeholder="Pilih salah satu"formControlName="method3" required>
                <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
                <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
                <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
@@ -501,6 +492,14 @@
           </mat-form-field>
         </mat-grid-tile>
       </mat-grid-list> -->
+      <p>Peta Penandaan Lokasi</p>
+        <input type="file" (change)="uploadFile($event, '/ppl')"/><br>
+      <p>Lukisan Tapak</p>
+        <input type="file" (change)="uploadFile($event, '/lt')"/><br>
+      <p>Gambar Lokasi (sila kumpulkan kesemua gambar dan kemukaan di dalam bentuk pdf)</p>
+        <input type="file" (change)="uploadFile($event, '/gl')"/><br>
+      <p>Surat Permohonan Izin Lalu (sila cetak, tandatangan dan upload kembali untuk permohonan izin lali) -link ke muat turun surat permohonan izin lalu</p>
+        <input type="file" (change)="uploadFile($event, '/spil')"/><br>
       <mat-checkbox>
         Saya ingin mengesahkan bahawa semua maklumat yang dinyatakan di atas adalah benar<br>
         dan saya bersetuju dengan terma & syarat yang telah ditetapkan.
