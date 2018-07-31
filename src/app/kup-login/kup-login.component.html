@@ -1,5 +1,6 @@
 <div class="col-md-6 col-md-offset-3">
         <div class="logo-img" >
+          <br><br>
             <img src="../../assets/img/kup-logo123.png" alt="" align="center" width="100">
         </div>
         <br><br>
@@ -18,8 +19,7 @@
             <mat-checkbox required>
               Keep me signed in
             </mat-checkbox><br><br>
-            <button mat-button [routerLink]="'/dashboard'" align="center">SIGN IN</button>
-            <!-- <button class="btn btn-primary" (click)="registerF()">Register</button> -->
+            <button mat-button (click)="loginF()" align="center">SIGN IN</button>
         </div>
     </form>
   </mat-card>

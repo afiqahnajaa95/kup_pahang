@@ -24,14 +24,14 @@ export class KupLoginComponent implements OnInit {
     animal: string;
     name: string;
     logstatus: any;
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private _formBuilder: FormBuilder,
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
-        public dialog: MatDialog,
-        public firebase: AngularFireAuth,
+        public firebase: AngularFireAuth
     ) { }
 
     ngOnInit() {
@@ -65,16 +65,16 @@ export class KupLoginComponent implements OnInit {
     }
 }
 
-@Component({
-  selector: 'kup-register-dialog',
-  templateUrl: 'kup-register-dialog.html',
-})
-export class KupRegisterDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<KupRegisterDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
+// @Component({
+//   selector: 'kup-register-dialog',
+//   templateUrl: 'kup-register-dialog.html',
+// })
+// export class KupRegisterDialog {
+//
+//   constructor(
+//     public dialogRef: MatDialogRef<KupRegisterDialog>,
+//     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+//   onNoClick(): void {
+//     this.dialogRef.close();
+//   }
+// }

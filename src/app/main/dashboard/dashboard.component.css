@@ -19,3 +19,16 @@
   overflow: auto;
   max-height: 500px;
 }
+
+.side-content{
+  display: inline-block;
+  width: 20%;
+}
+.content{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.sidebar{
+  width: auto;
+}

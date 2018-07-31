@@ -1,7 +1,9 @@
 <mat-card>
   <div class="col-md-6 col-md-offset-3">
           <div class="logo-img" >
-              <img src="../../assets/img/kup-logo123.png" alt="" align="left" width="100">
+            <br><br>
+              <img src="../../assets/img/kup-logo123.png" alt="" width="200">
+              <br><br><br>
           </div>
   </div>
   <!-- BAHAGIAN 1 -->
@@ -85,49 +87,31 @@
         </mat-select>
     </mat-form-field></td>
   <td><p>Name Syarikat:</p>
-    <mat-form-field>
-      <input type="text" class="form-control" placeholder="" formControlName="co_name">
-    </mat-form-field></td>
+  <input type="text" class="form-control" placeholder="" formControlName="co_name"></td>
   <td><p>No. Pendaftaran SSM:</p>
-    <mat-form-field>
-      <input type="text" class="form-control" placeholder="" formControlName="co_reg">
-    </mat-form-field></td>
-  </tr></table>
+  <input type="text" class="form-control" placeholder="" formControlName="co_reg"></td>
+</tr></table>
 
-<table class="example-full-width" cellspacing="0"><tr>
+  <table class="example-full-width" cellspacing="0"><tr>
   <td><p>Alamat Syarikat:</p>
-    <mat-form-field>
-      <input type="text" class="form-control" placeholder="" formControlName="co_add">
-    </mat-form-field></td>
+  <input type="text" class="form-control" placeholder="" formControlName="co_add"></td>
   <td><p>Nama Pemohon:</p>
-    <mat-form-field>
-      <input type="text" class="form-control" placeholder="" formControlName="req_name">
-    </mat-form-field></td>
+  <input type="text" class="form-control" placeholder="" formControlName="req_name"></td>
   <td><p>No. Kad Pengenalan:</p>
-    <mat-form-field>
-      <input type="text" class="form-control" placeholder="" formControlName="ic_no">
-    </mat-form-field></td>
+  <input type="text" class="form-control" placeholder="" formControlName="ic_no"></td>
 </tr></table>
 
-<table class="example-full-width" cellspacing="0"><tr>
+  <table class="example-full-width" cellspacing="0"><tr>
   <td><p>Jawatan:</p>
-    <mat-form-field>
-      <input type="text" class="form-control" placeholder="" formControlName="req_pos">
-    </mat-form-field></td>
+  <input type="text" class="form-control" placeholder="" formControlName="req_pos"></td>
   <td><p>Emel:</p>
-    <mat-form-field>
-      <input type="text" class="form-control" placeholder="" formControlName="email">
-    </mat-form-field></td>
+  <input type="text" class="form-control" placeholder="" formControlName="email"></td>
   <td><p>No. Telefon:</p>
-    <mat-form-field>
-      <input type="text" class="form-control" placeholder="" formControlName="co_no">
-    </mat-form-field></td>
+  <input type="text" class="form-control" placeholder="" formControlName="co_no"></td>
   <td><p>No. Faks:</p>
-    <mat-form-field>
-      <input type="text" class="form-control" placeholder="" formControlName="fax_no">
-    </mat-form-field></td>
+  <input type="text" class="form-control" placeholder="" formControlName="fax_no"></td>
 </tr></table>
-</form>
+</form><hr>
 
 <!-- BAHAGIAN 2 -->
 <p><b>Bahagian 2: Muat Naik Dokumen Pemohon</b></p>
@@ -143,6 +127,7 @@
 <mat-checkbox required>
 Saya memperaku bahawa semua maklumat yang dinyatakan di atas adalah benar<br>
 dan bersetuju dengan terma dan syarat yang ditetapkan.
-</mat-checkbox>
-<button mat-button [routerLink]="'/dashboard'">Save Details</button>
+</mat-checkbox><br><br>
+
+<button mat-button (click)="saveRegister()">Save Details</button>
 </mat-card>

@@ -19,6 +19,7 @@ export class KupFormComponent {
     id: string;
     private itemDoc: AngularFirestoreDocument<any[]>;
     data: any;
+
     private fieldArray: Array<any> = [];
     private newAttribute: any = {};
 
@@ -50,24 +51,12 @@ export class KupFormComponent {
         estimation: ['', Validators.required]
       });
       this.secondFormGroup = this._formBuilder.group({
-        roadname1: ['', Validators.required],
-        startcor1: ['', Validators.required],
-        endcor1: ['', Validators.required],
-        pihak1: ['', Validators.required],
-        method1: ['', Validators.required],
-        length1: ['', Validators.required],
-        roadname2: ['', Validators.required],
-        startcor2: ['', Validators.required],
-        endcor2: ['', Validators.required],
-        pihak2: ['', Validators.required],
-        method2: ['', Validators.required],
-        length2: ['', Validators.required],
-        roadname3: ['', Validators.required],
-        startcor3: ['', Validators.required],
-        endcor3: ['', Validators.required],
-        pihak3: ['', Validators.required],
-        method3: ['', Validators.required],
-        length3: ['', Validators.required],
+        roadname: ['', Validators.required],
+        startcor: ['', Validators.required],
+        endcor: ['', Validators.required],
+        pihak: ['', Validators.required],
+        method: ['', Validators.required],
+        length: ['', Validators.required],
         hdd: ['', Validators.required],
         tunnelling: ['', Validators.required],
         total: ['', Validators.required]
@@ -96,6 +85,16 @@ export class KupFormComponent {
       this.fifthFormGroup = this._formBuilder.group({
       });
     }
+
+    addFieldValue() {
+        this.fieldArray.push(this.newAttribute)
+        this.newAttribute = {};
+    }
+
+    deleteFieldValue(index) {
+        this.fieldArray.splice(index, 1);
+    }
+
     uploadFile(event, path) {
       const file = event.target.files[0];
       const filePath = this.id+path;
@@ -113,15 +112,7 @@ export class KupFormComponent {
       this.db.collection('permohonanBaru').doc(this.id).update(this.fourthFormGroup.value);
       this.db.collection('permohonanBaru').doc(this.id).update(this.fifthFormGroup.value)
       .then((result)=>{
-        this.router.navigate(['/dashboard', { id: this.id }])
+        this.router.navigate(['/izinlalu', { id: this.id }])
       });
-    }
-    addFieldValue() {
-        this.fieldArray.push(this.newAttribute)
-        this.newAttribute = {};
-    }
-
-    deleteFieldValue(index) {
-        this.fieldArray.splice(index, 1);
     }
   }
