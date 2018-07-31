@@ -72,7 +72,7 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
   providers: [
     AlertService,
     AuthenticationService,
-    UserService
+    UserService,
   ],
   bootstrap: [AppComponent]
 })

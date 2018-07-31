@@ -35,7 +35,8 @@ export class KupFormComponent {
       this.itemDoc.valueChanges().subscribe((result) =>{
       console.log(result);
       this.data = result;
-    });}
+      });
+    }
 
     ngOnInit() {
       this.firstFormGroup = this._formBuilder.group({

@@ -31,7 +31,7 @@ export class KupLoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
         public dialog: MatDialog,
-        public firebase: AngularFireAuth
+        public firebase: AngularFireAuth,
     ) { }
 
     ngOnInit() {
@@ -49,7 +49,6 @@ export class KupLoginComponent implements OnInit {
           console.log(data.user);
           console.log(data.user.uid);
           console.log("Successful login");
-          // alert('Login Successful');
           this.router.navigate(['/dashboard', { id: data.user.uid }]);
         })
         .catch((error) => {
@@ -63,39 +62,6 @@ export class KupLoginComponent implements OnInit {
           }
           console.log(errorCode);
         });
-    }
-
-    registerF(){
-      console.log("Registering user");
-      console.log(this.login);
-      this.firebase.auth.createUserWithEmailAndPassword(this.login.value.email, this.login.value.password)
-        .then((data) => {
-          console.log(data.user);
-          console.log("Successful login");
-          // alert('Register Successful');
-          this.router.navigate(['/register?id=' +data.user.uid]);
-        })
-        .catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        if (errorCode == 'auth/weak-password') {
-          alert('The password is too weak.');
-        } else {
-          alert(errorMessage);
-        }
-        console.log(error);
-      });
-      // const dialogRef = this.dialog.open(KupRegisterDialog, {
-      //   width: '800px',
-      //   data: {name: this.name, animal: this.animal}
-      // });
-      //
-      // dialogRef.afterClosed().subscribe(result => {
-      //   console.log('The dialog was closed');
-      //   this.animal = result;
-      //   console.log(this.animal);
-      // });
     }
 }
 

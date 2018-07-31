@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule} from '@angular/material/menu';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
 import { Router, ActivatedRoute } from '@angular/router';
