@@ -24,13 +24,13 @@ export class KupLoginComponent implements OnInit {
     animal: string;
     name: string;
     logstatus: any;
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private _formBuilder: FormBuilder,
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
-        public dialog: MatDialog,
         public firebase: AngularFireAuth
     ) { }
 
@@ -86,29 +86,19 @@ export class KupLoginComponent implements OnInit {
         }
         console.log(error);
       });
-      // const dialogRef = this.dialog.open(KupRegisterDialog, {
-      //   width: '800px',
-      //   data: {name: this.name, animal: this.animal}
-      // });
-      //
-      // dialogRef.afterClosed().subscribe(result => {
-      //   console.log('The dialog was closed');
-      //   this.animal = result;
-      //   console.log(this.animal);
-      // });
     }
 }
 
-@Component({
-  selector: 'kup-register-dialog',
-  templateUrl: 'kup-register-dialog.html',
-})
-export class KupRegisterDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<KupRegisterDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
+// @Component({
+//   selector: 'kup-register-dialog',
+//   templateUrl: 'kup-register-dialog.html',
+// })
+// export class KupRegisterDialog {
+//
+//   constructor(
+//     public dialogRef: MatDialogRef<KupRegisterDialog>,
+//     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+//   onNoClick(): void {
+//     this.dialogRef.close();
+//   }
+// }

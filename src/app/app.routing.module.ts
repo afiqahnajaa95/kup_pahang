@@ -10,6 +10,7 @@ import { KupFormComponent }   from './kup-form/kup-form.component';
 import { KupLoginComponent }   from './kup-login/kup-login.component';
 import { KupSignupComponent }   from './kup-signup/kup-signup.component';
 import { KupRegisterComponent }   from './kup-register/kup-register.component';
+import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -22,7 +23,8 @@ const routes: Routes = [
     { path: 'kupform', component: KupFormComponent },
     { path: 'login', component: KupLoginComponent },
     { path: 'signup', component: KupSignupComponent },
-    { path: 'register', component: KupRegisterComponent }
+    { path: 'register', component: KupRegisterComponent },
+    { path: 'izinlalu', component: IzinLaluComponent },
 ];
 
 @NgModule({

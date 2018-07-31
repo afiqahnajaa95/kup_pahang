@@ -18,7 +18,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '#', title: 'Pemohon',  icon:'ti-user', class: '' },
     { path: 'icons', title: 'Semua',  icon:'ti-notepad', class: '' },
     { path: 'kupform', title: 'Permohonan Baru',  icon:'ti-pencil-alt', class: '' },
-    { path: '#', title: 'Izin Lalu',  icon:'ti-pencil-alt', class: '' },
+    { path: 'izinlalu', title: 'Izin Lalu',  icon:'ti-pencil-alt', class: '' },
     { path: '#', title: 'Permit Kerja',  icon:'ti-hand-point-right', class: '' },
     { path: '#', title: 'Mula Kerja',  icon: 'ti-hand-point-right', class: '' },
     { path: '#', title: 'Siap Kerja',  icon:'ti-hand-point-right', class: '' },

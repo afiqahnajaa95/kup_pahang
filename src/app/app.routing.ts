@@ -9,6 +9,7 @@ import { KupFormComponent }   from './kup-form/kup-form.component';
 import { KupLoginComponent }   from './kup-login/kup-login.component';
 import { KupSignupComponent }   from './kup-signup/kup-signup.component';
 import { KupRegisterComponent }   from './kup-register/kup-register.component';
+import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
 
 export const AppRoutes: Routes = [
     {
@@ -55,5 +56,9 @@ export const AppRoutes: Routes = [
     {
         path: 'register',
         component: KupRegisterComponent
+    },
+    {
+        path: 'izinlalu',
+        component: IzinLaluComponent
     }
 ]

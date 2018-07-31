@@ -18,9 +18,10 @@ import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { MaterialModule } from './material.module';
 import { CDKModule } from './cdk.module';
 import { KupFormComponent }   from './kup-form/kup-form.component';
-import { KupLoginComponent, KupRegisterDialog }   from './kup-login/kup-login.component';
+import { KupLoginComponent }   from './kup-login/kup-login.component';
 import { KupSignupComponent }   from './kup-signup/kup-signup.component';
 import { KupRegisterComponent }   from './kup-register/kup-register.component';
+import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -44,7 +45,7 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     KupLoginComponent,
     KupSignupComponent,
     KupRegisterComponent,
-    KupRegisterDialog
+    IzinLaluComponent
   ],
   imports: [
     BrowserModule,
@@ -66,9 +67,7 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     AngularFireAuthModule,
     MatDialogModule, MatButtonModule
   ],
-  entryComponents: [
-    KupRegisterDialog, KupLoginComponent
-  ],
+  entryComponents: [KupLoginComponent],
   providers: [
     AlertService,
     AuthenticationService,

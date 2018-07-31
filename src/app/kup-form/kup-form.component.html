@@ -99,202 +99,6 @@
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>MAKLUMAT JALAN</ng-template>
       <mat-card>
-<<<<<<< HEAD
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td>
-            <p>Nama Jalan:</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="roadname1" required>
-          </mat-form-field></td>
-          <td>
-            <p>Koordinat Mula:</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="startcor1" required>
-          </mat-form-field></td>
-          <td>
-            <p>Koordinat Akhir:</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="endcor1" required>
-          </mat-form-field></td>
-          <td>
-            <p>Pihak yang meluluskan:</p>
-            <mat-form-field class="example-full-width">
-               <mat-select placeholder="-- Majlis Perbandaran/ Majlis Daerah --" formControlName="pihak1" required>
-                 <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
-                 <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
-                 <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
-                 <mat-option value="Majlis Perbandaran Temerloh">Majlis Perbandaran Temerloh</mat-option>
-                 <mat-option value="Majlis Daerah Jerantut">Majlis Daerah Jerantut</mat-option>
-                 <mat-option value="Majlis Daerah Rompin">Majlis Daerah Rompin</mat-option>
-                 <mat-option value="Majlis Daerah Raub">Majlis Daerah Raub</mat-option>
-                 <mat-option value="Majlis Daerah Lipis">Majlis Daerah Lipis</mat-option>
-                 <mat-option value="Majlis Daerah Pekan">Majlis Daerah Pekan</mat-option>
-                 <mat-option value="Majlis Daerah Cameron Highlands">Majlis Daerah Cameron Highlands</mat-option>
-                 <mat-option value="Majlis Daerah Bera">Majlis Daerah Bera</mat-option>
-                 <mat-option>-- Jabatan Kerja Raya --</mat-option>
-                 <mat-option value="JKR Kuantan">JKR Kuantan</mat-option>
-                 <mat-option value="JKR Bentong">JKR Bentong</mat-option>
-                 <mat-option value="JKR Maran">JKR Maran</mat-option>
-                 <mat-option value="JKR Temerloh">JKR Temerloh</mat-option>
-                 <mat-option value="JKR Jerantut">JKR Jerantut</mat-option>
-                 <mat-option value="JKR Rompin">JKR Rompin</mat-option>
-                 <mat-option value="JKR Raub">JKR Raub</mat-option>
-                 <mat-option value="JKR Lipis">JKR Lipis</mat-option>
-                 <mat-option value="JKR Pekan">JKR Pekan</mat-option>
-                 <mat-option value="JKR Cameron Highlands">JKR Cameron Highlands</mat-option>
-                 <mat-option value="JKR Bera">JKR Bera</mat-option>
-               </mat-select>
-          </mat-form-field></td>
-          <td>
-            <p>Kaedah Kerja:</p>
-            <mat-form-field class="example-full-width">
-             <mat-select placeholder="Pilih salah satu" formControlName="method1" required>
-               <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
-               <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
-               <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
-               <mat-option value="Pemasangan Paip">Pemasangan Paip</mat-option>
-               <mat-option value="Pemasangan Secara Terbuka">Pemasangan Secara Terbuka</mat-option>
-               <mat-option value="Tiang">Tiang</mat-option>
-               <mat-option value="Lain-lain">Lain-lain</mat-option>
-             </mat-select>
-          </mat-form-field></td>
-          <td>
-            <p>Panjang (m):</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="length1" required>
-          </mat-form-field></td>
-        </tr></table>
-
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td>
-            <p>Nama Jalan:</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="roadname2">
-          </mat-form-field></td>
-          <td>
-            <p>Koordinat Mula:</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="startcor2">
-          </mat-form-field></td>
-          <td>
-            <p>Koordinat Akhir:</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="endcor2">
-          </mat-form-field></td>
-          <td>
-            <p>Pihak yang meluluskan:</p>
-            <mat-form-field class="example-full-width">
-               <mat-select placeholder="-- Majlis Perbandaran/ Majlis Daerah --" formControlName="pihak2">
-                 <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
-                 <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
-                 <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
-                 <mat-option value="Majlis Perbandaran Temerloh">Majlis Perbandaran Temerloh</mat-option>
-                 <mat-option value="Majlis Daerah Jerantut">Majlis Daerah Jerantut</mat-option>
-                 <mat-option value="Majlis Daerah Rompin">Majlis Daerah Rompin</mat-option>
-                 <mat-option value="Majlis Daerah Raub">Majlis Daerah Raub</mat-option>
-                 <mat-option value="Majlis Daerah Lipis">Majlis Daerah Lipis</mat-option>
-                 <mat-option value="Majlis Daerah Pekan">Majlis Daerah Pekan</mat-option>
-                 <mat-option value="Majlis Daerah Cameron Highlands">Majlis Daerah Cameron Highlands</mat-option>
-                 <mat-option value="Majlis Daerah Bera">Majlis Daerah Bera</mat-option>
-                 <mat-option>-- Jabatan Kerja Raya --</mat-option>
-                 <mat-option value="JKR Kuantan">JKR Kuantan</mat-option>
-                 <mat-option value="JKR Bentong">JKR Bentong</mat-option>
-                 <mat-option value="JKR Maran">JKR Maran</mat-option>
-                 <mat-option value="JKR Temerloh">JKR Temerloh</mat-option>
-                 <mat-option value="JKR Jerantut">JKR Jerantut</mat-option>
-                 <mat-option value="JKR Rompin">JKR Rompin</mat-option>
-                 <mat-option value="JKR Raub">JKR Raub</mat-option>
-                 <mat-option value="JKR Lipis">JKR Lipis</mat-option>
-                 <mat-option value="JKR Pekan">JKR Pekan</mat-option>
-                 <mat-option value="JKR Cameron Highlands">JKR Cameron Highlands</mat-option>
-                 <mat-option value="JKR Bera">JKR Bera</mat-option>
-               </mat-select>
-          </mat-form-field></td>
-          <td>
-            <p>Kaedah Kerja:</p>
-            <mat-form-field class="example-full-width">
-             <mat-select placeholder="Pilih salah satu" formControlName="method2">
-               <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
-               <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
-               <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
-               <mat-option value="Pemasangan Paip">Pemasangan Paip</mat-option>
-               <mat-option value="Pemasangan Secara Terbuka">Pemasangan Secara Terbuka</mat-option>
-               <mat-option value="Tiang">Tiang</mat-option>
-               <mat-option value="Lain-lain">Lain-lain</mat-option>
-             </mat-select>
-          </mat-form-field></td>
-          <td>
-            <p>Panjang (m):</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="length2">
-          </mat-form-field></td>
-        </tr></table>
-
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td>
-            <p>Nama Jalan:</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="roadname3">
-          </mat-form-field></td>
-          <td>
-            <p>Koordinat Mula:</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="startcor3">
-          </mat-form-field></td>
-          <td>
-            <p>Koordinat Akhir:</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="endcor3">
-          </mat-form-field></td>
-          <td>
-            <p>Pihak yang meluluskan:</p>
-            <mat-form-field class="example-full-width">
-               <mat-select placeholder="-- Majlis Perbandaran/ Majlis Daerah --" formControlName="pihak3">
-                 <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
-                 <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
-                 <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
-                 <mat-option value="Majlis Perbandaran Temerloh">Majlis Perbandaran Temerloh</mat-option>
-                 <mat-option value="Majlis Daerah Jerantut">Majlis Daerah Jerantut</mat-option>
-                 <mat-option value="Majlis Daerah Rompin">Majlis Daerah Rompin</mat-option>
-                 <mat-option value="Majlis Daerah Raub">Majlis Daerah Raub</mat-option>
-                 <mat-option value="Majlis Daerah Lipis">Majlis Daerah Lipis</mat-option>
-                 <mat-option value="Majlis Daerah Pekan">Majlis Daerah Pekan</mat-option>
-                 <mat-option value="Majlis Daerah Cameron Highlands">Majlis Daerah Cameron Highlands</mat-option>
-                 <mat-option value="Majlis Daerah Bera">Majlis Daerah Bera</mat-option>
-                 <mat-option>-- Jabatan Kerja Raya --</mat-option>
-                 <mat-option value="JKR Kuantan">JKR Kuantan</mat-option>
-                 <mat-option value="JKR Bentong">JKR Bentong</mat-option>
-                 <mat-option value="JKR Maran">JKR Maran</mat-option>
-                 <mat-option value="JKR Temerloh">JKR Temerloh</mat-option>
-                 <mat-option value="JKR Jerantut">JKR Jerantut</mat-option>
-                 <mat-option value="JKR Rompin">JKR Rompin</mat-option>
-                 <mat-option value="JKR Raub">JKR Raub</mat-option>
-                 <mat-option value="JKR Lipis">JKR Lipis</mat-option>
-                 <mat-option value="JKR Pekan">JKR Pekan</mat-option>
-                 <mat-option value="JKR Cameron Highlands">JKR Cameron Highlands</mat-option>
-                 <mat-option value="JKR Bera">JKR Bera</mat-option>
-               </mat-select>
-          </mat-form-field></td>
-          <td>
-            <p>Kaedah Kerja:</p>
-            <mat-form-field class="example-full-width">
-             <mat-select placeholder="Pilih salah satu"formControlName="method3" required>
-               <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
-               <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
-               <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
-               <mat-option value="Pemasangan Paip">Pemasangan Paip</mat-option>
-               <mat-option value="Pemasangan Secara Terbuka">Pemasangan Secara Terbuka</mat-option>
-               <mat-option value="Tiang">Tiang</mat-option>
-               <mat-option value="Lain-lain">Lain-lain</mat-option>
-             </mat-select>
-          </mat-form-field></td>
-          <td>
-            <p>Panjang (m):</p>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Sila Nyatakan" formControlName="length3" required>
-          </mat-form-field></td>
-        </tr></table>
-=======
         <table class="example-full-width" border="0">
                 <tr>
                   <td>Nama Jalan</td>
@@ -316,6 +120,7 @@
                     <td>
                         <input [(ngModel)]="field.endcor" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.endcor}}">
                     </td>
+                    <br>
                     <td>
                       <mat-select [(ngModel)]="field.pihak" [ngModelOptions]="{standalone: true}" class="form-control" name="{{field.pihak}}">
                         <mat-option>-- Majlis Perbandaran/ Majlis Daerah --</mat-option>
@@ -422,7 +227,6 @@
                 </tr>
             </tbody>
         </table>
->>>>>>> a98d04adf09a7bfed9fc4e58ddfd6840754d4d60
 
         <table class="example-full-width" cellspacing="0"><tr>
            <td>
@@ -585,47 +389,6 @@
   <mat-step [stepControl]="fifthFormGroup">
     <form [formGroup]="fifthFormGroup">
       <ng-template matStepLabel>MUAT NAIK DOKUMEN PROJEK</ng-template>
-<<<<<<< HEAD
-      <!-- <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile>
-          <p>Pelan Lokasi:</p>
-          <mat-form-field>
-            <input type="file" (change)="onFileSelected($event)" #fileInput>
-            <button type="button" (click)="onUpload()">button</button>
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <p>Pelan Tapak:</p>
-          <mat-form-field>
-            <input type="file" (change)="onFileSelected($event)" #fileInput>
-            <button type="button" (click)="onUpload()">button</button>
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <p>Gambar Lokasi:</p>
-          <mat-form-field>
-            <input type="file" (change)="onFileSelected($event)" #fileInput>
-            <button type="button" (click)="onUpload()">button</button>
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <p>Surat Permohonan Izin Lalu (Sila cetak, tandatangan dan memuat naik kembali permohonan izin lalu):</p>
-          <mat-form-field>
-            <input type="file" (change)="onFileSelected($event)" #fileInput>
-            <button type="button" (click)="onUpload()">button</button>
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list> -->
-      <p>Peta Penandaan Lokasi</p>
-        <input type="file" (change)="uploadFile($event, '/ppl')"/><br>
-      <p>Lukisan Tapak</p>
-        <input type="file" (change)="uploadFile($event, '/lt')"/><br>
-      <p>Gambar Lokasi (sila kumpulkan kesemua gambar dan kemukaan di dalam bentuk pdf)</p>
-        <input type="file" (change)="uploadFile($event, '/gl')"/><br>
-      <p>Surat Permohonan Izin Lalu (sila cetak, tandatangan dan upload kembali untuk permohonan izin lali) -link ke muat turun surat permohonan izin lalu</p>
-        <input type="file" (change)="uploadFile($event, '/spil')"/><br>
-      <mat-checkbox>
-=======
       <table class="example-full-width" cellspacing="0"><tr>
         <td><p>Peta Penandaan Lokasi</p>
         <input type="file" (change)="uploadFile($event, '/ppl')"/></td>
