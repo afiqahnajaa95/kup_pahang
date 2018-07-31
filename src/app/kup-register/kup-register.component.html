@@ -1,157 +1,66 @@
 <mat-card>
-<h1>BORANG PENDAFTARAN PEMOHON KORIDOR UTILITI PAHANG</h1>
-{{data.value | json}}
+  <div class="col-md-6 col-md-offset-3">
+          <div class="logo-img" >
+              <img src="../../assets/img/kup-logo123.png" alt="" width="200">
+              <br><br><br>
+          </div>
+  </div>
+  <!-- BAHAGIAN 1 -->
+<p><label>BORANG PENDAFTARAN PEMOHON KORIDOR UTILITI PAHANG</label></p>
+<!-- {{data.value | json}} -->
 <p><b>Bahagian 1: Maklumat Pemohon</b></p><br>
 <form [formGroup]='data'>
-  <p>Pendaftaran Sebagai:</p>
+  <table class="example-full-width" cellspacing="0"><tr>
+  <td><p>Pendaftaran Sebagai:</p>
   <mat-select placeholder="Pilih salah satu" formControlName="regas">
     <mat-option value="Syarikat">Syarikat</mat-option>
     <mat-option value="Individu">Individu</mat-option>
     <mat-option value="Konsultan">Konsultan</mat-option>
     <mat-option value="Kontraktor">Kontraktor</mat-option>
     <mat-option value="Pemaju">Pemaju</mat-option>
-  </mat-select><br>
-  <p>Name Syarikat:</p>
-  <input type="text" class="form-control" placeholder="" formControlName="co_name"/>
-  <p>No. Pendaftaran SSM:</p>
-  <input type="text" class="form-control" placeholder="" formControlName="co_reg"/>
-  <p>Alamat Syarikat:</p>
-  <input type="text" class="form-control" placeholder="" formControlName="co_add"/>
-  <p>Nama Pemohon:</p>
-  <input type="text" class="form-control" placeholder="" formControlName="req_name"/>
-  <p>No. Kad Pengenalan:</p>
-  <input type="text" class="form-control" placeholder="" formControlName="ic_no"/>
-  <p>Jawatan:</p>
-  <input type="text" class="form-control" placeholder="" formControlName="req_pos"/>
-  <p>Emel:</p>
-  <input type="text" class="form-control" placeholder="" formControlName="email"/>
-  <p>No. Telefon:</p>
-  <input type="text" class="form-control" placeholder="" formControlName="co_no"/>
-  <p>No. Faks:</p>
-  <input type="text" class="form-control" placeholder="" formControlName="fax_no"/>
-</form><hr>
-<p><b>Bahagian 2: Muat Naik Dokumen Pemohon</b></p>
-<p>Surat Perakuan Wakil Syarikat</p>
-  <input type="file" (change)="uploadFile($event, '/spws')"/><br>
-<p>Salinan Kad Pengenalan Pemohon</p>
-  <input type="file" (change)="uploadFile($event, '/skpp')"/><br>
-<p>Sijil Pendaftaran Perniagaan SSM</p>
-  <input type="file" (change)="uploadFile($event, '/spps')"/>
-<hr>
-<button mat-button (click)="saveRegister()">Save Details</button>
-<!--
-<table class="example-full-width" cellspacing="0"><tr>
-  <td>
-    <p>Pendaftaran Sebagai:</p>
-    <mat-form-field class="example-full-width">
-      <mat-select required>
-        <mat-option>Pilih salah satu</mat-option>
-        <mat-option value="Syarikat">Syarikat</mat-option>
-        <mat-option value="Individu">Individu</mat-option>
-        <mat-option value="Konsultan">Konsultan</mat-option>
-        <mat-option value="Kontraktor">Kontraktor</mat-option>
-        <mat-option value="Pemaju">Pemaju</mat-option>
-      </mat-select>
-  </mat-form-field></td>
-  <td>
-    <p>Nama Syarikat:</p>
-    <mat-form-field class="example-full-width">
-    <input matInput placeholder="Nama Syarikat" equired>
-  </mat-form-field></td>
-  <td>
-    <p>Nombor Pendaftaran SSM:</p>
-    <mat-form-field class="example-full-width">
-    <input matInput placeholder="Nombor Pendaftaran SSM" required>
-  </mat-form-field></td>
+  </mat-select><br></td>
+  <td><p>Name Syarikat:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="co_name"></td>
+  <td><p>No. Pendaftaran SSM:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="co_reg"></td>
 </tr></table>
 
-<table class="example-full-width" cellspacing="0"><tr>
-    <td>
-      <p>Alamat Syarikat:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="Alamat Syarikat" required>
-    </mat-form-field></td>
-    <td>
-      <p>Nama Pemohon:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="Nama Pemohon" required>
-    </mat-form-field></td>
-    <td>
-      <p>Nombor Kad Pengenalan:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="No Kad Pengenalan" required>
-    </mat-form-field></td>
-  </tr></table>
+  <table class="example-full-width" cellspacing="0"><tr>
+  <td><p>Alamat Syarikat:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="co_add"></td>
+  <td><p>Nama Pemohon:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="req_name"></td>
+  <td><p>No. Kad Pengenalan:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="ic_no"></td>
+</tr></table>
 
   <table class="example-full-width" cellspacing="0"><tr>
-    <td>
-      <p>Jawatan:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="Jawatan" required>
-    </mat-form-field></td>
-    <td>
-      <p>Email:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="Email" required>
-    </mat-form-field></td>
-    <td>
-      <p>Nombor Telefon:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="No. Telefon" required>
-    </mat-form-field></td>
-    <td>
-      <p>Nombor Faks:</p>
-      <mat-form-field class="example-full-width">
-      <input matInput placeholder="No Faks" required>
-    </mat-form-field></td>
-  </tr></table>
+  <td><p>Jawatan:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="req_pos"></td>
+  <td><p>Emel:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="email"></td>
+  <td><p>No. Telefon:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="co_no"></td>
+  <td><p>No. Faks:</p>
+  <input type="text" class="form-control" placeholder="" formControlName="fax_no"></td>
+</tr></table>
+</form><hr>
 
-BAHAGIAN 2 -->
-  <!-- <p><b>Bahagian 2: Muat Naik Dokumen Pemohon</b></p> -->
+<!-- BAHAGIAN 2 -->
+<p><b>Bahagian 2: Muat Naik Dokumen Pemohon</b></p>
+<table class="example-full-width" cellspacing="0"><tr>
+  <td><p>Surat Perakuan Wakil Syarikat</p>
+  <input type="file" (change)="uploadFile($event, '/spws')"></td>
+<td><p>Salinan Kad Pengenalan Pemohon</p>
+  <input type="file" (change)="uploadFile($event, '/skpp')"></td>
+<td><p>Sijil Pendaftaran Perniagaan SSM</p>
+  <input type="file" (change)="uploadFile($event, '/spps')"></td>
+</tr></table><br>
 
-<!-- <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div class="row card">
-                <div class="col-sm-12">
-                    <h4>Upload Section</h4>
-                    <div id="fileSelector">
-                        <input type="file" name="fileUplaod" id="fileUpload"
-                        multiple ng2FileSelect [uploader]="uploader">
-                    </div>
-                    <div>
-                        <div class="row uploadList" *ngFor="let item of uploader.queue">
-                            <div class="col-sm-4">{{item.file.name}}</div>
-                            <div class="col-sm-4">
-                                <div class="progress">
-                                    <div class="progress-bar bg-success"
-                                    [ngStyle]="{'width':item.progress+'%'}"></div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                    <button type="button" class="btn btn-dark" (click)="item.upload()">Upload</button>
-                                    <button type="button" class="btn btn-danger" (click)="item.remove()">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" *ngIf="uploader?.queue?.length > 0">
-                            <button type="button" class="btn btn-primary" (click)="uploader.uploadAll()">Upload All</button>
-                    </div>
-                </div>
-            </div>
+<mat-checkbox required>
+Saya memperaku bahawa semua maklumat yang dinyatakan di atas adalah benar<br>
+dan bersetuju dengan terma dan syarat yang ditetapkan.
+</mat-checkbox><br><br>
 
-            <div class="row card">
-                <h4>Download Section</h4>
-
-                <div class="row" *ngFor="let item of attachmentList; let i = index"
-                style="margin:10px;padding:5px;background-color:rgb(231, 229, 229); border-radius:5px; line-height:40px;">
-                    <div class="col-sm-7">{{item.originalname}}</div>
-                    <div class="col-sm-5" style="text-align:center;"><button type="button" class="btn btn-primary" (click)="download(i)">Download</button></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-</div> -->
+<button mat-button (click)="saveRegister()">Save Details</button>
 </mat-card>

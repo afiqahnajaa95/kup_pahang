@@ -26,9 +26,6 @@ export const ROUTES: RouteInfo[] = [
     { path: '#', title: 'Ditangguhkan (KIV)',  icon:'ti-hand-point-right', class: '' },
     { path: '#', title: 'Batal',  icon:'ti-face-sad', class: '' },
     { path: '#', title: 'Ditolak',  icon:'ti-face-sad', class: '' },
-    { path: 'login', title: 'Login',  icon:'ti-hand-point-right', class: '' },
-    { path: 'register', title: 'Register',  icon:'ti-hand-point-right', class: '' },
-    { path: 'login', title: 'Logout',  icon:'ti-hand-point-right', class: '' },
 ];
 
 @Component({
