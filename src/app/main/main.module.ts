@@ -4,23 +4,17 @@ import { environment } from '../../environments/environment';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './main.component';
-import { MainRoutes } from './main.routing.module';
+import { MainRoutingModule } from './main.routing.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
 import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import { DashboardComponent }   from './dashboard/dashboard.component';
-import { TableComponent }   from './table/table.component';
-import { TypographyComponent }   from './typography/typography.component';
 import { IconsComponent }   from './icons/icons.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
-// import { UpgradeComponent }   from '../../upgrade/upgrade.component';
 import { MaterialModule } from '../material.module';
 import { CDKModule } from '../cdk.module';
 import { KupFormComponent }   from './kup-form/kup-form.component';
-// import { KupLoginComponent }   from './kup-login/kup-login.component';
-// import { KupSignupComponent }   from './kup-signup/kup-signup.component';
-// import { KupRegisterComponent }   from './kup-register/kup-register.component';
 import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertService, AuthenticationService, UserService } from '../_services/index';
@@ -35,20 +29,14 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
   declarations: [
     MainComponent,
     DashboardComponent,
-    TableComponent,
-    TypographyComponent,
     IconsComponent,
     NotificationsComponent,
-    // UpgradeComponent,
     KupFormComponent,
-    // KupLoginComponent,
-    // KupSignupComponent,
-    // KupRegisterComponent,
     IzinLaluComponent
   ],
   imports: [
     BrowserModule,
-    MainRoutes,
+    MainRoutingModule,
     SidebarModule,
     NavbarModule,
     BrowserAnimationsModule,
@@ -65,6 +53,13 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     AngularFireStorageModule,
     AngularFireAuthModule,
     MatDialogModule, MatButtonModule
+  ],
+  exports: [
+    DashboardComponent,
+    IconsComponent,
+    NotificationsComponent,
+    KupFormComponent,
+    IzinLaluComponent
   ],
   providers: [
     AlertService,

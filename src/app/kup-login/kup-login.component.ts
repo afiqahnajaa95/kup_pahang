@@ -6,10 +6,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+// export interface DialogData {
+//   animal: string;
+//   name: string;
+// }
 @Component({
   selector: 'app-kup-login',
   templateUrl: './kup-login.component.html',
@@ -21,8 +21,8 @@ export class KupLoginComponent implements OnInit {
     loading = false;
     returnUrl: string;
     login: FormGroup;
-    animal: string;
-    name: string;
+    // animal: string;
+    // name: string;
     logstatus: any;
 
     constructor(
