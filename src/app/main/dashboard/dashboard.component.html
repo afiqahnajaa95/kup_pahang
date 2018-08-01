@@ -5,19 +5,75 @@
 </div>
 <div class="content">
 <div class="container-fluid">
- <div class="row">
-
-  <!-- PERMOHONAN BARU -->
-  <div class="col-lg-3 col-sm-6">
+  <mat-grid-list cols="5" rowHeight="200px">
+    <mat-grid-tile>
+      <mat-card>
+        <div class="numbers">
+        <i class="ti-pencil-alt"></i>
+        </div>
+        <div class="numbers">
+          <p>Permohonan Baru</p>
+           10
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <div class="numbers">
+        <i class="ti-pencil-alt"></i>
+        </div>
+        <div class="numbers">
+          <p>Izin Lalu</p>
+           10
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <div class="numbers">
+        <i class="ti-alert"></i>
+        </div>
+        <div class="numbers">
+          <p>Permit Kerja</p>
+           10
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <div class="numbers">
+        <i class="ti-thumbs-up"></i>
+        </div>
+        <div class="numbers">
+          <p>Siap Kerja (CPC)</p>
+           10
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <div class="numbers">
+        <i class="ti-money"></i>
+        </div>
+        <div class="numbers">
+          <p>Wang Cagaran</p>
+           10
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+<!--
+  PERMOHONAN BARU
+  <div class="col-md-3">
    <div class="card">
     <div class="content">
      <div class="row">
-      <div class="col-xs-5">
+      <div class="col-md-5">
        <div class="icon-big icon-success text-center">
         <i class="ti-pencil-alt"></i>
          </div>
           </div>
-          <div class="col-xs-7">
+          <div class="col-md-7">
             <div class="numbers">
             <p>Permohonan Baru</p>
                10
@@ -28,7 +84,7 @@
       </div>
      </div>
 
-  <!--IZIN LALU -->
+  IZIN LALU
   <div class="col-lg-3 col-sm-6">
    <div class="card">
     <div class="content">
@@ -49,7 +105,7 @@
     </div>
    </div>
 
-   <!-- PERMIT KERJA -->
+   PERMIT KERJA
    <div class="col-lg-3 col-sm-6">
     <div class="card">
      <div class="content">
@@ -70,7 +126,7 @@
     </div>
    </div>
 
-   <!-- SIAP KERJA -->
+   SIAP KERJA
    <div class="col-lg-3 col-sm-6">
     <div class="card">
      <div class="content">
@@ -91,7 +147,7 @@
     </div>
    </div>
 
-   <!-- WANG CAGARAN -->
+   WANG CAGARAN
    <div class="col-lg-3 col-sm-6">
     <div class="card">
      <div class="content">
@@ -110,66 +166,61 @@
       </div>
      </div>
     </div>
-   </div>
+   </div> -->
 
  </div>
 </div>
 <br>
 
 <!-- TABLE -->
-<div class="example-container mat-elevation-z8">
-  <div class="example-header">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
+<div class="content">
+  <div class="example-container mat-elevation-z8">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> ID Aplikasi </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="weight">
+        <mat-header-cell *matHeaderCellDef> Nama Projek </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol">
+        <mat-header-cell *matHeaderCellDef> Syarikat </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef> Kategori Pemasangan </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef> Tarikh Memohon </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator
+                  [pageSize]="10"
+                  [pageSizeOptions]="[5, 10, 20]"
+                  [showFirstLastButtons]="true">
+   </mat-paginator>
   </div>
-
-  <mat-table #table [dataSource]="dataSource">
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> ID Aplikasi </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <mat-header-cell *matHeaderCellDef> Nama Projek </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <mat-header-cell *matHeaderCellDef> Syarikat </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-    </ng-container>
-
-    <!-- Kategori Pemasangan -->
-    <ng-container matColumnDef="category">
-      <mat-header-cell *matHeaderCellDef> Kategori Pemasangan </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
-    </ng-container>
-
-    <!-- Tarikh Memohon -->
-    <ng-container matColumnDef="date">
-      <mat-header-cell *matHeaderCellDef> Tarikh Memohon </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-
-  <mat-paginator #paginator
-                [pageSize]="10"
-                [pageSizeOptions]="[5, 10, 20]"
-                [showFirstLastButtons]="true">
- </mat-paginator>
-</div>
 </div>
