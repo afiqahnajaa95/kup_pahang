@@ -9,26 +9,26 @@ declare var $:any;
 export interface RouteInfo {
     path: string;
     title: string;
-    icon: string;
+    // icon: string;
     class: string;
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: 'dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
-    { path: '#', title: 'Pemohon',  icon:'ti-user', class: '' },
-    { path: 'semua', title: 'Semua',  icon:'ti-notepad', class: '' },
-    { path: 'kupform', title: 'Permohonan Baru',  icon:'ti-pencil-alt', class: '' },
-    { path: 'izinlalu', title: 'Izin Lalu',  icon:'ti-pencil-alt', class: '' },
-    { path: '#', title: 'Permit Kerja',  icon:'ti-hand-point-right', class: '' },
-    { path: '#', title: 'Mula Kerja',  icon: 'ti-hand-point-right', class: '' },
-    { path: '#', title: 'Siap Kerja',  icon:'ti-hand-point-right', class: '' },
-    { path: '#', title: 'Wang Cagaran',  icon:'ti-money', class: '' },
-    { path: '#', title: 'Ditangguhkan (KIV)',  icon:'ti-hand-point-right', class: '' },
-    { path: '#', title: 'Batal',  icon:'ti-face-sad', class: '' },
-    { path: '#', title: 'Ditolak',  icon:'ti-face-sad', class: '' },
+    { path: 'dashboard', title: 'Dashboard', class: 'drop' },
+    { path: 'dashboard', title: 'Pemohon', class: '' },
+    { path: 'semua', title: 'Semua', class: '' },
+    { path: 'kupform', title: 'Permohonan Baru', class: '' },
+    { path: 'izinlalu', title: 'Izin Lalu', class: '' },
+    { path: '#', title: 'Permit Kerja', class: '' },
+    { path: '#', title: 'Mula Kerja', class: '' },
+    { path: '#', title: 'Siap Kerja', class: '' },
+    { path: '#', title: 'Wang Cagaran', class: '' },
+    { path: '#', title: 'Ditangguhkan (KIV)', class: '' },
+    { path: '#', title: 'Batal', class: '' },
+    { path: '#', title: 'Ditolak', class: '' },
     // { path: 'login', title: 'Login',  icon:'ti-hand-point-right', class: '' },
     // { path: 'register', title: 'Register',  icon:'ti-hand-point-right', class: '' },
-    { path: 'login', title: 'Logout',  icon:'ti-hand-point-right', class: '' },
+    { path: 'login', title: 'Logout', class: '' },
 ];
 
 @Component({
@@ -45,10 +45,10 @@ export class SidebarComponent implements OnInit {
       public firebase: AngularFireAuth,
       private route: ActivatedRoute,
       private router: Router,
-    ){
-    }
+    ){}
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
+
     }
     isNotMobileMenu(){
         if($(window).width() > 991){
@@ -56,16 +56,17 @@ export class SidebarComponent implements OnInit {
         }
         return true;
     }
-    selected(path){
-      console.log("Button Trigger: "+path);
+    redirectTo(path){
+      console.log(path);
       this.id = this.firebase.auth.currentUser;
       console.log(this.id.uid);
-      if(path == 'login'){
-        console.log("Logging Out");
-        this.firebase.auth.signOut();
-        this.router.navigate(['/login']);
-      }else{
-        this.router.navigate(['/'+path, { id: this.id.uid }]);
-      }
+      this.router.navigate([path, { id: this.id.uid }]);
+    }
+    logOut(){
+      console.log("Logging Out");
+      this.id = this.firebase.auth.currentUser;
+      console.log(this.id.uid);
+      this.firebase.auth.signOut();
+      this.router.navigate(['/login']);
     }
 }

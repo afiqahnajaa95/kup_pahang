@@ -22,7 +22,7 @@ const approutes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(approutes, { enableTracing: true } ) ],
+  imports: [ RouterModule.forRoot(approutes) ],
   exports: [ RouterModule ]
 })
 export class AppRoutes {}

@@ -5,148 +5,128 @@
 <!-- BAHAGIAN 1 -->
 <mat-toolbar>MAKLUMAT AM PROJEK</mat-toolbar>
 <br>
-<table class="example-full-width" cellspacing="0"><tr>
-  <td><p><label>Kategori Pemasangan Utiliti Baru&emsp;</label></p>
-    <p></p></td>
-  <td><p><label>Nama Projek&emsp;</label></p>
-    <p></p></td>
-  <td><p><label>Daerah&emsp;</label></p>
-    <p></p></td>
-  <td><p><label>Sektor Utiliti&emsp;</label></p>
-    <p></p></td>
-</tr></table>
-
-<table class="example-full-width" cellspacing="0"><tr>
-  <td><p><label>Jangkaan Tarikh Mula Kerja&emsp;</label></p>
-    <p></p></td>
-  <td><p><label>Jangkaan Tarikh Kerja Siap&emsp;</label></p>
-    <p></p></td>
-  <td><p><label>Jumlah Hari&emsp;</label></p>
-    <p></p></td>
-  <td><p><label>Anggaran Kos Projek&emsp;</label></p>
-    <p></p></td>
-  </tr></table>
-  <br>
+<div class="contain">
+  <div class="content">
+    <p><label>Kategori Pemasangan Utiliti Baru&emsp;</label></p>
+    <p>{{ (item | async)?.newutility }}</p>
+  </div>
+  <div class="content">
+    <p><label>Nama Projek&emsp;</label></p>
+    <p>{{ (item | async)?.projname }}</p>
+  </div>
+  <div class="content">
+    <p><label>Daerah&emsp;</label></p>
+    <p>{{ (item | async)?.district }}</p>
+  </div>
+  <div class="content">
+    <p><label>Sektor Utiliti&emsp;</label></p>
+    <p>{{ (item | async)?.sector }}</p>
+  </div>
+  <div class="content">
+    <p><label>Jangkaan Tarikh Mula Kerja&emsp;</label></p>
+    <p>{{ (item | async)?.startdate }}</p>
+  </div>
+  <div class="content">
+    <p><label>Jangkaan Tarikh Kerja Siap&emsp;</label></p>
+    <p>{{ (item | async)?.enddate }}</p>
+  </div>
+  <div class="content">
+    <p><label>Jumlah Hari&emsp;</label></p>
+    <p>{{ (item | async)?.totaldays }}</p>
+  </div>
+  <div class="content">
+    <p><label>Anggaran Kos Projek&emsp;</label></p>
+    <p>{{ (item | async)?.estimation }}</p>
+  </div>
+</div>
+<br>
 
   <!-- BAHAGIAN 2 -->
   <mat-toolbar>MAKLUMAT JALAN</mat-toolbar>
   <br>
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><p><label>Nama Jalan&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Koordinat Mula&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Koordinat Akhir&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Pihak yang memberi kelulusan&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Kaedah Kerja&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Panjang (m)&emsp;</label></p>
-      <p></p></td>
-  </tr></table>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><p><label>Nama Jalan&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Koordinat Mula&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Koordinat Akhir&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Pihak yang memberi kelulusan&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Kaedah Kerja&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Panjang (m)&emsp;</label></p>
-      <p></p></td>
-  </tr></table>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><p><label>Nama Jalan&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Koordinat Mula&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Koordinat Akhir&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Pihak yang memberi kelulusan&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Kaedah Kerja&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Panjang (m)&emsp;</label></p>
-      <p></p></td>
-  </tr></table>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Jumlah Panjang Kaedah HDD (m)&emsp;</label></p>
-      <p></p></td>
-  </tr></table>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Jumlah Panjang Pengorek (m)&emsp;</label></p>
-      <p></p></td>
-  </tr></table>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>&emsp;</label></p>
-      <p></p></td>
-    <td><p><label>Jumlah Jarak Keseluruhan (m)&emsp;</label></p>
-      <p></p></td>
-  </tr></table><br>
+  <div class="contain">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <p><label>Nama Jalan&emsp;</label></p>
+          <p>{{ (item | async)?.projname }}</p>
+        </td>
+        <td>
+          <p><label>Koordinat Mula&emsp;</label></p>
+          <p>{{ (item | async)?.projname }}</p>
+        </td>
+        <td>
+          <p><label>Koordinat Akhir&emsp;</label></p>
+          <p>{{ (item | async)?.projname }}</p>
+        </td>
+        <td>
+          <p><label>Pihak yang memberi kelulusan&emsp;</label></p>
+          <p>{{ (item | async)?.projname }}</p>
+        </td>
+        <td>
+          <p><label>Kaedah Kerja&emsp;</label></p>
+          <p>{{ (item | async)?.projname }}</p>
+        </td>
+        <td>
+          <p><label>Panjang (m)&emsp;</label></p>
+          <p>{{ (item | async)?.projname }}</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="contain">
+    <div class="right-contain">
+      <div class="right-content">
+        Jumlah Panjang Kaedah HDD (m)
+      </div>
+      <div class="right-content-field">
+        {{ (item | async)?.hdd }}
+      </div>
+    </div>
+    <div class="right-contain">
+      <div class="right-content">
+        Jumlah Panjang Pengorek (m)
+      </div>
+      <div class="right-content-field">
+        {{ (item | async)?.tunnelling }}
+      </div>
+    </div>
+    <div class="right-contain">
+      <div class="right-content">
+        Jumlah Jarak Keseluruhan (m)
+      </div>
+      <div class="right-content-field">
+        {{ (item | async)?.total }}
+      </div>
+    </div>
+  </div>
 
   <!-- BAHAGIAN 3 -->
   <mat-toolbar>MAKLUMAT ASAS PERUNDING KEJURUTERAAN (Bagi Kerja Melebihi RM500,000)</mat-toolbar>
   <br>
   <table class="example-full-width" cellspacing="0"><tr>
     <td><p><label>Nama Syarikat&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.company }}</p></td>
     <td><p><label>Alamat Syarikat&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.address }}</p></td>
   </tr></table>
 
   <table class="example-full-width" cellspacing="0"><tr>
     <td><p><label>Nama Pegawai Bertanggungjawab&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.pegawai }}</p></td>
     <td><p><label>No Kad Pengenalan&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.ic }}</p></td>
     <td><p><label>Jawatan&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.role }}</p></td>
   </tr></table>
 
   <table class="example-full-width" cellspacing="0"><tr>
     <td><p><label>Emel&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.email }}</p></td>
     <td><p><label>No Telefon&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.phoneno }}</p></td>
     <td><p><label>No Faks&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.fax }}</p></td>
   </tr></table>
   <br>
 
@@ -155,29 +135,29 @@
   <br>
   <table class="example-full-width" cellspacing="0"><tr>
     <td><p><label>Nama Syarikat&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.company2 }}</p></td>
     <td><p><label>No. Pendaftaran SSM&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.ssm2 }}</p></td>
     <td><p><label>Alamat Syarikat&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.address2 }}</p></td>
   </tr></table>
 
   <table class="example-full-width" cellspacing="0"><tr>
     <td><p><label>Nama Pegawai Bertanggungjawab&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.pegawai2 }}</p></td>
     <td><p><label>No Kad Pengenalan&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.ic2 }}</p></td>
     <td><p><label>Jawatan&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.role2 }}</p></td>
   </tr></table>
 
   <table class="example-full-width" cellspacing="0"><tr>
     <td><p><label>Emel&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.email2 }}</p></td>
     <td><p><label>No Telefon&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.phoneno2 }}</p></td>
     <td><p><label>No Faks&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.fax2 }}</p></td>
   </tr></table><br>
 
   <!-- BAHAGIAN 5 -->
@@ -185,20 +165,20 @@
   <br>
   <table class="example-full-width" cellspacing="0"><tr>
     <td><p><label>Peta Penandaan Lokasi&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.projname }}</p></td>
     <td><p><label>Lukisan Tapak&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.projname }}</p></td>
     <td><p><label>Gambar Lokasi (Sila gabungkan semua gambar ke dalam bentuk PDF)&emsp;</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.projname }}</p></td>
   </tr></table>
 
   <table class="example-full-width" cellspacing="0"><tr>
     <td><p><label>Surat Permohonan Izin Lalu (Sila cetak, tandatangan dan muat turun kembali surat permohonan izin lalu)</label></p>
-      <p></p></td>
+      <p>{{ (item | async)?.projname }}</p></td>
   </tr></table><br>
 
   <!-- BAHAGIAN 6 -->
-  <mat-toolbar>AKTIVITI KUP</mat-toolbar>
+  <!-- <mat-toolbar>AKTIVITI KUP</mat-toolbar>
   <br>
     <p><label>Aktiviti 1: Semakan Dokumen Permohonan</label></p>
         <textarea matInput placeholder=""></textarea><br>
@@ -225,7 +205,7 @@
   <button mat-button>Tambah</button>
   <br>
 
-   <!-- BAHAGIAN 7 -->
+    BAHAGIAN 7
    <mat-toolbar>CATATAN KELULUSAN</mat-toolbar>
    <br>
      <p><label>Kelulusan Izin Lalu</label></p>
@@ -242,7 +222,7 @@
            <mat-option value="Ditangguhkan (KIV)">Ditangguhkan (KIV)</mat-option>
          </mat-select>
        </mat-form-field><br>
-   <button mat-button>Tambah</button>
+   <button mat-button>Tambah</button> -->
 </mat-card>
 
 <!-- <mat-card>

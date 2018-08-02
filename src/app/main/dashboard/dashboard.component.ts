@@ -16,6 +16,7 @@ declare var $:any;
 
 export class DashboardComponent{
     id: string;
+    new: number;
     private itemsCollection: AngularFirestoreCollection<any>;
     items: Observable<any[]>;
     constructor(
@@ -28,6 +29,10 @@ export class DashboardComponent{
       this.itemsCollection = db.collection<any>('users/'+this.id+'/permohonan');
       this.items = this.itemsCollection.valueChanges();
       console.log(this.items);
+      this.items.subscribe((result)=>{
+        console.log(result.length);
+        this.new = result.length;
+      })
     }
     displayedColumns = ['projname', 'company', 'date', 'status', 'comment'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -50,7 +55,7 @@ export class DashboardComponent{
     openFile(path){
       console.log("Open file");
       console.log(path);
-      this.router.navigate(['/izinlalu-detail', { id: this.id, file: path }]);
+      this.router.navigate(['/semua', { id: this.id, file: path }]);
     }
 }
 

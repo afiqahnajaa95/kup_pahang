@@ -5,7 +5,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 
-export interface Item { time: number, ref: string}
+export interface Item { time: number, userRef: string, ref: string}
 
 @Component({
   selector: 'app-kup-form',
@@ -19,10 +19,13 @@ export class KupFormComponent {
     fourthFormGroup: FormGroup;
     fifthFormGroup: FormGroup;
     id: string;
+    pasId: string;
+    refUser: string;
     private itemsCollection: AngularFirestoreCollection<Item>;
     private itemDoc: AngularFirestoreDocument<Item>;
     data: any;
     date: number;
+    fieldObject: any;
     private fieldArray: Array<any> = [];
     private newAttribute: any = {};
 
@@ -113,28 +116,38 @@ export class KupFormComponent {
 
     saveFB(){
       console.log("Saving Data");
-      console.log(this.date);
-      this.itemsCollection.add({time: this.date, ref: ''})
+      // console.log(this.date);
+      // console.log(this.fieldArray[0].roadname);
+      this.itemsCollection.add({time: this.date, userRef: '', ref: ''})
         .then((refId)=>{
           console.log(refId.id);
+          this.refUser = refId.id;
           this.itemDoc = this.db.doc<Item>('users/'+this.id+'/permohonan/'+refId.id);
-          this.itemDoc.update({time: this.date, ref: refId.id});
+          this.itemDoc.update({time: this.date, userRef: refId.id, ref: refId.id});
           this.itemDoc.update(this.firstFormGroup.value);
           this.itemDoc.update(this.secondFormGroup.value);
           this.itemDoc.update(this.thirdFormGroup.value);
           this.itemDoc.update(this.fourthFormGroup.value);
+          for(var i=0; i<this.fieldArray.length; ++i){
+            this.itemDoc = this.db.doc<Item>('users/'+this.id+'/permohonan/'+refId.id+'/roadList/'+i);
+            this.itemDoc.set(this.fieldArray[i]);
+          };
         })
         .then((result) => {
           this.itemsCollection = this.db.collection<Item>('permohonanBaru');
-          this.itemsCollection.add({time: this.date, ref: ''})
+          this.itemsCollection.add({time: this.date, userRef: '', ref: ''})
             .then((refId)=>{
               console.log(refId.id);
               this.itemDoc = this.db.doc<Item>('permohonanBaru/'+refId.id);
-              this.itemDoc.update({time: this.date, ref: refId.id});
+              this.itemDoc.update({time: this.date, userRef: this.refUser, ref: refId.id});
               this.itemDoc.update(this.firstFormGroup.value);
               this.itemDoc.update(this.secondFormGroup.value);
               this.itemDoc.update(this.thirdFormGroup.value);
               this.itemDoc.update(this.fourthFormGroup.value);
+              for(var i=0; i<this.fieldArray.length; ++i){
+                this.itemDoc = this.db.doc<Item>('permohonanBaru/'+refId.id+'/roadList/'+i);
+                this.itemDoc.set(this.fieldArray[i]);
+              };
             })
             .then((result)=>{
               this.router.navigate(['/izinlalu', { id: this.id }])

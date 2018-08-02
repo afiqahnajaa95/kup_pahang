@@ -1,39 +1,38 @@
 <!-- <div class="content">
 <div class="container-fluid">
  <div class="row"> -->
-
-   <mat-grid-list cols="5" rowHeight="2:1">
-     <mat-grid-tile>
-       <div class="icon-big icon-success text-center">
-         <i class="ti-pencil-alt"></i>
-       </div>
-       <label>&emsp;Permohonan Baru</label>
-     </mat-grid-tile>
-     <mat-grid-tile>
-       <div class="icon-big icon-success text-center">
-         <i class="ti-pencil-alt"></i>
-       </div>
-         <label>&emsp;Izin Lalu</label>
-     </mat-grid-tile>
-     <mat-grid-tile>
-       <div class="icon-big icon-danger text-center">
-        <i class="ti-alert"></i>
-       </div>
-       <label>&emsp;Permit Kerja</label>
-     </mat-grid-tile>
-     <mat-grid-tile>
-       <div class="icon-big icon-info text-center">
-        <i class="ti-thumb-up"></i>
-       </div>
-       <label>&emsp;Siap Kerja</label>
-     </mat-grid-tile>
-     <mat-grid-tile>
-       <div class="icon-big icon-info text-center">
-        <i class="ti-money"></i>
-       </div>
-       <label>&emsp;Wang Cagaran</label>
-     </mat-grid-tile>
-   </mat-grid-list>
+  <div class="stat-container">
+    <div class="stat">
+      Permohonan Baru
+      <div class="text-success">
+        {{new}}
+      </div>
+    </div>
+    <div class="stat">
+      Izin Lalu
+      <div class="text-success">
+        {{new}}
+      </div>
+    </div>
+    <div class="stat">
+      Permit Kerja
+      <div class="text-success">
+        {{new}}
+      </div>
+    </div>
+    <div class="stat">
+      Siap Kerja (CPC)
+      <div class="text-success">
+        {{new}}
+      </div>
+    </div>
+    <div class="stat">
+      Wang Cagaran
+      <div class="text-success">
+        {{new}}
+      </div>
+    </div>
+  </div>
 
   <!-- <div class="col-lg-3 col-sm-6">
    <div class="card">
@@ -143,9 +142,8 @@
 <div class="content">
   <div class="example-container mat-elevation-z8">
     <div class="example-header">
-      <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-      </mat-form-field>
+      Rekod Permohonan
+      <button class="right-button">Permohonan Baru</button>
     </div>
 
     <mat-table #table [dataSource]="items">

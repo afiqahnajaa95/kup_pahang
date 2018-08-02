@@ -1,45 +1,65 @@
 <div class="sidebar-wrapper">
-    <div class="logo">
-            <div class="logo-img">
-                <img src="../../assets/img/logo2.png" alt="" align="center" side=100%>
-            </div>
-            <div align="right"><b>KORIDOR UTILITI PAHANG</b></div>
+  <div style="padding: 2px 5px 5px 15px; min-height: 64px; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);">
+    <img src="../../assets/img/logo2.png" alt="" align="center" height="54px" width="120px">
+  </div>
+  <ul class="nav" style="margin-top: 0px;">
+    <li *ngIf="isNotMobileMenu()">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="ti-panel"></i>
+          <p>Stats</p>
+      </a>
+    </li>
+    <li class="dropdown" *ngIf="isNotMobileMenu()">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="ti-bell"></i>
+        <p class="notification">5</p>
+			  <p>Notifications</p>
+			  <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Notification 1</a></li>
+        <li><a href="#">Notification 2</a></li>
+        <li><a href="#">Notification 3</a></li>
+        <li><a href="#">Notification 4</a></li>
+        <li><a href="#">Another notification</a></li>
+      </ul>
+    </li>
+    <li *ngIf="isNotMobileMenu()">
+      <a href="#">
+		    <i class="ti-settings"></i>
+		    <p>Settings</p>
+      </a>
+    </li>
+    <li class="divider" *ngIf="isNotMobileMenu()"></li>
+    <div style="padding-top: 5px">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header collapsedHeight="80px">
+            <mat-panel-title>
+              <span>
+                <span style="font-weight: bold;">Wan Akashah</span>
+                <br>
+                <span style="font-style: italic;">wanakashah@p2digital.com</span>
+              </span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <button mat-button style="width:100%;" (click)="editProfile()">My Profile</button><br>
+          <button mat-button style="width:100%;" (click)="logOut()">Logout</button>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
-    <ul class="nav">
-            <li *ngIf="isNotMobileMenu()">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="ti-panel"></i>
-					<p>Stats</p>
-                </a>
-            </li>
-            <li class="dropdown" *ngIf="isNotMobileMenu()">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="ti-bell"></i>
-                        <p class="notification">5</p>
-    					<p>Notifications</p>
-    					<b class="caret"></b>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Notification 1</a></li>
-                    <li><a href="#">Notification 2</a></li>
-                    <li><a href="#">Notification 3</a></li>
-                    <li><a href="#">Notification 4</a></li>
-                    <li><a href="#">Another notification</a></li>
-                  </ul>
-            </li>
-            <li *ngIf="isNotMobileMenu()">
-                <a href="#">
-					<i class="ti-settings"></i>
-					<p>Settings</p>
-                </a>
-            </li>
-            <li class="divider" *ngIf="isNotMobileMenu()"></li>
-        <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
-            <a (click)="selected([menuItem.path])">
-            <!-- <a [routerLink]="[menuItem.path]"> -->
-                <i class="{{menuItem.icon}}"></i>
-                <p>{{menuItem.title}}</p>
-            </a>
-        </li>
-    </ul>
+    <div style="font-size: 20px; padding: 20px;">
+      <b>Dashboard</b>
+    </div>
+    <div>
+      <button mat-button (click)="redirectTo('/semua')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Semua</button>
+    </div>
+    <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
+        <a (click)="selected([menuItem.path])">
+          <!-- <a [routerLink]="[menuItem.path]"> -->
+          <!-- <i class="{{menuItem.icon}}"></i> -->
+          <p>{{menuItem.title}}</p>
+        </a>
+    </li>
+  </ul>
 </div>
