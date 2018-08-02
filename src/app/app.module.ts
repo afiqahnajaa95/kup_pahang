@@ -5,25 +5,17 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing.module';
-// import { SidebarModule } from './sidebar/sidebar.module';
-// import { FooterModule } from './shared/footer/footer.module';
-// import { NavbarModule} from './shared/navbar/navbar.module';
-// import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
-// import { DashboardComponent }   from './dashboard/dashboard.component';
-// import { TableComponent }   from './table/table.component';
-// import { TypographyComponent }   from './typography/typography.component';
-// import { IconsComponent }   from './icons/icons.component';
-// import { NotificationsComponent }   from './notifications/notifications.component';
+import { MainRoutingModule } from './main/main.routing.module';
+import { MainModule } from './main/main.module';
+import { AdminModule } from './admin/admin.module';
 import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { MaterialModule } from './material.module';
 import { CDKModule } from './cdk.module';
-// import { KupFormComponent }   from './kup-form/kup-form.component';
 import { KupLoginComponent }   from './kup-login/kup-login.component';
 import { KupSignupComponent }   from './kup-signup/kup-signup.component';
 import { KupRegisterComponent }   from './kup-register/kup-register.component';
-import { DashboardComponent } from './main/dashboard/dashboard.component';
-import { SidebarComponent } from './main/sidebar/sidebar.component';
-// import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -33,35 +25,25 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MatDialogModule, MatButtonModule, MatGridListModule } from '@angular/material';
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    // DashboardComponent,
-    // TableComponent,
-    // TypographyComponent,
-    // IconsComponent,
-    // NotificationsComponent,
     UpgradeComponent,
-    // KupFormComponent,
     KupLoginComponent,
     KupSignupComponent,
     KupRegisterComponent,
-    DashboardComponent,
-    SidebarComponent,
-    // IzinLaluComponent
+    AdminLoginComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutes,
-    // SidebarModule,
-    // NavbarModule,
     BrowserAnimationsModule,
-    // FooterModule,
-    // FixedPluginModule,
     MaterialModule,
     CDKModule,
     FormsModule,
+    MainModule,
+    AdminModule,
     ReactiveFormsModule,
     HttpClientModule,
     FileUploadModule,
@@ -71,11 +53,10 @@ import { MatDialogModule, MatButtonModule, MatGridListModule } from '@angular/ma
     AngularFireAuthModule,
     MatDialogModule, MatButtonModule, MatGridListModule
   ],
-  entryComponents: [KupLoginComponent],
   providers: [
     AlertService,
     AuthenticationService,
-    UserService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

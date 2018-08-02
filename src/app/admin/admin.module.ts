@@ -3,19 +3,15 @@ import { NgModule } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MainComponent } from './main.component';
-import { MainRoutingModule } from './main.routing.module';
-import { SidebarModule } from './sidebar/sidebar.module';
-import { FooterModule } from './shared/footer/footer.module';
-import { NavbarModule} from './shared/navbar/navbar.module';
-import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
-import { DashboardComponent }   from './dashboard/dashboard.component';
-import { IconsComponent }   from './icons/icons.component';
-import { NotificationsComponent }   from './notifications/notifications.component';
+import { AdminComponent } from './admin.component';
+import { AdminRoutingModule } from './admin.routing.module';
+import { AdminSidebarModule } from './admin-sidebar/admin-sidebar.module';
+import { FooterModule } from '../main/shared/footer/footer.module';
+import { NavbarModule} from '../main/shared/navbar/navbar.module';
+import { FixedPluginModule} from '../main/shared/fixedplugin/fixedplugin.module';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { MaterialModule } from '../material.module';
 import { CDKModule } from '../cdk.module';
-import { KupFormComponent }   from './kup-form/kup-form.component';
-import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertService, AuthenticationService, UserService } from '../_services/index';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -27,17 +23,12 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
-    MainComponent,
-    DashboardComponent,
-    IconsComponent,
-    NotificationsComponent,
-    KupFormComponent,
-    IzinLaluComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
-    MainRoutingModule,
-    SidebarModule,
+    AdminRoutingModule,
+    AdminSidebarModule,
     NavbarModule,
     BrowserAnimationsModule,
     FooterModule,
@@ -54,18 +45,12 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     AngularFireAuthModule,
     MatDialogModule, MatButtonModule
   ],
-  exports: [
-    DashboardComponent,
-    IconsComponent,
-    NotificationsComponent,
-    KupFormComponent,
-    IzinLaluComponent
-  ],
+
   providers: [
     AlertService,
     AuthenticationService,
     UserService
   ],
-  bootstrap: [MainComponent]
+  bootstrap: [AdminComponent]
 })
-export class MainModule { }
+export class AdminModule { }

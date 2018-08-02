@@ -53,7 +53,7 @@ export class KupRegisterComponent {
       email: ['', Validators.required],
       co_no: ['', Validators.required],
       fax_no: ['', Validators.required],
-      admin: [0]
+      admin: [false]
     });
   }
   saveRegister(){

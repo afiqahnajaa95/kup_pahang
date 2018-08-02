@@ -5,33 +5,34 @@ import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
-
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 // export interface DialogData {
 //   animal: string;
 //   name: string;
 // }
 @Component({
-  selector: 'app-kup-login',
-  templateUrl: './kup-login.component.html',
-  styleUrls: ['./kup-login.component.css']
+  selector: 'admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.css']
 })
 
-export class KupLoginComponent implements OnInit {
+export class AdminLoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
     login: FormGroup;
-    // animal: string;
-    // name: string;
     logstatus: any;
-
+    admin: any;
+    id: any;
+    private itemDoc: AngularFirestoreDocument<any[]>;
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private _formBuilder: FormBuilder,
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
-        public firebase: AngularFireAuth
+        public firebase: AngularFireAuth,
+        public db: AngularFirestore
     ) { }
 
     ngOnInit() {
@@ -46,10 +47,19 @@ export class KupLoginComponent implements OnInit {
       console.log(this.login);
       this.firebase.auth.signInWithEmailAndPassword(this.login.value.email, this.login.value.password)
         .then((data) => {
-          console.log(data.user);
           console.log(data.user.uid);
+          this.id = data.user.uid;
           console.log("Successful login");
-          this.router.navigate(['/dashboard', { id: data.user.uid }]);
+          this.itemDoc = this.db.doc<any[]>('users/'+this.id);
+          this.itemDoc.valueChanges().subscribe((result) =>{
+            console.log(result);
+            this.admin = result;
+            if(this.admin.admin){
+              this.router.navigate(['/admindash', { id: this.id }]);
+            }else{
+              this.router.navigate(['/login']);
+            }
+          });
         })
         .catch((error) => {
           // Handle Errors here.

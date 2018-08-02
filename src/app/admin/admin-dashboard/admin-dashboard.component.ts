@@ -5,26 +5,28 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
+
 declare var $:any;
 
 @Component({
-    selector: 'dashboard-cmp',
+    selector: 'admin-dashboard',
     moduleId: module.id,
-    styleUrls: ['dashboard.component.css'],
-    templateUrl: 'dashboard.component.html'
+    styleUrls: ['admin-dashboard.component.css'],
+    templateUrl: 'admin-dashboard.component.html'
 })
 
-export class DashboardComponent{
+export class AdminDashboardComponent{
     id: string;
     private itemsCollection: AngularFirestoreCollection<any>;
     items: Observable<any[]>;
     constructor(
       private route: ActivatedRoute,
+      private router: Router,
       private db: AngularFirestore
     ){
       this.id = this.route.snapshot.paramMap.get('id');
       console.log(this.id);
-      this.itemsCollection = db.collection<any>('users/'+this.id+'/permohonan');
+      this.itemsCollection = db.collection<any>('permohonanBaru');
       this.items = this.itemsCollection.valueChanges();
       console.log(this.items);
     }
@@ -50,6 +52,12 @@ export class DashboardComponent{
       console.log("Open file");
       console.log(path);
       this.router.navigate(['/izinlalu-detail', { id: this.id, file: path }]);
+    }
+
+    openUser(path){
+      console.log("View user");
+      console.log(path);
+      this.router.navigate(['/user-detail', { id: this.id, user: path }]);
     }
 }
 

@@ -18,7 +18,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '#', title: 'Pemohon',  icon:'ti-user', class: '' },
     { path: 'icons', title: 'Semua',  icon:'ti-notepad', class: '' },
     { path: 'kupform', title: 'Permohonan Baru',  icon:'ti-pencil-alt', class: '' },
-    { path: '#', title: 'Izin Lalu',  icon:'ti-pencil-alt', class: '' },
+    { path: 'izinlalu', title: 'Izin Lalu',  icon:'ti-pencil-alt', class: '' },
     { path: '#', title: 'Permit Kerja',  icon:'ti-hand-point-right', class: '' },
     { path: '#', title: 'Mula Kerja',  icon: 'ti-hand-point-right', class: '' },
     { path: '#', title: 'Siap Kerja',  icon:'ti-hand-point-right', class: '' },
@@ -26,18 +26,18 @@ export const ROUTES: RouteInfo[] = [
     { path: '#', title: 'Ditangguhkan (KIV)',  icon:'ti-hand-point-right', class: '' },
     { path: '#', title: 'Batal',  icon:'ti-face-sad', class: '' },
     { path: '#', title: 'Ditolak',  icon:'ti-face-sad', class: '' },
-    { path: 'login', title: 'Login',  icon:'ti-hand-point-right', class: '' },
-    { path: 'register', title: 'Register',  icon:'ti-hand-point-right', class: '' },
+    // { path: 'login', title: 'Login',  icon:'ti-hand-point-right', class: '' },
+    // { path: 'register', title: 'Register',  icon:'ti-hand-point-right', class: '' },
     { path: 'login', title: 'Logout',  icon:'ti-hand-point-right', class: '' },
 ];
 
 @Component({
     moduleId: module.id,
-    selector: 'sidebar-cmp',
-    templateUrl: 'sidebar.component.html',
+    selector: 'admin-sidebar',
+    templateUrl: 'admin-sidebar.component.html',
 })
 
-export class SidebarComponent implements OnInit {
+export class AdminSidebarComponent implements OnInit {
     public menuItems: any[];
     id: any;
 
@@ -63,7 +63,7 @@ export class SidebarComponent implements OnInit {
       if(path == 'login'){
         console.log("Logging Out");
         this.firebase.auth.signOut();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/adminlogin']);
       }else{
         this.router.navigate(['/'+path, { id: this.id.uid }]);
       }
