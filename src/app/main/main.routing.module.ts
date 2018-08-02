@@ -6,6 +6,7 @@ import { IconsComponent }   from './icons/icons.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
 import { KupFormComponent }   from './kup-form/kup-form.component';
 import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
+import { SemuaComponent }   from './semua/semua.component';
 
 const Mainroutes: Routes = [
   {
@@ -15,7 +16,8 @@ const Mainroutes: Routes = [
     { path: 'icons', component: IconsComponent },
     { path: 'notifications', component: NotificationsComponent },
     { path: 'kupform', component: KupFormComponent },
-    { path: 'izinlalu', component: IzinLaluComponent }
+    { path: 'izinlalu', component: IzinLaluComponent },
+    { path: 'semua', component: SemuaComponent }
   ]
  }
 ];

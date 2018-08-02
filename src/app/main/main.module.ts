@@ -16,6 +16,7 @@ import { MaterialModule } from '../material.module';
 import { CDKModule } from '../cdk.module';
 import { KupFormComponent }   from './kup-form/kup-form.component';
 import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
+import { SemuaComponent }   from './semua/semua.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertService, AuthenticationService, UserService } from '../_services/index';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -32,7 +33,8 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     IconsComponent,
     NotificationsComponent,
     KupFormComponent,
-    IzinLaluComponent
+    IzinLaluComponent,
+    SemuaComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     IconsComponent,
     NotificationsComponent,
     KupFormComponent,
-    IzinLaluComponent
+    IzinLaluComponent,
+    SemuaComponent
   ],
   providers: [
     AlertService,

@@ -16,7 +16,7 @@ export interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     { path: 'dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
     { path: '#', title: 'Pemohon',  icon:'ti-user', class: '' },
-    { path: 'icons', title: 'Semua',  icon:'ti-notepad', class: '' },
+    { path: 'semua', title: 'Semua',  icon:'ti-notepad', class: '' },
     { path: 'kupform', title: 'Permohonan Baru',  icon:'ti-pencil-alt', class: '' },
     { path: 'izinlalu', title: 'Izin Lalu',  icon:'ti-pencil-alt', class: '' },
     { path: '#', title: 'Permit Kerja',  icon:'ti-hand-point-right', class: '' },
