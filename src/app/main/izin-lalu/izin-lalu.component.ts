@@ -15,7 +15,8 @@ export class IzinLaluComponent{
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   private itemsCollection: AngularFirestoreCollection<any>;
   items: Observable<any[]>;
-
+  id: any;
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 

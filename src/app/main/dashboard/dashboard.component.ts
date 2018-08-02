@@ -20,6 +20,7 @@ export class DashboardComponent{
     items: Observable<any[]>;
     constructor(
       private route: ActivatedRoute,
+      private router: Router,
       private db: AngularFirestore
     ){
       this.id = this.route.snapshot.paramMap.get('id');

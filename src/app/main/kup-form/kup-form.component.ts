@@ -5,7 +5,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 
-export interface Item { time: number; }
+export interface Item { time: number, ref: string}
 
 @Component({
   selector: 'app-kup-form',
@@ -19,8 +19,8 @@ export class KupFormComponent {
     fourthFormGroup: FormGroup;
     fifthFormGroup: FormGroup;
     id: string;
-    private itemsCollection: AngularFirestoreCollection<any[]>;
-    private itemDoc: AngularFirestoreDocument<any[]>;
+    private itemsCollection: AngularFirestoreCollection<Item>;
+    private itemDoc: AngularFirestoreDocument<Item>;
     data: any;
     date: number;
     private fieldArray: Array<any> = [];
@@ -36,8 +36,8 @@ export class KupFormComponent {
       this.date = Date.now();
       this.id = this.route.snapshot.paramMap.get('id');
       console.log(this.id);
-      this.itemsCollection = db.collection<any[]>('users/'+this.id+"/permohonan");
-      this.itemDoc = db.doc<any[]>('users/'+this.id);
+      this.itemsCollection = db.collection<Item>('users/'+this.id+"/permohonan");
+      this.itemDoc = db.doc<Item>('users/'+this.id);
       this.itemDoc.valueChanges().subscribe((result) =>{
       console.log(result);
       this.data = result;
@@ -114,23 +114,23 @@ export class KupFormComponent {
     saveFB(){
       console.log("Saving Data");
       console.log(this.date);
-      this.itemsCollection.add({time: this.date})
+      this.itemsCollection.add({time: this.date, ref: ''})
         .then((refId)=>{
           console.log(refId.id);
-          this.itemDoc = this.db.doc<any[]>('users/'+this.id+'/permohonan/'+refId.id);
-          this.itemDoc.update({ref: refId.id});
+          this.itemDoc = this.db.doc<Item>('users/'+this.id+'/permohonan/'+refId.id);
+          this.itemDoc.update({time: this.date, ref: refId.id});
           this.itemDoc.update(this.firstFormGroup.value);
           this.itemDoc.update(this.secondFormGroup.value);
           this.itemDoc.update(this.thirdFormGroup.value);
           this.itemDoc.update(this.fourthFormGroup.value);
         })
-        .then(
-          this.itemsCollection = this.db.collection<any[]>('permohonanBaru');
-          this.itemsCollection.add({time: this.date})
+        .then((result) => {
+          this.itemsCollection = this.db.collection<Item>('permohonanBaru');
+          this.itemsCollection.add({time: this.date, ref: ''})
             .then((refId)=>{
               console.log(refId.id);
-              this.itemDoc = this.db.doc<any[]>('permohonanBaru/'+refId.id);
-              this.itemDoc.update({ref: refId.id});
+              this.itemDoc = this.db.doc<Item>('permohonanBaru/'+refId.id);
+              this.itemDoc.update({time: this.date, ref: refId.id});
               this.itemDoc.update(this.firstFormGroup.value);
               this.itemDoc.update(this.secondFormGroup.value);
               this.itemDoc.update(this.thirdFormGroup.value);
@@ -139,6 +139,6 @@ export class KupFormComponent {
             .then((result)=>{
               this.router.navigate(['/izinlalu', { id: this.id }])
             });
-        );
+        });
     }
   }
