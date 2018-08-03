@@ -33,7 +33,7 @@ export class KupFormComponent {
     private fieldArray: Array<any> = [];
     private newAttribute: any = {};
     uploadPercent: Observable<number>;
-    downloadURL: string;
+    downloadURL: Observable<string>;
 
     constructor(
       private _formBuilder: FormBuilder,
@@ -131,19 +131,11 @@ export class KupFormComponent {
             console.log(path);
             ref.getDownloadURL().subscribe((result) => {
               console.log(result);
-              if(path == 'ppl'){
-                this.fifthFormGroup.value.ppl = result;
-              }else if(path == 'lt'){
-                this.fifthFormGroup.value.lt = result;
-              }else if(path == 'gl'){
-                this.fifthFormGroup.value.gl = result;
-              }else if(path == 'spil'){
-                this.fifthFormGroup.value.spil = result;
-              }
+              this.fifthFormGroup.value.ppl = result;
             });
           }
         )
-      );
+      ).subscribe();
     }
 
     saveFB(){

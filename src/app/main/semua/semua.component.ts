@@ -14,6 +14,10 @@ export class SemuaComponent {
   _ref:any;
   id: any;
   path: any;
+  pplfile: any;
+  ltfile: any;
+  glfile: any;
+  spilfile: any;
   item: Observable<any[]>;
   roads: Observable<any[]>;
   private itemsCollection: AngularFirestoreCollection<any[]>;
@@ -28,19 +32,20 @@ export class SemuaComponent {
     console.log(this.id);
     this.path = this.route.snapshot.paramMap.get('file');
     console.log(this.path);
-    this.itemDoc = db.doc<any>('users/'+this.id+'/permohonan/'+this.path);
+    this.itemDoc = this.db.doc<any>('users/'+this.id+'/permohonan/'+this.path);
+    this.itemDoc.valueChanges().subscribe((result) => {
+      this.pplfile = result.ppl;
+      this.ltfile = result.lt;
+      this.glfile = result.gl;
+      this.spilfile = result.spil;
+    });
     this.item = this.itemDoc.valueChanges();
     console.log(this.item);
-    this.itemsCollection = db.collection<any>('users/'+this.id+'/permohonan/'+this.path+'/roadList');
+    this.itemsCollection = this.db.collection<any>('users/'+this.id+'/permohonan/'+this.path+'/roadList');
     this.roads = this.itemsCollection.valueChanges();
     console.log(this.roads);
   }
   Deleteplan(){
     this._ref.destroy();
-  }
-  fileDownload(path){
-    console.log(path);
-    const ref = this.storage.ref(this.id+path);
-    // this.profileUrl = ref.getDownloadURL();
   }
 }

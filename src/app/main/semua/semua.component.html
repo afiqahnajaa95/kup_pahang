@@ -180,22 +180,22 @@
   <table class="example-full-width" cellspacing="0"><tr>
     <td>
       <p><label>Peta Penandaan Lokasi&emsp;</label></p>
-      <button mat-button (click)="fileDownload('/ppl')">Download</button>
+      <a class="down-button" [href]="pplfile">Download</a>
     </td>
     <td>
       <p><label>Lukisan Tapak&emsp;</label></p>
-      <button mat-button (click)="fileDownload('/lt')">Download</button>
+      <a [href]="ltfile">Download</a>
     </td>
     <td>
       <p><label>Gambar Lokasi (Sila gabungkan semua gambar ke dalam bentuk PDF)&emsp;</label></p>
-      <button mat-button (click)="fileDownload('/gl')">Download</button>
+      <a [href]="glfile">Download</a>
     </td>
   </tr></table>
 
   <table class="example-full-width" cellspacing="0"><tr>
     <td>
       <p><label>Surat Permohonan Izin Lalu (Sila cetak, tandatangan dan muat turun kembali surat permohonan izin lalu)</label></p>
-      <button mat-button (click)="fileDownload('/spil')">Download</button>
+      <a [href]="spilfile">Download</a>
     </td>
   </table><br>
 

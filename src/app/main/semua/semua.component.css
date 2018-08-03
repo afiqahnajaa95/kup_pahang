@@ -23,3 +23,12 @@
 td{
   width: 15%;
 }
+.down-button{
+  font-weight: 500;
+  border-radius: 3px;
+  outline: 0!important;
+  box-shadow: 0 1px 1px rgba(90, 90, 90, 0.1);
+  color: #ffffff !important;
+  background-color: #3f51b5;
+  border-color: #3f51b5;
+}
