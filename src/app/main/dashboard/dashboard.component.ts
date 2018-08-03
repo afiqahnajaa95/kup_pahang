@@ -16,7 +16,7 @@ declare var $:any;
 
 export class DashboardComponent{
     id: string;
-    new: number;
+    new: number = 0;
     private itemsCollection: AngularFirestoreCollection<any>;
     items: Observable<any[]>;
     constructor(
@@ -56,6 +56,12 @@ export class DashboardComponent{
       console.log("Open file");
       console.log(path);
       this.router.navigate(['/semua', { id: this.id, file: path }]);
+    }
+
+    toPermohonan(path){
+      console.log("Open file");
+      console.log(path);
+      this.router.navigate([path, { id: this.id }]);
     }
 }
 

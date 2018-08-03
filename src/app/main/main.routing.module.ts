@@ -9,6 +9,7 @@ import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
 import { SemuaComponent }   from './semua/semua.component';
 
 const Mainroutes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   {
     path: '', component: MainComponent,
     children: [

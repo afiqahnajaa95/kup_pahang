@@ -10,15 +10,15 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 
 const approutes: Routes = [
-      {
-      path: '',
-      component: MainComponent
-    },
-    { path: '', redirectTo: 'login', pathMatch: 'full'},
-    { path: 'login', component: KupLoginComponent },
-    { path: 'signup', component: KupSignupComponent },
-    { path: 'register', component: KupRegisterComponent },
-    { path: 'adminlogin', component: AdminLoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  {
+    path: '',
+    component: MainComponent
+  },
+  { path: 'login', component: KupLoginComponent },
+  { path: 'signup', component: KupSignupComponent },
+  { path: 'register', component: KupRegisterComponent },
+  { path: 'adminlogin', component: AdminLoginComponent },
 ];
 
 @NgModule({

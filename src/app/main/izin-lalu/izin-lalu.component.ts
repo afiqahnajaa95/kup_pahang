@@ -16,7 +16,8 @@ export class IzinLaluComponent{
   private itemsCollection: AngularFirestoreCollection<any>;
   items: Observable<any[]>;
   id: any;
-  
+  new: number = 0;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -47,7 +48,7 @@ export class IzinLaluComponent{
   openFile(path){
     console.log("Open file");
     console.log(path);
-    this.router.navigate(['/izinlalu-detail', { id: this.id, file: path }]);
+    this.router.navigate(['/semua', { id: this.id, file: path }]);
   }
 }
 

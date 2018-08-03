@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray} from '@angular/forms';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+
+import { format } from 'date-fns';
 
 export interface Item { time: number, userRef: string, ref: string}
 
 @Component({
   selector: 'app-kup-form',
   templateUrl: './kup-form.component.html',
-  styleUrls: ['./kup-form.component.css']
+  styleUrls: ['./kup-form.component.css'],
 })
 export class KupFormComponent {
     firstFormGroup: FormGroup;
@@ -25,9 +28,12 @@ export class KupFormComponent {
     private itemDoc: AngularFirestoreDocument<Item>;
     data: any;
     date: number;
+    fnsDate: string;
     fieldObject: any;
     private fieldArray: Array<any> = [];
     private newAttribute: any = {};
+    uploadPercent: Observable<number>;
+    downloadURL: string;
 
     constructor(
       private _formBuilder: FormBuilder,
@@ -37,6 +43,8 @@ export class KupFormComponent {
       public db: AngularFirestore
     ) {
       this.date = Date.now();
+      this.fnsDate = format(this.date, 'DD//MM/YYYY');
+      console.log(this.fnsDate);
       this.id = this.route.snapshot.paramMap.get('id');
       console.log(this.id);
       this.itemsCollection = db.collection<Item>('users/'+this.id+"/permohonan");
@@ -91,9 +99,14 @@ export class KupFormComponent {
         role2: ['', Validators.required],
         email2: ['', Validators.required],
         phoneno2: ['', Validators.required],
-        fax2: ['', Validators.required]
+        fax2: ['', Validators.required],
+
       });
       this.fifthFormGroup = this._formBuilder.group({
+        ppl: [''],
+        lt: [''],
+        gl: [''],
+        spil: [''],
       });
     }
 
@@ -108,14 +121,36 @@ export class KupFormComponent {
 
     uploadFile(event, path) {
       const file = event.target.files[0];
-      const filePath = this.id+path;
+      const filePath = path+'/'+this.id+'/'+this.firstFormGroup.value.projname;
       console.log(filePath);
       const ref = this.storage.ref(filePath);
       const task = ref.put(file);
+      this.uploadPercent = task.percentageChanges();
+      task.snapshotChanges().pipe(
+        finalize(() => {
+            console.log(path);
+            ref.getDownloadURL().subscribe((result) => {
+              console.log(result);
+              if(path == 'ppl'){
+                this.fifthFormGroup.value.ppl = result;
+              }else if(path == 'lt'){
+                this.fifthFormGroup.value.lt = result;
+              }else if(path == 'gl'){
+                this.fifthFormGroup.value.gl = result;
+              }else if(path == 'spil'){
+                this.fifthFormGroup.value.spil = result;
+              }
+            });
+          }
+        )
+      );
     }
 
     saveFB(){
       console.log("Saving Data");
+      this.firstFormGroup.value.startdate = format(this.firstFormGroup.value.startdate, 'DD/MM/YYYY');
+      this.firstFormGroup.value.enddate = format(this.firstFormGroup.value.enddate, 'DD/MM/YYYY');
+      // console.log(this.firstFormGroup.value.startdate);
       // console.log(this.date);
       // console.log(this.fieldArray[0].roadname);
       this.itemsCollection.add({time: this.date, userRef: '', ref: ''})
@@ -128,6 +163,7 @@ export class KupFormComponent {
           this.itemDoc.update(this.secondFormGroup.value);
           this.itemDoc.update(this.thirdFormGroup.value);
           this.itemDoc.update(this.fourthFormGroup.value);
+          this.itemDoc.update(this.fifthFormGroup.value);
           for(var i=0; i<this.fieldArray.length; ++i){
             this.itemDoc = this.db.doc<Item>('users/'+this.id+'/permohonan/'+refId.id+'/roadList/'+i);
             this.itemDoc.set(this.fieldArray[i]);
@@ -144,6 +180,7 @@ export class KupFormComponent {
               this.itemDoc.update(this.secondFormGroup.value);
               this.itemDoc.update(this.thirdFormGroup.value);
               this.itemDoc.update(this.fourthFormGroup.value);
+              this.itemDoc.update(this.fifthFormGroup.value);
               for(var i=0; i<this.fieldArray.length; ++i){
                 this.itemDoc = this.db.doc<Item>('permohonanBaru/'+refId.id+'/roadList/'+i);
                 this.itemDoc.set(this.fieldArray[i]);

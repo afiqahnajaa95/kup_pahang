@@ -60,7 +60,8 @@
                <input matInput [matDatepicker]="picker1" placeholder="Pilih tarikh" formControlName="startdate" required>
                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                <mat-datepicker #picker1></mat-datepicker>
-           </mat-form-field></td>&emsp;
+             </mat-form-field>
+           </td>&emsp;
            <td>
              <p>Jangkaan Tarikh Siap Kerja:</p>
              <mat-form-field class="example-full-width">
@@ -391,16 +392,18 @@
       <ng-template matStepLabel>MUAT NAIK DOKUMEN PROJEK</ng-template>
       <table class="example-full-width" cellspacing="0"><tr>
         <td><p>Peta Penandaan Lokasi</p>
-        <input type="file" (change)="uploadFile($event, '/ppl')"/></td>
+        <input type="file" (change)="uploadFile($event, 'ppl')"/></td>
+        <div>{{ uploadPercent | async }}</div>
+        <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
       <td><p>Lukisan Tapak</p>
-        <input type="file" (change)="uploadFile($event, '/lt')"/></td>
+        <input type="file" (change)="uploadFile($event, 'lt')"/></td>
       <td><p>Gambar Lokasi (sila kumpulkan kesemua gambar dan kemukaan di dalam bentuk pdf)</p>
-        <input type="file" (change)="uploadFile($event, '/gl')"/></td>
+        <input type="file" (change)="uploadFile($event, 'gl')"/></td>
       </tr></table>
       <br>
       <table class="example-full-width" cellspacing="0"><tr>
       <td><p>Surat Permohonan Izin Lalu (sila cetak, tandatangan dan upload kembali untuk permohonan izin lalu) - link ke muat turun surat permohonan izin lalu</p>
-        <input type="file" (change)="uploadFile($event, '/spil')"/></td>
+        <input type="file" (change)="uploadFile($event, 'spil')"/></td>
       </tr></table>
       <br>
       <mat-checkbox required>
