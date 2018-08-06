@@ -1,4 +1,4 @@
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-12 col-md-offset-3" align="center">
         <div class="logo-img" >
           <br><br>
             <img src="../../assets/img/kup-logo123.png" alt="" align="center" width="100">
@@ -6,16 +6,14 @@
         <br><br>
 </div>
 <br><br>
-<div class="col-md-3 col-md-offset-3">
-  <mat-card>
-    <p><label>Sign in with your KUP Account</label></p>
+<div class="col-md-3 col-md-offset-3" align="center" layout="row">
+  <mat-card class="center">
+    <p><font size="2">Sign in with your KUP Account</font></p><br>
     <!-- {{login.value | json}} -->
     <form [formGroup]="login">
         <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" formControlName="email"/>
-            <label>Password</label>
-            <input type="password" class="form-control" formControlName="password"/><br>
+            <input type="text" class="form-control" formControlName="email" placeholder="Email"><br>
+            <input type="password" class="form-control" formControlName="password" placeholder="Password"><br>
             <mat-checkbox required>
               Keep me signed in
             </mat-checkbox><br><br>
@@ -25,13 +23,13 @@
   </mat-card>
 </div>
 
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-6 col-md-offset-3" align="center">
   <br><br>
-<a class="forgot-password" [routerLink]="''"><label>
+<a class="forgot-password" [routerLink]="''"><label><font color="black">
     FORGOT PASSWORD
- </label></a><br>
-   <p>Do not have an account?</p>
-   <a class="create-account" [routerLink]="'/signup'"><label>
+ </font></label></a><br>
+   <p><font color="black">Do not have an account?</font></p>
+   <a class="create-account" [routerLink]="'/signup'"><label><font color="black">
        CREATE AN ACCOUNT
-    </label></a>
+    </font></label></a>
 </div>

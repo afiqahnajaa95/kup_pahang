@@ -46,7 +46,7 @@ export class AdminSidebarComponent implements OnInit {
     id: any;
     name: any;
     email: any;
-    
+
     constructor(
       public firebase: AngularFireAuth,
       private route: ActivatedRoute,
@@ -55,12 +55,12 @@ export class AdminSidebarComponent implements OnInit {
     ){
       this.id = this.firebase.auth.currentUser;
       console.log(this.id.uid);
-      this.itemDoc = db.doc<Item>('users/'+this.id.uid);
-      this.itemDoc.valueChanges().subscribe((result) =>{
-        console.log(result.email);
-        this.name = result.req_name;
-        this.email = result.email;
-      });
+      // this.itemDoc = db.doc<Item>('users/'+this.id.uid);
+      // this.itemDoc.valueChanges().subscribe((result) =>{
+      //   console.log(result.email);
+      //   this.name = result.req_name;
+      //   this.email = result.email;
+      // });
     }
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
