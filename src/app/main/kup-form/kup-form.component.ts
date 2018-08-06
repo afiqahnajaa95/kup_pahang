@@ -8,7 +8,7 @@ import { finalize } from 'rxjs/operators';
 
 import { format } from 'date-fns';
 
-export interface Item { time: number, userRef: string, ref: string}
+export interface Item { time: string, userRef: string, ref: string}
 
 @Component({
   selector: 'app-kup-form',
@@ -131,7 +131,21 @@ export class KupFormComponent {
             console.log(path);
             ref.getDownloadURL().subscribe((result) => {
               console.log(result);
-              this.fifthFormGroup.value.ppl = result;
+              if(path == "ppl"){
+                console.log('PPL');
+                this.fifthFormGroup.value.ppl = result;
+              }else if(path == "lt"){
+                console.log('LT');
+                this.fifthFormGroup.value.lt = result;
+              }else if(path == "gl"){
+                console.log('GL');
+                this.fifthFormGroup.value.gl = result;
+              }else if(path == "spil"){
+                console.log('SPIL');
+                this.fifthFormGroup.value.spil = result;
+              }else{
+                console.log('Error: No file path selected');
+              }
             });
           }
         )
@@ -145,12 +159,12 @@ export class KupFormComponent {
       // console.log(this.firstFormGroup.value.startdate);
       // console.log(this.date);
       // console.log(this.fieldArray[0].roadname);
-      this.itemsCollection.add({time: this.date, userRef: '', ref: ''})
+      this.itemsCollection.add({time: this.fnsDate, userRef: '', ref: ''})
         .then((refId)=>{
           console.log(refId.id);
           this.refUser = refId.id;
           this.itemDoc = this.db.doc<Item>('users/'+this.id+'/permohonan/'+refId.id);
-          this.itemDoc.update({time: this.date, userRef: refId.id, ref: refId.id});
+          this.itemDoc.update({time: this.fnsDate, userRef: refId.id, ref: refId.id});
           this.itemDoc.update(this.firstFormGroup.value);
           this.itemDoc.update(this.secondFormGroup.value);
           this.itemDoc.update(this.thirdFormGroup.value);
@@ -163,11 +177,11 @@ export class KupFormComponent {
         })
         .then((result) => {
           this.itemsCollection = this.db.collection<Item>('permohonanBaru');
-          this.itemsCollection.add({time: this.date, userRef: '', ref: ''})
+          this.itemsCollection.add({time: this.fnsDate, userRef: '', ref: ''})
             .then((refId)=>{
               console.log(refId.id);
               this.itemDoc = this.db.doc<Item>('permohonanBaru/'+refId.id);
-              this.itemDoc.update({time: this.date, userRef: this.refUser, ref: refId.id});
+              this.itemDoc.update({time: this.fnsDate, userRef: this.refUser, ref: refId.id});
               this.itemDoc.update(this.firstFormGroup.value);
               this.itemDoc.update(this.secondFormGroup.value);
               this.itemDoc.update(this.thirdFormGroup.value);

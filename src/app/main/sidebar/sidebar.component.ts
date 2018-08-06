@@ -76,6 +76,10 @@ export class SidebarComponent implements OnInit {
       console.log(path);
       this.router.navigate([path, { id: this.id.uid }]);
     }
+    editProfile(){
+      console.log("Opening profile");
+      this.router.navigate(['/profile', { id: this.id.uid }]);
+    }
     logOut(){
       console.log("Logging Out");
       this.firebase.auth.signOut();

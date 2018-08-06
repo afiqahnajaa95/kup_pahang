@@ -17,6 +17,10 @@ export class IzinLaluComponent{
   items: Observable<any[]>;
   id: any;
   new: number = 0;
+  izin: number = 0;
+  permit: number = 0;
+  cpc: number = 0;
+  wang: number = 0;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -31,6 +35,10 @@ export class IzinLaluComponent{
     this.itemsCollection = db.collection<any>('users/'+this.id+'/permohonan');
     this.items = this.itemsCollection.valueChanges();
     console.log(this.items);
+    this.items.subscribe((result)=>{
+      console.log(result.length);
+      this.new = result.length;
+    })
   }
 
   ngOnInit(){}

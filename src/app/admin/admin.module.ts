@@ -10,6 +10,7 @@ import { FooterModule } from '../main/shared/footer/footer.module';
 import { NavbarModule} from '../main/shared/navbar/navbar.module';
 import { FixedPluginModule} from '../main/shared/fixedplugin/fixedplugin.module';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminSemuaComponent } from './admin-semua/admin-semua.component';
 import { MaterialModule } from '../material.module';
 import { CDKModule } from '../cdk.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -24,6 +25,8 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
 @NgModule({
   declarations: [
     AdminComponent,
+    AdminDashboardComponent,
+    AdminSemuaComponent
   ],
   imports: [
     BrowserModule,

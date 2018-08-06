@@ -10,6 +10,8 @@ import { saveAs } from 'file-saver';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 const uri = 'http://localhost:4000/file/upload';
 
@@ -25,6 +27,7 @@ export class KupRegisterComponent {
   data: FormGroup;
   attachmentList:any = [];
   id: string;
+  uploadPercent: Observable<number>;
 
   constructor(
     private _fileService:FileService,
@@ -53,7 +56,10 @@ export class KupRegisterComponent {
       email: ['', Validators.required],
       co_no: ['', Validators.required],
       fax_no: ['', Validators.required],
-      admin: [false]
+      admin: [false],
+      spws: [''],
+      skpp: [''],
+      spps: [''],
     });
   }
   saveRegister(){
@@ -72,9 +78,31 @@ export class KupRegisterComponent {
   }
   uploadFile(event, path) {
     const file = event.target.files[0];
-    const filePath = this.id+path;
+    const filePath = 'users/'+this.id+path;
     console.log(filePath);
     const ref = this.storage.ref(filePath);
     const task = ref.put(file);
+    this.uploadPercent = task.percentageChanges();
+    task.snapshotChanges().pipe(
+      finalize(() => {
+          console.log(path);
+          ref.getDownloadURL().subscribe((result) => {
+            console.log(result);
+            if(path == "/spws"){
+              console.log('SPWS');
+              this.data.value.spws = result;
+            }else if(path == "/skpp"){
+              console.log('SKPP');
+              this.data.value.skpp = result;
+            }else if(path == "/spps"){
+              console.log('SPPS');
+              this.data.value.spps = result;
+            }else{
+              console.log('Error: No file path selected');
+            }
+          });
+        }
+      )
+    ).subscribe();
   }
 }

@@ -1,45 +1,45 @@
 <mat-card>
-<mat-toolbar>Home/ </mat-toolbar>
-<br>
+  <mat-toolbar>Home/ </mat-toolbar>
+  <br>
 
-<!-- BAHAGIAN 1 -->
-<mat-toolbar>MAKLUMAT AM PROJEK</mat-toolbar>
-<br>
-<div class="contain">
-  <div class="content">
-    <p><label>Kategori Pemasangan Utiliti Baru&emsp;</label></p>
-    <p>{{ (item | async)?.newutility }}</p>
+  <!-- BAHAGIAN 1 -->
+  <mat-toolbar>MAKLUMAT AM PROJEK</mat-toolbar>
+  <br>
+  <div class="contain">
+    <div class="content">
+      <p><label>Kategori Pemasangan Utiliti Baru&emsp;</label></p>
+      <p>{{ (item | async)?.newutility }}</p>
+    </div>
+    <div class="content">
+      <p><label>Nama Projek&emsp;</label></p>
+      <p>{{ (item | async)?.projname }}</p>
+    </div>
+    <div class="content">
+      <p><label>Daerah&emsp;</label></p>
+      <p>{{ (item | async)?.district }}</p>
+    </div>
+    <div class="content">
+      <p><label>Sektor Utiliti&emsp;</label></p>
+      <p>{{ (item | async)?.sector }}</p>
+    </div>
+    <div class="content">
+      <p><label>Jangkaan Tarikh Mula Kerja&emsp;</label></p>
+      <p>{{ (item | async)?.startdate }}</p>
+    </div>
+    <div class="content">
+      <p><label>Jangkaan Tarikh Kerja Siap&emsp;</label></p>
+      <p>{{ (item | async)?.enddate }}</p>
+    </div>
+    <div class="content">
+      <p><label>Jumlah Hari&emsp;</label></p>
+      <p>{{ (item | async)?.totaldays }}</p>
+    </div>
+    <div class="content">
+      <p><label>Anggaran Kos Projek&emsp;</label></p>
+      <p>{{ (item | async)?.estimation }}</p>
+    </div>
   </div>
-  <div class="content">
-    <p><label>Nama Projek&emsp;</label></p>
-    <p>{{ (item | async)?.projname }}</p>
-  </div>
-  <div class="content">
-    <p><label>Daerah&emsp;</label></p>
-    <p>{{ (item | async)?.district }}</p>
-  </div>
-  <div class="content">
-    <p><label>Sektor Utiliti&emsp;</label></p>
-    <p>{{ (item | async)?.sector }}</p>
-  </div>
-  <div class="content">
-    <p><label>Jangkaan Tarikh Mula Kerja&emsp;</label></p>
-    <p>{{ (item | async)?.startdate }}</p>
-  </div>
-  <div class="content">
-    <p><label>Jangkaan Tarikh Kerja Siap&emsp;</label></p>
-    <p>{{ (item | async)?.enddate }}</p>
-  </div>
-  <div class="content">
-    <p><label>Jumlah Hari&emsp;</label></p>
-    <p>{{ (item | async)?.totaldays }}</p>
-  </div>
-  <div class="content">
-    <p><label>Anggaran Kos Projek&emsp;</label></p>
-    <p>{{ (item | async)?.estimation }}</p>
-  </div>
-</div>
-<br>
+  <br>
 
   <!-- BAHAGIAN 2 -->
   <mat-toolbar>MAKLUMAT JALAN</mat-toolbar>
@@ -198,56 +198,125 @@
       <a class="down-button" [href]="spilfile" target="_blank">Download</a>
     </td>
   </table><br>
-
+</mat-card>
   <!-- BAHAGIAN 6 -->
-  <!-- <mat-toolbar>AKTIVITI KUP</mat-toolbar>
+<mat-card>
+  <mat-toolbar>AKTIVITI KUP</mat-toolbar>
   <br>
-    <p><label>Aktiviti 1: Semakan Dokumen Permohonan</label></p>
-        <textarea matInput placeholder=""></textarea><br>
+  <table class="example-full-width" border="0">
+    <tr>
+      <th>Aktiviti</th>
+      <th>Catatan</th>
+      <th></th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let field of fieldArrayAct; let i = index">
+        <td>
+          <mat-select placeholder="Pilih salah satu aktiviti" [(ngModel)]="field.akt" [ngModelOptions]="{standalone: true}" class="form-control" name="{{field.akt}}">
+            <mat-option value="Semakan Dokumen Permohonan">Semakan Dokumen Permohonan</mat-option>
+            <mat-option value="Pelan Penyediaan">Pelan Penyediaan</mat-option>
+            <mat-option value="Lawatan Tapak">Lawatan Tapak</mat-option>
+            <mat-option value="Penyediaan Sebut Harga (Quotation/Invoice)">Penyediaan Sebut Harga (Quotation/Invoice)</mat-option>
+            <mat-option value="Penghantaran kepada pihak yang meluluskan">Penghantaran kepada pihak yang meluluskan</mat-option>
+          </mat-select>
+        </td>
+        <td>
+          <input [(ngModel)]="field.catakt" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.catakt}}">
+        </td>
+        <td>
+          <button class="btn btn-default"  type="button" (click)="deleteRow(aktiviti, i)">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-select placeholder="Pilih salah satu aktiviti" class="form-control" id="newAttributeAkt" [(ngModel)]="newAttribute.akt" [ngModelOptions]="{standalone: true}" name="newAttributeAkt">
+            <mat-option value="Semakan Dokumen Permohonan">Semakan Dokumen Permohonan</mat-option>
+            <mat-option value="Pelan Penyediaan">Pelan Penyediaan</mat-option>
+            <mat-option value="Lawatan Tapak">Lawatan Tapak</mat-option>
+            <mat-option value="Penyediaan Sebut Harga (Quotation/Invoice)">Penyediaan Sebut Harga (Quotation/Invoice)</mat-option>
+            <mat-option value="Penghantaran kepada pihak yang meluluskan">Penghantaran kepada pihak yang meluluskan</mat-option>
+          </mat-select>
+        </td>
+        <td>
+          <input class="form-control" type="text" id="newAttributeCatatAktiviti" [(ngModel)]="newAttribute.catakt" [ngModelOptions]="{standalone: true}" name="newAttributeCatatAktiviti">
+        </td>
+        <td>
+          <button class="btn btn-default" type="button" (click)="addRow('aktiviti')">Add</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!--  BAHAGIAN 7-->
+  <mat-toolbar>CATATAN KELULUSAN</mat-toolbar>
+  <br>
+  <table class="example-full-width" border="0">
+    <tr>
+      <th>Kelulusan</th>
+      <th>Catatan</th>
+      <th></th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let field of fieldArrayPass; let i = index">
+        <td>
+          <mat-select [(ngModel)]="field.lulus" [ngModelOptions]="{standalone: true}" class="form-control" name="{{field.lulus}}">
+            <mat-option value="Diluluskan">Diluluskan</mat-option>
+            <mat-option value="Ditolak">Ditolak</mat-option>
+            <mat-option value="Ditangguhkan (KIV)">Ditangguhkan (KIV)</mat-option>
+          </mat-select>
+        </td>
+        <td>
+          <input [(ngModel)]="field.catlul" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.catlul}}">
+        </td>
+        <td>
+          <button class="btn btn-default"  type="button" (click)="deleteRow('lulus',i)">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-select placeholder="Pilih salah satu kelulusan" class="form-control" id="newAttributeLulus" [(ngModel)]="newAttribute.lulus" [ngModelOptions]="{standalone: true}" name="newAttributeLulus">
+            <mat-option value="Diluluskan">Diluluskan</mat-option>
+            <mat-option value="Ditolak">Ditolak</mat-option>
+            <mat-option value="Ditangguhkan (KIV)">Ditangguhkan (KIV)</mat-option>
+          </mat-select>
+        </td>
+        <td>
+          <input class="form-control" type="text" id="newAttributeCatatLulus" [(ngModel)]="newAttribute.catlul" [ngModelOptions]="{standalone: true}" name="newAttributeCatatLulus">
+        </td>
+        <td>
+          <button class="btn btn-default" type="button" (click)="addRow('lulus')">Add</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <table>
+    <tr>
+      <th>Activiti</th>
+      <th>Catatan</th>
+    </tr>
+    <tr>
+      <td>Pelan Penyediaan</td>
+      <td>Something</td>
+    </tr>
+  </table>
+   <p><label>Kelulusan Izin Lalu</label></p>
+  <textarea matInput placeholder=""></textarea><br>
   <button mat-button>Edit</button> |
   <button mat-button>Delete</button>
-
-    <p><label>Aktiviti 2: Pelan Penyediaan</label></p>
-        <textarea matInput placeholder=""></textarea><br>
-  <button mat-button>Edit</button> |
-  <button mat-button (click)="Deleteplan()">Delete</button>
-
-    <p><label>Tambah Aktiviti</label></p>
-    <mat-form-field>
-        <mat-select>
-          <mat-option>Pilih salah satu aktiviti</mat-option>
-          <mat-option value="Semakan Dokumen Permohonan">Semakan Dokumen Permohonan</mat-option>
-          <mat-option value="Pelan Penyediaan">Pelan Penyediaan</mat-option>
-          <mat-option value="Lawatan Tapak">Lawatan Tapak</mat-option>
-          <mat-option value="Penyediaan Sebut Harga (Quotation/Invoice)">Penyediaan Sebut Harga (Quotation/Invoice)</mat-option>
-          <mat-option value="Penghantaran kepada pihak yang meluluskan">Penghantaran kepada pihak yang meluluskan</mat-option>
-        </mat-select>
-      </mat-form-field><br>
-        <textarea matInput placeholder=""></textarea><br>
-  <button mat-button>Tambah</button>
+  <hr>
+  <p><label>Catatan Tambahan</label></p>
+  <mat-form-field>
+    <mat-select placeholder="Pilih salah satu kelulusan<">
+      <mat-option value="Diluluskan">Diluluskan</mat-option>
+      <mat-option value="Ditolak">Ditolak</mat-option>
+      <mat-option value="Ditangguhkan (KIV)">Ditangguhkan (KIV)</mat-option>
+    </mat-select>
+  </mat-form-field>
   <br>
-
-    BAHAGIAN 7
-   <mat-toolbar>CATATAN KELULUSAN</mat-toolbar>
-   <br>
-     <p><label>Kelulusan Izin Lalu</label></p>
-         <textarea matInput placeholder=""></textarea><br>
-   <button mat-button>Edit</button> |
-   <button mat-button>Delete</button>
-
-     <p><label>Catatan Tambahan</label></p>
-      <mat-form-field>
-         <mat-select>
-           <mat-option>Pilih salah satu kelulusan</mat-option>
-           <mat-option value="Diluluskan">Diluluskan</mat-option>
-           <mat-option value="Ditolak">Ditolak</mat-option>
-           <mat-option value="Ditangguhkan (KIV)">Ditangguhkan (KIV)</mat-option>
-         </mat-select>
-       </mat-form-field><br>
-   <button mat-button>Tambah</button> -->
+  <textarea matInput placeholder="Catatan kelulusan"></textarea><br>
+  <button mat-button (click)="addRow('kelulusan')">Tambah</button> -->
 </mat-card>
-
-<!-- <mat-card>
+<!--
+<mat-card>
   <table class="example-full-width" border="0">
           <tr>
             <td><p><label>Tambah Aktiviti</label></p>
