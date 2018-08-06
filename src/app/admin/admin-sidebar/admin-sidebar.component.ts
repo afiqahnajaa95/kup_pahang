@@ -46,6 +46,7 @@ export class AdminSidebarComponent implements OnInit {
     id: any;
     name: any;
     email: any;
+    private itemDoc: AngularFirestoreDocument<Item>;
     
     constructor(
       public firebase: AngularFireAuth,

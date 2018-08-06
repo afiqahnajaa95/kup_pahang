@@ -17,6 +17,11 @@ declare var $:any;
 
 export class AdminDashboardComponent{
     id: string;
+    new: number = 0;
+    izin: number = 0;
+    permit: number = 0;
+    cpc: number = 0;
+    wang: number = 0;
     private itemsCollection: AngularFirestoreCollection<any>;
     items: Observable<any[]>;
     constructor(
@@ -29,6 +34,10 @@ export class AdminDashboardComponent{
       this.itemsCollection = db.collection<any>('permohonanBaru');
       this.items = this.itemsCollection.valueChanges();
       console.log(this.items);
+      this.items.subscribe((result)=>{
+        console.log(result.length);
+        this.new = result.length;
+      });
     }
     displayedColumns = ['projname', 'company', 'date', 'status', 'comment'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -51,13 +60,13 @@ export class AdminDashboardComponent{
     openFile(path){
       console.log("Open file");
       console.log(path);
-      this.router.navigate(['/izinlalu-detail', { id: this.id, file: path }]);
+      this.router.navigate(['/adminSemua', { id: this.id, file: path }]);
     }
 
     openUser(path){
       console.log("View user");
       console.log(path);
-      this.router.navigate(['/user-detail', { id: this.id, user: path }]);
+      this.router.navigate(['/userProfile', { id: this.id, user: path }]);
     }
 }
 

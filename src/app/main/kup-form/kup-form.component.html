@@ -390,21 +390,31 @@
   <mat-step [stepControl]="fifthFormGroup">
     <form [formGroup]="fifthFormGroup">
       <ng-template matStepLabel>MUAT NAIK DOKUMEN PROJEK</ng-template>
-      <table class="example-full-width" cellspacing="0"><tr>
-        <td><p>Peta Penandaan Lokasi</p>
-        <input type="file" (change)="uploadFile($event, 'ppl')"/></td>
-        <div>{{ uploadPercent | async }}</div>
-        <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
-      <td><p>Lukisan Tapak</p>
-        <input type="file" (change)="uploadFile($event, 'lt')"/></td>
-      <td><p>Gambar Lokasi (sila kumpulkan kesemua gambar dan kemukaan di dalam bentuk pdf)</p>
-        <input type="file" (change)="uploadFile($event, 'gl')"/></td>
-      </tr></table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <p>Peta Penandaan Lokasi | {{ uploadPercent | async }}</p>
+            <input type="file" (change)="uploadFile($event, 'ppl')"/>
+          </td>
+          <td>
+            <p>Lukisan Tapak</p>
+            <input type="file" (change)="uploadFile($event, 'lt')"/>
+          </td>
+          <td>
+            <p>Gambar Lokasi (sila kumpulkan kesemua gambar dan kemukaan di dalam bentuk pdf)</p>
+            <input type="file" (change)="uploadFile($event, 'gl')"/>
+          </td>
+        </tr>
+      </table>
       <br>
-      <table class="example-full-width" cellspacing="0"><tr>
-      <td><p>Surat Permohonan Izin Lalu (sila cetak, tandatangan dan upload kembali untuk permohonan izin lalu) - link ke muat turun surat permohonan izin lalu</p>
-        <input type="file" (change)="uploadFile($event, 'spil')"/></td>
-      </tr></table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <p>Surat Permohonan Izin Lalu (sila cetak, tandatangan dan upload kembali untuk permohonan izin lalu) - link ke muat turun surat permohonan izin lalu</p>
+            <input type="file" (change)="uploadFile($event, 'spil')"/>
+          </td>
+        </tr>
+      </table>
       <br>
       <mat-checkbox required>
         Saya ingin mengesahkan bahawa semua maklumat yang dinyatakan di atas adalah benar<br>
