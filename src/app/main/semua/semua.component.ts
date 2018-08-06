@@ -4,6 +4,8 @@ import { AngularFireStorage } from 'angularfire2/storage';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 
+export interface File { ppl: string, lt: string, gl: string, spil: string};
+
 @Component({
   selector: 'app-semua',
   templateUrl: './semua.component.html',
@@ -22,6 +24,7 @@ export class SemuaComponent {
   roads: Observable<any[]>;
   private itemsCollection: AngularFirestoreCollection<any[]>;
   private itemDoc: AngularFirestoreDocument<any[]>;
+  private fileDoc: AngularFirestoreDocument<File>;
   constructor(
     private db: AngularFirestore,
     private route: ActivatedRoute,
@@ -33,7 +36,8 @@ export class SemuaComponent {
     this.path = this.route.snapshot.paramMap.get('file');
     console.log(this.path);
     this.itemDoc = this.db.doc<any>('users/'+this.id+'/permohonan/'+this.path);
-    this.itemDoc.valueChanges().subscribe((result) => {
+    this.fileDoc = this.db.doc<File>('users/'+this.id+'/permohonan/'+this.path);
+    this.fileDoc.valueChanges().subscribe((result) => {
       this.pplfile = result.ppl;
       this.ltfile = result.lt;
       this.glfile = result.gl;
