@@ -1,0 +1,7 @@
+.img-padding{
+  padding-left: 20px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  min-height: 64px;
+  z-index: 50;
+  background-color: white;
+}

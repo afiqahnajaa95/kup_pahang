@@ -7,3 +7,12 @@
 .example-full-width {
   width: 90%;
 }
+
+body {
+  font-family:;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.42857143;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: transparent;
+}

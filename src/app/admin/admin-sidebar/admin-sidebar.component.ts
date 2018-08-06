@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { MatMenuModule} from '@angular/material/menu';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 declare var $:any;
+
+export interface Item { email: string, req_name: string}
 
 export interface RouteInfo {
     path: string;
@@ -40,12 +44,23 @@ export const ROUTES: RouteInfo[] = [
 export class AdminSidebarComponent implements OnInit {
     public menuItems: any[];
     id: any;
-
+    name: any;
+    email: any;
+    
     constructor(
       public firebase: AngularFireAuth,
       private route: ActivatedRoute,
       private router: Router,
+      private db: AngularFirestore
     ){
+      this.id = this.firebase.auth.currentUser;
+      console.log(this.id.uid);
+      this.itemDoc = db.doc<Item>('users/'+this.id.uid);
+      this.itemDoc.valueChanges().subscribe((result) =>{
+        console.log(result.email);
+        this.name = result.req_name;
+        this.email = result.email;
+      });
     }
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -56,16 +71,17 @@ export class AdminSidebarComponent implements OnInit {
         }
         return true;
     }
-    selected(path){
-      console.log("Button Trigger: "+path);
-      this.id = this.firebase.auth.currentUser;
-      console.log(this.id.uid);
-      if(path == 'login'){
-        console.log("Logging Out");
-        this.firebase.auth.signOut();
-        this.router.navigate(['/adminlogin']);
-      }else{
-        this.router.navigate(['/'+path, { id: this.id.uid }]);
-      }
+    redirectTo(path){
+      console.log(path);
+      this.router.navigate([path, { id: this.id.uid }]);
+    }
+    editProfile(){
+      console.log("Opening profile");
+      this.router.navigate(['/profile', { id: this.id.uid }]);
+    }
+    logOut(){
+      console.log("Logging Out");
+      this.firebase.auth.signOut();
+      this.router.navigate(['/login']);
     }
 }

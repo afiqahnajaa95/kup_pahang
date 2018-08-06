@@ -160,7 +160,7 @@
 
       <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef> Tarikh Memohon </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.time | date:'shortDate' }}</mat-cell>
+        <mat-cell *matCellDef="let element"> {{ element.time | date:'dd/mm/yyyy' }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="status">

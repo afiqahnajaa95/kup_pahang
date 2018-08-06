@@ -10,6 +10,7 @@ import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
 import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import { DashboardComponent }   from './dashboard/dashboard.component';
+import { ProfileComponent }   from './profile/profile.component';
 import { IconsComponent }   from './icons/icons.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
 import { MaterialModule } from '../material.module';
@@ -34,7 +35,8 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     NotificationsComponent,
     KupFormComponent,
     IzinLaluComponent,
-    SemuaComponent
+    SemuaComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
