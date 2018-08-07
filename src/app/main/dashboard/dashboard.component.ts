@@ -17,6 +17,10 @@ declare var $:any;
 export class DashboardComponent{
     id: string;
     new: number = 0;
+    izin: number = 0;
+    permit: number = 0;
+    cpc: number = 0;
+    wang: number = 0;
     private itemsCollection: AngularFirestoreCollection<any>;
     items: Observable<any[]>;
     constructor(
@@ -32,7 +36,7 @@ export class DashboardComponent{
       this.items.subscribe((result)=>{
         console.log(result.length);
         this.new = result.length;
-      })
+      });
     }
     displayedColumns = ['projname', 'company', 'date', 'status', 'comment'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);

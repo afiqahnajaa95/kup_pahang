@@ -17,7 +17,15 @@ body {
   background-color: transparent;
 }
 
-.col-md-12 {
+.p-lg {
   padding: 32px;
   margin: 16px;
+}
+
+.panel {
+    border-radius: 3px;
+}
+
+.md-whiteframe-z1 {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }

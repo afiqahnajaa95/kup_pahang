@@ -46,6 +46,12 @@
 <p>Sijil Pendaftaran Perniagaan SSM</p>
   <input type="file" (change)="uploadFile($event, '/spps')"/>
 <hr>
+
+<mat-checkbox required>
+Saya memperaku bahawa semua maklumat yang dinyatakan di atas adalah benar<br>
+dan bersetuju dengan terma dan syarat yang ditetapkan.
+</mat-checkbox><br><br>
+
 <button mat-button (click)="saveRegister()">Save Details</button>
 <!--
 <table class="example-full-width" cellspacing="0"><tr>
@@ -113,7 +119,7 @@
 </tr></table>
 </form><hr>
 
-<!-- BAHAGIAN 2 -->
+<!-- BAHAGIAN 2
 <p><b>Bahagian 2: Muat Naik Dokumen Pemohon</b></p>
 <table class="example-full-width" cellspacing="0"><tr>
   <td><p>Surat Perakuan Wakil Syarikat</p>
@@ -124,10 +130,5 @@
   <input type="file" (change)="uploadFile($event, '/spps')"></td>
 </tr></table><br>
 
-<mat-checkbox required>
-Saya memperaku bahawa semua maklumat yang dinyatakan di atas adalah benar<br>
-dan bersetuju dengan terma dan syarat yang ditetapkan.
-</mat-checkbox><br><br>
-
-<button mat-button (click)="saveRegister()">Save Details</button>
+<button mat-button (click)="saveRegister()">Save Details</button> -->
 </mat-card>
