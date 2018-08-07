@@ -249,7 +249,14 @@
   <!--  BAHAGIAN 7-->
   <mat-toolbar>CATATAN KELULUSAN</mat-toolbar>
   <br>
-  <table class="example-full-width" border="0">
+  <form [formGroup]="pass">
+    <input type="text" class="form-control" placeholder="Nombor Rujukan Fail" formControlName="ruj"><br>
+    <input type="text" class="form-control" placeholder="Catatan kelulusan" formControlName="note"><br>
+  </form>
+  <hr>
+  <button mat-button class="approve" (click)="approveF()">Approve</button>
+  <button mat-button class="decline" (click)="declineF()">Decline</button>
+  <!-- <table class="example-full-width" border="0">
     <tr>
       <th>Kelulusan</th>
       <th>Catatan</th>
@@ -287,74 +294,5 @@
         </td>
       </tr>
     </tbody>
-  </table>
-  <!-- <table>
-    <tr>
-      <th>Activiti</th>
-      <th>Catatan</th>
-    </tr>
-    <tr>
-      <td>Pelan Penyediaan</td>
-      <td>Something</td>
-    </tr>
-  </table>
-   <p><label>Kelulusan Izin Lalu</label></p>
-  <textarea matInput placeholder=""></textarea><br>
-  <button mat-button>Edit</button> |
-  <button mat-button>Delete</button>
-  <hr>
-  <p><label>Catatan Tambahan</label></p>
-  <mat-form-field>
-    <mat-select placeholder="Pilih salah satu kelulusan<">
-      <mat-option value="Diluluskan">Diluluskan</mat-option>
-      <mat-option value="Ditolak">Ditolak</mat-option>
-      <mat-option value="Ditangguhkan (KIV)">Ditangguhkan (KIV)</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br>
-  <textarea matInput placeholder="Catatan kelulusan"></textarea><br>
-  <button mat-button (click)="addRow('kelulusan')">Tambah</button> -->
+  </table> -->
 </mat-card>
-<!--
-<mat-card>
-  <table class="example-full-width" border="0">
-          <tr>
-            <td><p><label>Tambah Aktiviti</label></p>
-            <mat-form-field>
-                <mat-select [(ngModel)]="kupahang.addactivity" [ngModelOptions]="{standalone: true}" class="form-control" name="{{kupahang.addactivity}}">
-                  <mat-option>Pilih salah satu aktiviti</mat-option>
-                  <mat-option value="Semakan Dokumen Permohonan">Semakan Dokumen Permohonan</mat-option>
-                  <mat-option value="Pelan Penyediaan">Pelan Penyediaan</mat-option>
-                  <mat-option value="Lawatan Tapak">Lawatan Tapak</mat-option>
-                  <mat-option value="Penyediaan Sebut Harga (Quotation/Invoice)">Penyediaan Sebut Harga (Quotation/Invoice)</mat-option>
-                  <mat-option value="Penghantaran kepada pihak yang meluluskan">Penghantaran kepada pihak yang meluluskan</mat-option>
-                </mat-select>
-              </mat-form-field><br></td>
-          </tr>
-      <tbody>
-          <tr *ngFor="let field of fieldArray; let i = index">
-              <td>
-                  <input [(ngModel)]="kupahang.addactivity" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{kupahang}}">
-              </td>
-              <td>
-                  <button mat-button (click)="deleteFieldValue(i)">Delete</button>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                  <mat-select class="form-control" id="newAttributeKupahang" [(ngModel)]="newAttribute.kupahang" [ngModelOptions]="{standalone: true}" name="newAttributeKupahang">
-                    <mat-option>Pilih salah satu aktiviti</mat-option>
-                    <mat-option value="Semakan Dokumen Permohonan">Semakan Dokumen Permohonan</mat-option>
-                    <mat-option value="Pelan Penyediaan">Pelan Penyediaan</mat-option>
-                    <mat-option value="Lawatan Tapak">Lawatan Tapak</mat-option>
-                    <mat-option value="Penyediaan Sebut Harga (Quotation/Invoice)">Penyediaan Sebut Harga (Quotation/Invoice)</mat-option>
-                    <mat-option value="Penghantaran kepada pihak yang meluluskan">Penghantaran kepada pihak yang meluluskan</mat-option>
-                  </mat-select>
-              </td>
-              <td>
-                  <button mat-button (click)="addFieldValue()">Edit</button>
-              </td>
-          </tr>
-      </tbody>
-  </table>
-</mat-card> -->

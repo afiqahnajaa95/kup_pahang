@@ -1,0 +1,57 @@
+/* Structure */
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.side-content{
+  display: inline-block;
+  width: 20%;
+}
+.content{
+  display: inline-block;
+  vertical-align: top;
+  width:100%;
+}
+
+.sidebar{
+  width: auto;
+}
+
+mat-grid-tile {
+  background: lightgrey;
+}
+.stat-container{
+  padding: 10px;
+}
+.stat{
+  font-size: 20px;
+  display: inline-block;
+  text-align: center;
+  width: 17%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgb(0,0,0,0.15);
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.text-success{
+  color: green;
+  font-size: 40px;
+}

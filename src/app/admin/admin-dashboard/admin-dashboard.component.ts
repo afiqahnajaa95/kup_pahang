@@ -31,6 +31,13 @@ export class AdminDashboardComponent{
     ){
       this.id = this.route.snapshot.paramMap.get('id');
       console.log(this.id);
+      this.itemsCollection = db.collection<any>('permitKerja');
+      this.items = this.itemsCollection.valueChanges();
+      console.log(this.items);
+      this.items.subscribe((result)=>{
+        console.log(result.length);
+        this.permit = result.length;
+      });
       this.itemsCollection = db.collection<any>('permohonanBaru');
       this.items = this.itemsCollection.valueChanges();
       console.log(this.items);
@@ -60,7 +67,7 @@ export class AdminDashboardComponent{
     openFile(path){
       console.log("Open file");
       console.log(path);
-      this.router.navigate(['/adminSemua', { id: this.id, file: path }]);
+      this.router.navigate(['/adminsemua', { id: this.id, file: path }]);
     }
 
     openUser(path){

@@ -17,6 +17,7 @@ import { MaterialModule } from '../material.module';
 import { CDKModule } from '../cdk.module';
 import { KupFormComponent }   from './kup-form/kup-form.component';
 import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
+import { PermitKerjaComponent }   from './permit-kerja/permit-kerja.component';
 import { SemuaComponent }   from './semua/semua.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertService, AuthenticationService, UserService } from '../_services/index';
@@ -35,6 +36,7 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     NotificationsComponent,
     KupFormComponent,
     IzinLaluComponent,
+    PermitKerjaComponent,
     SemuaComponent,
     ProfileComponent
   ],

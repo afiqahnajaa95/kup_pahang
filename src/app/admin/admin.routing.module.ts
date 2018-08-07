@@ -5,6 +5,10 @@ import { IconsComponent }   from '../main/icons/icons.component';
 import { NotificationsComponent }   from '../main/notifications/notifications.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminSemuaComponent } from './admin-semua/admin-semua.component';
+import { AdminBaruComponent } from './admin-baru/admin-baru.component';
+import { AdminPermitComponent } from './admin-permit/admin-permit.component';
+import { AdminIzinComponent } from './admin-izin/admin-izin.component';
+import { AdminIzinSemuaComponent } from './admin-izinsemua/admin-izinsemua.component';
 
 const AdminRoutes: Routes = [
   {
@@ -13,7 +17,11 @@ const AdminRoutes: Routes = [
     { path: 'icons', component: IconsComponent },
     { path: 'notifications', component: NotificationsComponent },
     { path: 'admindash', component: AdminDashboardComponent },
-    { path: 'adminSemua', component: AdminSemuaComponent }
+    { path: 'adminsemua', component: AdminSemuaComponent },
+    { path: 'adminpermit', component: AdminPermitComponent },
+    { path: 'adminlalu', component: AdminIzinComponent },
+    { path: 'adminizin', component: AdminIzinSemuaComponent },
+    { path: 'adminbaru', component: AdminBaruComponent }
   ]
  }
 ];

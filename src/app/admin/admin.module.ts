@@ -11,6 +11,10 @@ import { NavbarModule} from '../main/shared/navbar/navbar.module';
 import { FixedPluginModule} from '../main/shared/fixedplugin/fixedplugin.module';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminSemuaComponent } from './admin-semua/admin-semua.component';
+import { AdminBaruComponent } from './admin-baru/admin-baru.component';
+import { AdminIzinComponent } from './admin-izin/admin-izin.component';
+import { AdminIzinSemuaComponent } from './admin-izinsemua/admin-izinsemua.component';
+import { AdminPermitComponent } from './admin-permit/admin-permit.component';
 import { MaterialModule } from '../material.module';
 import { CDKModule } from '../cdk.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -26,7 +30,11 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
   declarations: [
     AdminComponent,
     AdminDashboardComponent,
-    AdminSemuaComponent
+    AdminSemuaComponent,
+    AdminPermitComponent,
+    AdminIzinComponent,
+    AdminIzinSemuaComponent,
+    AdminBaruComponent
   ],
   imports: [
     BrowserModule,

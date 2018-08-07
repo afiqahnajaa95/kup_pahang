@@ -30,8 +30,8 @@ export class KupFormComponent {
     date: number;
     fnsDate: string;
     fieldObject: any;
-    private fieldArray: Array<any> = [];
-    private newAttribute: any = {};
+    public fieldArray: Array<any> = [];
+    public newAttribute: any = {};
     uploadPercent: Observable<number>;
     downloadURL: Observable<string>;
 
@@ -43,7 +43,7 @@ export class KupFormComponent {
       public db: AngularFirestore
     ) {
       this.date = Date.now();
-      this.fnsDate = format(this.date, 'DD//MM/YYYY');
+      this.fnsDate = format(this.date, 'DD/MM/YYYY');
       console.log(this.fnsDate);
       this.id = this.route.snapshot.paramMap.get('id');
       console.log(this.id);
@@ -107,6 +107,7 @@ export class KupFormComponent {
         lt: [''],
         gl: [''],
         spil: [''],
+        note: [],
       });
     }
 

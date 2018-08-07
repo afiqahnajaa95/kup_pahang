@@ -7,6 +7,7 @@ import { IconsComponent }   from './icons/icons.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
 import { KupFormComponent }   from './kup-form/kup-form.component';
 import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
+import { PermitKerjaComponent }   from './permit-kerja/permit-kerja.component';
 import { SemuaComponent }   from './semua/semua.component';
 
 const Mainroutes: Routes = [
@@ -20,6 +21,7 @@ const Mainroutes: Routes = [
     { path: 'notifications', component: NotificationsComponent },
     { path: 'kupform', component: KupFormComponent },
     { path: 'izinlalu', component: IzinLaluComponent },
+    { path: 'permitkerja', component: PermitKerjaComponent },
     { path: 'semua', component: SemuaComponent }
   ]
  }

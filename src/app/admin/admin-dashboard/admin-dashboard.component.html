@@ -12,7 +12,7 @@
    <div class="stat">
      Izin Lalu
      <div class="text-success">
-       {{izin}}
+       {{new}}
      </div>
    </div>
    <div class="stat">
@@ -143,6 +143,7 @@
 <div class="content">
   <div class="example-container mat-elevation-z8">
     <div class="example-header">
+      Dashboard
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
       </mat-form-field>
@@ -172,7 +173,7 @@
 
       <ng-container matColumnDef="comment">
         <mat-header-cell *matHeaderCellDef> Ulasan </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.note}} </mat-cell>
       </ng-container>
 
       <!-- <ng-container matColumnDef="date">
