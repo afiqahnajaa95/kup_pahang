@@ -1,31 +1,36 @@
-<div class="col-md-12" align="center">
-        <div class="logo-img" >
+<div class="col-md-5"></div>
+<div class="col-md-3" align="center">
+        <div class="logo-img">
           <br><br>
             <img src="../../assets/img/kup-logo123.png" alt="" align="center" width="100">
         </div>
         <br><br>
 </div>
 <br><br>
-<div class="col-md-3 col-md-offset-3" align="center" layout="row">
+
+<div class="row">
+  <div class="col-md-5"></div>
+  <div class="col-md-3" align="center">
   <mat-card>
-    <p><font size="2">Daftar Akaun Pemohon</font></p>
+    <p><font size="2" align="left">Daftar Akaun Pemohon</font></p><br>
     <form [formGroup]="signup" novalidate>
-      <!-- {{signup.value | json}} -->
         <div class="form-group">
             <input type="text" class="form-control" formControlName="email" placeholder="Email" required>
-        </div>
+        </div><br>
         <div class="form-group">
             <input type="password" class="form-control" formControlName="password" placeholder="Password" required>
-        </div>
-        <mat-checkbox formControlName="agree" required>
+        </div><br>
+        <mat-checkbox><p style="font-weight: normal;"><font size="2">
           Bersetuju dengan terma & syarat
-        </mat-checkbox><br>
-        <button mat-button (click)="registerF()" align="center">SIGN UP</button>
+        </font></p></mat-checkbox><br>
+        <button mat-raised-button color="accent" (click)="registerF()" align="center">SIGN UP</button>
     </form>
   </mat-card>
 </div>
+</div>
 
-<div class="col-md-6 col-md-offset-3" align="center">
+<div class="col-md-5"></div>
+<div class="col-md-3" align="center">
   <br><br>
    <p>Already have an account?</p>
    <a class="create-account" [routerLink]="'/login'"><label><font color="black">

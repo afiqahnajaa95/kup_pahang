@@ -13,26 +13,23 @@ export interface Item { email: string, req_name: string}
 export interface RouteInfo {
     path: string;
     title: string;
-    icon: string;
     class: string;
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: 'dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
-    { path: '#', title: 'Pemohon',  icon:'ti-user', class: '' },
-    { path: 'icons', title: 'Semua',  icon:'ti-notepad', class: '' },
-    { path: 'kupform', title: 'Permohonan Baru',  icon:'ti-pencil-alt', class: '' },
-    { path: 'izinlalu', title: 'Izin Lalu',  icon:'ti-pencil-alt', class: '' },
-    { path: '#', title: 'Permit Kerja',  icon:'ti-hand-point-right', class: '' },
-    { path: '#', title: 'Mula Kerja',  icon: 'ti-hand-point-right', class: '' },
-    { path: '#', title: 'Siap Kerja',  icon:'ti-hand-point-right', class: '' },
-    { path: '#', title: 'Wang Cagaran',  icon:'ti-money', class: '' },
-    { path: '#', title: 'Ditangguhkan (KIV)',  icon:'ti-hand-point-right', class: '' },
-    { path: '#', title: 'Batal',  icon:'ti-face-sad', class: '' },
-    { path: '#', title: 'Ditolak',  icon:'ti-face-sad', class: '' },
-    // { path: 'login', title: 'Login',  icon:'ti-hand-point-right', class: '' },
-    // { path: 'register', title: 'Register',  icon:'ti-hand-point-right', class: '' },
-    { path: 'login', title: 'Logout',  icon:'ti-hand-point-right', class: '' },
+    { path: 'dashboard', title: 'Dashboard', class: '' },
+    { path: '#', title: 'Pemohon',  class: '' },
+    { path: 'icons', title: 'Semua',  class: '' },
+    { path: 'kupform', title: 'Permohonan Baru',  class: '' },
+    { path: 'izinlalu', title: 'Izin Lalu',  class: '' },
+    { path: '#', title: 'Permit Kerja',  class: '' },
+    { path: '#', title: 'Mula Kerja',  class: '' },
+    { path: '#', title: 'Siap Kerja',  class: '' },
+    { path: '#', title: 'Wang Cagaran',  class: '' },
+    { path: '#', title: 'Ditangguhkan (KIV)',  class: '' },
+    { path: '#', title: 'Batal',  class: '' },
+    { path: '#', title: 'Ditolak',  class: '' },
+    { path: 'login', title: 'Logout',  class: '' },
 ];
 
 @Component({
@@ -46,6 +43,8 @@ export class AdminSidebarComponent implements OnInit {
     id: any;
     name: any;
     email: any;
+    private itemDoc: AngularFirestoreDocument<Item>;
+
     private itemDoc: AngularFirestoreDocument<Item>;
 
     constructor(

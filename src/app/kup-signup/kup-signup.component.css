@@ -7,3 +7,31 @@
 .example-full-width {
   width: 90%;
 }
+
+body {
+    font-family: ;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.42857143;
+    color: rgba(0, 0, 0, 0.87);
+    background-color: transparent;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+.col-xs-6 {
+  padding: 32px;
+  margin: 16px;
+}
+
+mat-card {
+  padding: 32px;
+  margin: 16px;
+}
+
+mat-checkbox {
+  font-weight: normal !important;
+}

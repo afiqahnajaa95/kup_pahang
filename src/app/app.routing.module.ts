@@ -8,6 +8,8 @@ import { MainComponent }   from './main/main.component';
 import { AdminComponent }   from './admin/admin.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
 const approutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   {
@@ -18,6 +20,7 @@ const approutes: Routes = [
   { path: 'signup', component: KupSignupComponent },
   { path: 'register', component: KupRegisterComponent },
   { path: 'adminlogin', component: AdminLoginComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
 ];
 
 @NgModule({
