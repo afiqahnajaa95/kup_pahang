@@ -9,6 +9,8 @@ import { AdminBaruComponent } from './admin-baru/admin-baru.component';
 import { AdminPermitComponent } from './admin-permit/admin-permit.component';
 import { AdminIzinComponent } from './admin-izin/admin-izin.component';
 import { AdminIzinSemuaComponent } from './admin-izinsemua/admin-izinsemua.component';
+import { UserProfileComponent } from './userprofile/userprofile.component';
+import { PageNotFoundComponent } from '../pagenotfound/pagenotfound.component';
 
 const AdminRoutes: Routes = [
   {
@@ -21,7 +23,9 @@ const AdminRoutes: Routes = [
     { path: 'adminpermit', component: AdminPermitComponent },
     { path: 'adminlalu', component: AdminIzinComponent },
     { path: 'adminizin', component: AdminIzinSemuaComponent },
-    { path: 'adminbaru', component: AdminBaruComponent }
+    { path: 'adminbaru', component: AdminBaruComponent },
+    { path: 'userprofile', component: UserProfileComponent },
+    { path: '**', component: PageNotFoundComponent }
   ]
  }
 ];

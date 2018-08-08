@@ -12,7 +12,7 @@
    <div class="stat">
      Izin Lalu
      <div class="text-success">
-       {{new}}
+       {{permit}}
      </div>
    </div>
    <div class="stat">
@@ -158,7 +158,7 @@
 
       <ng-container matColumnDef="company">
         <mat-header-cell *matHeaderCellDef> Syarikat </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <a #ids (click)="openUser(element.id)">{{element.company}}</a> </mat-cell>
+        <mat-cell *matCellDef="let element"> <a #ids (click)="openUser(element.id)">{{element.company2}}</a> </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="date">

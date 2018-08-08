@@ -7,7 +7,6 @@ import { KupRegisterComponent }   from './kup-register/kup-register.component';
 import { MainComponent }   from './main/main.component';
 import { AdminComponent }   from './admin/admin.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const approutes: Routes = [

@@ -42,6 +42,8 @@ export class AdminIzinSemuaComponent {
   private itemDoc: AngularFirestoreDocument<Data>;
   private fileDoc: AngularFirestoreDocument<File>;
   private saveDoc: AngularFirestoreDocument<Save>;
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
   constructor(
     private db: AngularFirestore,
     private route: ActivatedRoute,
@@ -55,100 +57,35 @@ export class AdminIzinSemuaComponent {
     this.path = this.route.snapshot.paramMap.get('file');
     console.log(this.path);
     this.fileDoc = this.db.doc<File>('permitKerja/'+this.path);
-    this.fileDoc.valueChanges().subscribe((result) => {
-      this.pplfile = result.ppl;
-      this.ltfile = result.lt;
-      this.glfile = result.gl;
-      this.spilfile = result.spil;
-      this.userId = result.id;
-      this.userRef = result.userRef;
-      this.name = result.company;
-      this.project = result.projname;
-    });
-    this.item = this.fileDoc.valueChanges();
-    console.log(this.item);
+    this.item = this.fileDoc.valueChanges().subscribe((result) => {
+        this.pplfile = result.ppl;
+        this.ltfile = result.lt;
+        this.glfile = result.gl;
+        this.spilfile = result.spil;
+        this.userId = result.id;
+        this.userRef = result.userRef;
+        this.name = result.company;
+        this.project = result.projname;
+      });
+      this.item = this.fileDoc.valueChanges();
+      console.log(this.item);
+      this.filesCollection = this.db.collection<File>('permohonanBaru/'+this.path+'/roadList');
+      this.roads = this.filesCollection.valueChanges();
+      console.log(this.roads);
   }
-
-  addRow(type) {
-    console.log(type);
-    this.fieldArrayAct.push(this.newAttribute);
-    this.newAttribute = {};
+  viewFile(){
+    console.log("Opening file");
   }
-
-  deleteRow(type, index) {
-    console.log(type);
-    this.fieldArrayAct.splice(index, 1);
+  uploadFile(event) {
+    const file = event.target.files[0];
+    const filePath = "izin";
+    console.log(filePath);
+    const ref = this.storage.ref(filePath);
+    const task = ref.put(file);
+    this.uploadPercent = task.percentageChanges();
+    task.snapshotChanges().pipe(finalize((result) => {console.log(path); ref.getDownloadURL().subscribe((result) => {console.log(result)});}););
   }
-
-  Deleteplan(){
-    this._ref.destroy();
-  }
-
-  approveF(){
-    console.log("Approved");
-    this.itemsCollection = this.db.collection<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks');
-    this.itemsCollection.add({time: this.fnsDate, userRef: '', status: 1})
-      .then((refId)=>{
-        console.log(refId.id);
-        for(var i=0; i<this.fieldArrayAct.length; ++i){
-          this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks/'+i);
-          this.itemDoc.set(this.fieldArrayAct[i]);
-        }
-      });
-    this.itemsCollection = this.db.collection<Data>('permohonanBaru/'+this.path+'/remarks');
-    this.itemsCollection.add({time: this.fnsDate, userRef: '', status: 1})
-      .then((refId)=>{
-        console.log(refId.id);
-        for(var i=0; i<this.fieldArrayAct.length; ++i){
-          this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path+'/remarks/'+i);
-          this.itemDoc.set(this.fieldArrayAct[i]);
-        }
-      });
-    this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef);
-    this.itemDoc.update({status: 1});
-    this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path);
-    this.itemDoc.update({status: 1});
-    console.log("Creating Permit Kerja file");
-    this.saveCollection = this.db.collection<Save>('users/'+this.userId+'/permitKerja');
-    this.saveCollection.add({time: this.fnsDate, userRef: this.userRef, status: 1, id: this.userId, ref: this.path, fileRef: '', userFileRef: '', projname: '', company: ''})
-      .then((refId)=>{
-        console.log(refId.id);
-        this.fileRef = refId.id;
-        this.saveDoc = this.db.doc<Save>('users/'+this.userId+'/permitKerja/'+refId.id);
-        this.saveDoc.update({fileRef: refId.id, projname: this.project, company: this.name});
-      });
-    this.saveCollection = this.db.collection<Save>('permitKerja');
-    this.saveCollection.add({time: this.fnsDate, userRef: this.userRef, status: 1, id: this.userId, ref: this.path, fileRef: '', userFileRef: '', projname: '', company: ''})
-      .then((refId)=>{
-        console.log(refId.id);
-        this.saveDoc = this.db.doc<Save>('/permitKerja/'+refId.id);
-        this.saveDoc.update({fileRef: refId.id, userFileRef: this.fileRef, projname: this.project, company: this.name});
-      });
-  }
-
-  declineF(){
-    console.log("Declined");
-    this.itemsCollection = this.db.collection<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks');
-    this.itemsCollection.add({time: this.fnsDate, userRef: '', status: 2})
-      .then((refId)=>{
-        console.log(refId.id);
-        for(var i=0; i<this.fieldArrayAct.length; ++i){
-          this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks/'+i);
-          this.itemDoc.set(this.fieldArrayAct[i]);
-        }
-      });
-    this.itemsCollection = this.db.collection<Data>('permohonanBaru/'+this.path+'/remarks');
-    this.itemsCollection.add({time: this.fnsDate, userRef: '', status: 2})
-      .then((refId)=>{
-        console.log(refId.id);
-        for(var i=0; i<this.fieldArrayAct.length; ++i){
-          this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path+'/remarks/'+i);
-          this.itemDoc.set(this.fieldArrayAct[i]);
-        }
-      });
-    this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef);
-    this.itemDoc.update({status: 2});
-    this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path);
-    this.itemDoc.update({status: 2});
+  save(){
+    console.log("Saving document");
   }
 }

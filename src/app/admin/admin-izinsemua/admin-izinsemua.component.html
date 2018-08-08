@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-toolbar>Home/ </mat-toolbar>
+  <mat-toolbar>Home/{{ (item | async)?.company2 }}</mat-toolbar>
   <br>
 
   <!-- BAHAGIAN 1 -->
@@ -45,6 +45,48 @@
   <mat-toolbar>MAKLUMAT JALAN</mat-toolbar>
   <br>
   <div class="contain">
+    <table>
+      <tr>
+        <th>
+          <p><label>Nama Jalan&emsp;</label></p>
+        </th>
+        <th>
+          <p><label>Koordinat Mula&emsp;</label></p>
+        </th>
+        <th>
+          <p><label>Koordinat Akhir&emsp;</label></p>
+        </th>
+        <th>
+          <p><label>Pihak yang memberi kelulusan&emsp;</label></p>
+        </th>
+        <th>
+          <p><label>Kaedah Kerja&emsp;</label></p>
+        </th>
+        <th>
+          <p><label>Panjang (m)&emsp;</label></p>
+        </th>
+      </tr>
+      <tr *ngFor="let item of roads | async">
+        <td>
+          <p>{{ item.roadname }}</p>
+        </td>
+        <td>
+          <p>{{ item.startcor }}</p>
+        </td>
+        <td>
+          <p>{{ item.endcor }}</p>
+        </td>
+        <td>
+          <p>{{ item.pihak }}</p>
+        </td>
+        <td>
+          <p>{{ item.method }}</p>
+        </td>
+        <td>
+          <p>{{ item.length }}</p>
+        </td>
+      </tr>
+    </table>
   </div>
   <div class="contain">
     <div class="right-contain">
@@ -207,7 +249,11 @@
   <!--  BAHAGIAN 7-->
   <mat-toolbar>CATATAN KELULUSAN</mat-toolbar>
   <br>
-  <input type="text" class="form-control" placeholder="Catatan kelulusan"><br><hr>
+  <form [formGroup]="pass">
+    <input type="text" class="form-control" placeholder="Nombor Rujukan Fail" formControlName="ruj"><br>
+    <input type="text" class="form-control" placeholder="Catatan kelulusan" formControlName="note"><br>
+  </form>
+  <hr>
   <button mat-button class="approve" (click)="approveF()">Approve</button>
   <button mat-button class="decline" (click)="declineF()">Decline</button>
   <!-- <table class="example-full-width" border="0">

@@ -73,7 +73,7 @@ export class AdminIzinComponent{
     openUser(path){
       console.log("View user");
       console.log(path);
-      this.router.navigate(['/userProfile', { id: this.id, user: path }]);
+      this.router.navigate(['/userprofile', { id: this.id, user: path }]);
     }
 }
 

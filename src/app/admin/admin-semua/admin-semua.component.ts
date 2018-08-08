@@ -28,6 +28,7 @@ export class AdminSemuaComponent {
   date: number;
   fnsDate: string;
   item: Observable<File>;
+  items: any;
   roads: Observable<any[]>;
   userId: string;
   userRef: string;
@@ -58,7 +59,10 @@ export class AdminSemuaComponent {
     this.path = this.route.snapshot.paramMap.get('file');
     console.log(this.path);
     this.fileDoc = this.db.doc<File>('permohonanBaru/'+this.path);
+    this.item = this.fileDoc.valueChanges();
+    console.log(this.item);
     this.fileDoc.valueChanges().subscribe((result) => {
+      this.items = result;
       this.pplfile = result.ppl;
       this.ltfile = result.lt;
       this.glfile = result.gl;
@@ -68,8 +72,7 @@ export class AdminSemuaComponent {
       this.name = result.company;
       this.project = result.projname;
     });
-    this.item = this.fileDoc.valueChanges();
-    console.log(this.item);
+    console.log(this.items);
     this.filesCollection = this.db.collection<File>('permohonanBaru/'+this.path+'/roadList');
     this.roads = this.filesCollection.valueChanges();
     console.log(this.roads);
@@ -97,50 +100,27 @@ export class AdminSemuaComponent {
 
   approveF(){
     console.log("Approved");
-    this.itemsCollection = this.db.collection<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks');
-    this.itemsCollection.add({time: this.fnsDate, userRef: '', status: 1, note: ''})
-      .then((refId)=>{
-        console.log(refId.id);
-        this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks/'+refId.id);
-        this.itemDoc.update(this.pass.value);
-        for(var i=0; i<this.fieldArrayAct.length; ++i){
-          this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks/'+i);
-          this.itemDoc.set(this.fieldArrayAct[i]);
-        }
-      });
-    this.itemsCollection = this.db.collection<Data>('permohonanBaru/'+this.path+'/remarks');
-    this.itemsCollection.add({time: this.fnsDate, userRef: '', status: 1, note: ''})
-      .then((refId)=>{
-        console.log(refId.id);
-        this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path+'/remarks/'+refId.id);
-        this.itemDoc.update(this.pass.value);
-        for(var i=0; i<this.fieldArrayAct.length; ++i){
-          this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path+'/remarks/'+i);
-          this.itemDoc.set(this.fieldArrayAct[i]);
-        }
-      });
-    this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef);
-    this.itemDoc.update({status: 1, note: this.pass.value.note});
-    this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path);
-    this.itemDoc.update({status: 1, note: this.pass.value.note});
     console.log("Creating Permit Kerja file");
-    this.saveCollection = this.db.collection<Save>('users/'+this.userId+'/permitKerja');
-    this.saveCollection.add({time: this.fnsDate, userRef: this.userRef, status: 1, id: this.userId, ref: this.path, fileRef: '', userFileRef: '', projname: '', company: '', fileRuj: ''})
-      .then((refId)=>{
-        console.log(refId.id);
-        this.fileRef = refId.id;
-        this.saveDoc = this.db.doc<Save>('users/'+this.userId+'/permitKerja/'+refId.id);
-        this.saveDoc.update({fileRef: refId.id, projname: this.project, company: this.name, fileRuj: this.pass.value.ruj});
-      });
     this.saveCollection = this.db.collection<Save>('permitKerja');
-    this.saveCollection.add({time: this.fnsDate, userRef: this.userRef, status: 1, id: this.userId, ref: this.path, fileRef: '', userFileRef: '', projname: '', company: '', fileRuj: ''})
+    this.saveCollection.add({izintime: this.fnsDate})
       .then((refId)=>{
         console.log(refId.id);
-        this.saveDoc = this.db.doc<Save>('/permitKerja/'+refId.id);
-        this.saveDoc.update({fileRef: refId.id, userFileRef: this.fileRef, projname: this.project, company: this.name, fileRuj: this.pass.value.ruj});
-      })
-      .then((result)=>{
-        this.router.navigate(['/adminbaru', { id: this.id }])
+        this.saveDoc = this.db.doc<Save>('permitKerja/'+refId.id);
+        this.itemDoc.update(this.pass.value);
+        for(var i=0; i<this.fieldArrayAct.length; ++i){
+          this.itemDoc = this.db.doc<Data>('permitKerja/'+this.path+'/remarks/'+i);
+          this.itemDoc.set(this.fieldArrayAct[i]);
+        }
+        this.saveDoc.update(this.items)
+          .then(()=>{
+            this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef);
+            this.itemDoc.delete();
+            this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path);
+            this.itemDoc.delete()
+              .then((result)=>{
+                this.router.navigate(['/adminbaru', { id: this.id }]);
+              });
+          });
       });
   }
 

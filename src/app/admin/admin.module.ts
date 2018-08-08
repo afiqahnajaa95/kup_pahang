@@ -15,6 +15,7 @@ import { AdminBaruComponent } from './admin-baru/admin-baru.component';
 import { AdminIzinComponent } from './admin-izin/admin-izin.component';
 import { AdminIzinSemuaComponent } from './admin-izinsemua/admin-izinsemua.component';
 import { AdminPermitComponent } from './admin-permit/admin-permit.component';
+import { UserProfileComponent } from './userprofile/userprofile.component';
 import { MaterialModule } from '../material.module';
 import { CDKModule } from '../cdk.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -25,6 +26,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MatDialogModule, MatButtonModule } from '@angular/material';
+import { PageNotFoundComponent } from '../pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     AdminPermitComponent,
     AdminIzinComponent,
     AdminIzinSemuaComponent,
-    AdminBaruComponent
+    AdminBaruComponent,
+    UserProfileComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

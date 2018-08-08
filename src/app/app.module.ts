@@ -15,10 +15,8 @@ import { KupLoginComponent }   from './kup-login/kup-login.component';
 import { KupSignupComponent }   from './kup-signup/kup-signup.component';
 import { KupRegisterComponent }   from './kup-register/kup-register.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-<<<<<<< HEAD
-=======
+import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
->>>>>>> 71eaa121c3c96043e27d518feb90b96ed751eab7
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -36,10 +34,7 @@ import { MatDialogModule, MatButtonModule, MatGridListModule } from '@angular/ma
     KupSignupComponent,
     KupRegisterComponent,
     AdminLoginComponent,
-<<<<<<< HEAD
-=======
-    ForgotPasswordComponent
->>>>>>> 71eaa121c3c96043e27d518feb90b96ed751eab7
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

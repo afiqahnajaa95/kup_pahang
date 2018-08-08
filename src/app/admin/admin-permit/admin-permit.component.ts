@@ -67,13 +67,13 @@ export class AdminPermitComponent{
     openFile(path){
       console.log("Open file");
       console.log(path);
-      this.router.navigate(['/adminSemua', { id: this.id, file: path }]);
+      this.router.navigate(['/adminizin', { id: this.id, file: path }]);
     }
 
     openUser(path){
       console.log("View user");
       console.log(path);
-      this.router.navigate(['/userProfile', { id: this.id, user: path }]);
+      this.router.navigate(['/userprofile', { id: this.id, user: path }]);
     }
 }
 
