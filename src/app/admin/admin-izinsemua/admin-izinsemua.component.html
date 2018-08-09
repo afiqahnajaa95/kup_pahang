@@ -203,96 +203,46 @@
 <mat-card>
   <mat-toolbar>AKTIVITI KUP</mat-toolbar>
   <br>
-  <table class="example-full-width" border="0">
-    <tr>
-      <th>Aktiviti</th>
-      <th>Catatan</th>
-      <th></th>
-    </tr>
-    <tbody>
-      <tr *ngFor="let field of fieldArrayAct; let i = index">
-        <td>
-          <mat-select placeholder="Pilih salah satu aktiviti" [(ngModel)]="field.akt" [ngModelOptions]="{standalone: true}" class="form-control" name="{{field.akt}}">
-            <mat-option value="Semakan Dokumen Permohonan">Semakan Dokumen Permohonan</mat-option>
-            <mat-option value="Pelan Penyediaan">Pelan Penyediaan</mat-option>
-            <mat-option value="Lawatan Tapak">Lawatan Tapak</mat-option>
-            <mat-option value="Penyediaan Sebut Harga (Quotation/Invoice)">Penyediaan Sebut Harga (Quotation/Invoice)</mat-option>
-            <mat-option value="Penghantaran kepada pihak yang meluluskan">Penghantaran kepada pihak yang meluluskan</mat-option>
-          </mat-select>
-        </td>
-        <td>
-          <input [(ngModel)]="field.catakt" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.catakt}}">
-        </td>
-        <td>
-          <button class="btn btn-default"  type="button" (click)="deleteRow(aktiviti, i)">Delete</button>
-        </td>
-      </tr>
+  <div class="contain">
+    <table>
       <tr>
+        <th>
+          <p><label>Aktivivi&emsp;</label></p>
+        </th>
+        <th>
+          <p><label>Catatan&emsp;</label></p>
+        </th>
+
+      </tr>
+      <tr *ngFor="let item of rujs | async">
         <td>
-          <mat-select placeholder="Pilih salah satu aktiviti" class="form-control" id="newAttributeAkt" [(ngModel)]="newAttribute.akt" [ngModelOptions]="{standalone: true}" name="newAttributeAkt">
-            <mat-option value="Semakan Dokumen Permohonan">Semakan Dokumen Permohonan</mat-option>
-            <mat-option value="Pelan Penyediaan">Pelan Penyediaan</mat-option>
-            <mat-option value="Lawatan Tapak">Lawatan Tapak</mat-option>
-            <mat-option value="Penyediaan Sebut Harga (Quotation/Invoice)">Penyediaan Sebut Harga (Quotation/Invoice)</mat-option>
-            <mat-option value="Penghantaran kepada pihak yang meluluskan">Penghantaran kepada pihak yang meluluskan</mat-option>
-          </mat-select>
+          <p>{{ item.akt }}</p>
         </td>
         <td>
-          <input class="form-control" type="text" id="newAttributeCatatAktiviti" [(ngModel)]="newAttribute.catakt" [ngModelOptions]="{standalone: true}" name="newAttributeCatatAktiviti">
-        </td>
-        <td>
-          <button class="btn btn-default" type="button" (click)="addRow('aktiviti')">Add</button>
+          <p>{{ item.catakt }}</p>
         </td>
       </tr>
-    </tbody>
-  </table>
+    </table>
+  </div>
   <!--  BAHAGIAN 7-->
   <mat-toolbar>CATATAN KELULUSAN</mat-toolbar>
   <br>
+  <div class="content">
+    <p><label>No. Ruj Fail&emsp;</label></p>
+    <p>{{ (item | async)?.ruj }}</p>
+  </div>
+  <div class="content">
+    <p><label>Catatan Kelulusan&emsp;</label></p>
+    <p>{{ (item | async)?.note }}</p>
+  </div>
   <form [formGroup]="pass">
-    <input type="text" class="form-control" placeholder="Nombor Rujukan Fail" formControlName="ruj"><br>
-    <input type="text" class="form-control" placeholder="Catatan kelulusan" formControlName="note"><br>
+    <p>Tarikh Penerimaan</p>
+    <mat-form-field class="example-full-width">
+      <input matInput [matDatepicker]="picker1" placeholder="Pilih tarikh" formControlName="confirmdate" required>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
   </form>
   <hr>
-  <button mat-button class="approve" (click)="approveF()">Approve</button>
-  <button mat-button class="decline" (click)="declineF()">Decline</button>
-  <!-- <table class="example-full-width" border="0">
-    <tr>
-      <th>Kelulusan</th>
-      <th>Catatan</th>
-      <th></th>
-    </tr>
-    <tbody>
-      <tr *ngFor="let field of fieldArrayPass; let i = index">
-        <td>
-          <mat-select [(ngModel)]="field.lulus" [ngModelOptions]="{standalone: true}" class="form-control" name="{{field.lulus}}">
-            <mat-option value="Diluluskan">Diluluskan</mat-option>
-            <mat-option value="Ditolak">Ditolak</mat-option>
-            <mat-option value="Ditangguhkan (KIV)">Ditangguhkan (KIV)</mat-option>
-          </mat-select>
-        </td>
-        <td>
-          <input [(ngModel)]="field.catlul" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.catlul}}">
-        </td>
-        <td>
-          <button class="btn btn-default"  type="button" (click)="deleteRow('lulus',i)">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <mat-select placeholder="Pilih salah satu kelulusan" class="form-control" id="newAttributeLulus" [(ngModel)]="newAttribute.lulus" [ngModelOptions]="{standalone: true}" name="newAttributeLulus">
-            <mat-option value="Diluluskan">Diluluskan</mat-option>
-            <mat-option value="Ditolak">Ditolak</mat-option>
-            <mat-option value="Ditangguhkan (KIV)">Ditangguhkan (KIV)</mat-option>
-          </mat-select>
-        </td>
-        <td>
-          <input class="form-control" type="text" id="newAttributeCatatLulus" [(ngModel)]="newAttribute.catlul" [ngModelOptions]="{standalone: true}" name="newAttributeCatatLulus">
-        </td>
-        <td>
-          <button class="btn btn-default" type="button" (click)="addRow('lulus')">Add</button>
-        </td>
-      </tr>
-    </tbody>
-  </table> -->
+  <button mat-button class="approve" (click)="approveF()">Kemaskini Penerimaan</button>
 </mat-card>

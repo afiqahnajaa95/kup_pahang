@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 
 export interface File { ppl: string, lt: string, gl: string, spil: string, id: string, userRef: string, time: string, company: string, projname: string};
 export interface Data { time: string, userRef: string, status: number, note: string};
-export interface Save { time: string, userRef: string, status: number, id: string, ref: string, fileRef: string, userFileRef: string, projname: string, company: string, fileRuj: string};
+export interface Save { izintime: string, izinref: string};
 
 
 @Component({
@@ -102,25 +102,16 @@ export class AdminSemuaComponent {
     console.log("Approved");
     console.log("Creating Permit Kerja file");
     this.saveCollection = this.db.collection<Save>('permitKerja');
-    this.saveCollection.add({izintime: this.fnsDate})
+    this.saveCollection.add({izintime: this.fnsDate, izinref:''})
       .then((refId)=>{
         console.log(refId.id);
         this.saveDoc = this.db.doc<Save>('permitKerja/'+refId.id);
-        this.itemDoc.update(this.pass.value);
+        this.saveDoc.update({izinref: refId.id});
+        this.saveDoc.update(this.pass.value);
         for(var i=0; i<this.fieldArrayAct.length; ++i){
-          this.itemDoc = this.db.doc<Data>('permitKerja/'+this.path+'/remarks/'+i);
+          this.itemDoc = this.db.doc<Data>('permitKerja/'+refId.id+'/remarks/'+i);
           this.itemDoc.set(this.fieldArrayAct[i]);
         }
-        this.saveDoc.update(this.items)
-          .then(()=>{
-            this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef);
-            this.itemDoc.delete();
-            this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path);
-            this.itemDoc.delete()
-              .then((result)=>{
-                this.router.navigate(['/adminbaru', { id: this.id }]);
-              });
-          });
       });
   }
 

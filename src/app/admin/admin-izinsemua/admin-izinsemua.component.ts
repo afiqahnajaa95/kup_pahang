@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { format } from 'date-fns';
 
@@ -28,11 +29,13 @@ export class AdminIzinSemuaComponent {
   fnsDate: string;
   item: Observable<File>;
   roads: Observable<any[]>;
+  rujs: Observable<any[]>;
   userId: string;
   userRef: string;
   fileRef: string;
   name: string;
   project: string;
+  pass: FormGroup;
   public fieldArrayAct: Array<any> = [];
   public fieldArrayPass: Array<any> = [];
   public newAttribute: any = {};
@@ -48,7 +51,8 @@ export class AdminIzinSemuaComponent {
     private db: AngularFirestore,
     private route: ActivatedRoute,
     private router: Router,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private _formBuilder: FormBuilder,
   ){
     this.date = Date.now();
     this.fnsDate = format(this.date, 'DD/MM/YYYY');
@@ -57,7 +61,7 @@ export class AdminIzinSemuaComponent {
     this.path = this.route.snapshot.paramMap.get('file');
     console.log(this.path);
     this.fileDoc = this.db.doc<File>('permitKerja/'+this.path);
-    this.item = this.fileDoc.valueChanges().subscribe((result) => {
+    this.fileDoc.valueChanges().subscribe((result) => {
         this.pplfile = result.ppl;
         this.ltfile = result.lt;
         this.glfile = result.gl;
@@ -67,25 +71,25 @@ export class AdminIzinSemuaComponent {
         this.name = result.company;
         this.project = result.projname;
       });
-      this.item = this.fileDoc.valueChanges();
-      console.log(this.item);
-      this.filesCollection = this.db.collection<File>('permohonanBaru/'+this.path+'/roadList');
-      this.roads = this.filesCollection.valueChanges();
-      console.log(this.roads);
+    this.item = this.fileDoc.valueChanges();
+    console.log(this.item);
+    this.filesCollection = this.db.collection<File>('permohonanBaru/'+this.path+'/roadList');
+    this.roads = this.filesCollection.valueChanges();
+    console.log(this.roads);
+    this.filesCollection = this.db.collection<File>('permitKerja/'+this.path+'/remarks');
+    this.rujs = this.filesCollection.valueChanges();
+    console.log(this.rujs);
+  }
+  ngOnInit(){
+    this.pass = this._formBuilder.group({
+      confirmdate: ['', Validators.required],
+    });
   }
   viewFile(){
     console.log("Opening file");
   }
-  uploadFile(event) {
-    const file = event.target.files[0];
-    const filePath = "izin";
-    console.log(filePath);
-    const ref = this.storage.ref(filePath);
-    const task = ref.put(file);
-    this.uploadPercent = task.percentageChanges();
-    task.snapshotChanges().pipe(finalize((result) => {console.log(path); ref.getDownloadURL().subscribe((result) => {console.log(result)});}););
-  }
-  save(){
-    console.log("Saving document");
+  approveF(){
+    console.log("Updating document");
+    console.log(this.pass.value.confirmdate);
   }
 }

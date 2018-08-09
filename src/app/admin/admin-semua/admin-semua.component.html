@@ -180,22 +180,22 @@
   <table class="example-full-width" cellspacing="0"><tr>
     <td>
       <p><label>Peta Penandaan Lokasi&emsp;</label></p>
-      <a class="down-button" [href]="pplfile" target="_blank">Download</a>
+      <a class="down-button" [href]="pplfile" target="_blank">Muat Turun</a>
     </td>
     <td>
       <p><label>Lukisan Tapak&emsp;</label></p>
-      <a class="down-button" [href]="ltfile" target="_blank">Download</a>
+      <a class="down-button" [href]="ltfile" target="_blank">Muat Turun</a>
     </td>
     <td>
       <p><label>Gambar Lokasi (Sila gabungkan semua gambar ke dalam bentuk PDF)&emsp;</label></p>
-      <a class="down-button" [href]="glfile" target="_blank">Download</a>
+      <a class="down-button" [href]="glfile" target="_blank">Muat Turun</a>
     </td>
   </tr></table>
 
   <table class="example-full-width" cellspacing="0"><tr>
     <td>
       <p><label>Surat Permohonan Izin Lalu (Sila cetak, tandatangan dan muat turun kembali surat permohonan izin lalu)</label></p>
-      <a class="down-button" [href]="spilfile" target="_blank">Download</a>
+      <a class="down-button" [href]="spilfile" target="_blank">Muat Turun</a>
     </td>
   </table><br>
 </mat-card>
@@ -241,7 +241,7 @@
           <input class="form-control" type="text" id="newAttributeCatatAktiviti" [(ngModel)]="newAttribute.catakt" [ngModelOptions]="{standalone: true}" name="newAttributeCatatAktiviti">
         </td>
         <td>
-          <button class="btn btn-default" type="button" (click)="addRow('aktiviti')">Add</button>
+          <button class="btn btn-default" type="button" (click)="addRow('aktiviti')">Tambah</button>
         </td>
       </tr>
     </tbody>
@@ -254,8 +254,8 @@
     <input type="text" class="form-control" placeholder="Catatan kelulusan" formControlName="note"><br>
   </form>
   <hr>
-  <button mat-button class="approve" (click)="approveF()">Approve</button>
-  <button mat-button class="decline" (click)="declineF()">Decline</button>
+  <button mat-button class="approve" (click)="approveF()">Disahkan</button>
+  <button mat-button class="decline" (click)="declineF()">Tolak</button>
   <!-- <table class="example-full-width" border="0">
     <tr>
       <th>Kelulusan</th>
