@@ -4,7 +4,7 @@
   <p>Pendaftaran sebagai:&emsp;&emsp;<input #textbox width="2000px" value="Syarikat Utiliti"></p>
   <table class="example-full-width" cellspacing="0"><tr>
     <td>
-      <input textbox width="7000px" value="Pasti Berjaya">
+      <input #textbox width="100%" value="Pasti Berjaya">
     </td>&emsp;&emsp;
     <td>
       <input #textbox width="2000px" value="1138267-U">
@@ -33,9 +33,9 @@
  <!-- SECTION 2 -->
  <p><label><font color="Orange">BAHAGIAN 2: MAKLUMAT AM PROJEK</font></label></p>
  <p><label><font size="3">Kategori Pemasangan Utiliti Baru</font></label></p>
- <input #textbox width="1000px" value="Korek Gali berjarak antara 101m-999m"><br>
+ <input #textbox width="1000px" value="Korek Gali berjarak antara 101m-999m"><br><br>
  <p><label><font size="2">Nama Projek</font></label></p>
- <input #textbox width="1000px" value="Pemasangan Unifi di Sepanjang Jalan Tunku Ismail"><br>
+ <input #textbox width="1000px" value="Pemasangan Unifi di Sepanjang Jalan Tunku Ismail"><br><br>
  <table class="example-full-width" cellspacing="0"><tr>
    <td>
      <p><label><font color="grey" size="2">Daerah</font></label></p>
@@ -85,7 +85,7 @@
      <input #textbox width="200px"><br><br>
    </td>&emsp;
    <td>
-     <p><label><font color="grey">Pihak yang meluluskan</font></label></p>
+     <p><label><font color="grey" size="2">Pihak yang meluluskan</font></label></p>
      <input #textbox width="200px" value="MPB"><br><br>
      <input #textbox width="200px"><br><br>
      <input #textbox width="200px"><br><br>
@@ -154,37 +154,36 @@
    <td>
      <p><label><font color="grey">Peta Penandaan Lokasi</font></label></p>
      <input #textbox width="900px">&emsp;&emsp;
-     <button mat-button color="Red Orange">Download</button>
+     <button mat-button color="warn">Download</button>
    </td>
  </table>
  <table class="example-full-width" cellspacing="0"><tr>
    <td>
      <p><label><font color="grey">Lukisan Tapak</font></label></p>
      <input #textbox width="900px">&emsp;&emsp;
-     <button mat-button color="Red Orange">Download</button>
+     <button mat-button color="warn">Download</button>
    </td>
  </table>
  <table class="example-full-width" cellspacing="0"><tr>
    <td>
      <p><label><font color="grey">Gambar Lokasi (sila susun semua gambar dan kemukakan dalam format PDF)</font></label></p>
      <input #textbox width="900px">&emsp;&emsp;
-     <button mat-button color="Red Orange">Download</button>
+     <button mat-button color="warn">Download</button>
    </td>
  </table>
  <table class="example-full-width" cellspacing="0"><tr>
    <td>
      <p><label><font color="grey">Surat Akuan (Sila cetak, tandatangan dan muat turun kembali untuk permohonan izin lalu)</font></label></p>
      <input #textbox width="900px">&emsp;&emsp;
-     <button mat-button color="Red Orange">Download</button>
+     <button mat-button color="warn">Download</button>
    </td>
  </table>
  <br><br><br><br>
 
- <div class="contain">
-   <div class="right-contain">
-     <div class="right-content">
-       <button mat-raised-button color="Red" align="right">Batal</button>
-     </div>
+ <div class="row">
+    <div class="col-md-4"></div>
+   <div class="col-md-4 col-md-offset-4">
+       <button mat-raised-button color="warn" align="right" (click)="openDialog()">Batal</button>
    </div>
  </div>
 
