@@ -1,14 +1,16 @@
-import { PdFreeAngularcliPage } from './app.po';
+import { AppPage } from './app.po';
+import { browser, by, element } from 'protractor';
 
-describe('pd-free-angularcli App', () => {
-  let page: PdFreeAngularcliPage;
+describe('KUP_Pahang App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new PdFreeAngularcliPage();
+    page = new AppPage();
   });
 
   it('should display welcome message', () => {
     page.navigateTo();
+    browser.pause();
     expect(page.getParagraphText()).toEqual('Welcome to app!!');
   });
 });

@@ -1,0 +1,14 @@
+<p align="center"><label><font size="4">
+  Pembatalan Permohonan Izin lalu
+</font></label></p><br>
+
+<textarea #textbox placeholder="Ulasan pembatalan permohonan" [(ngModel)]="data.batal"></textarea>
+<br><br>
+
+<div class="row">
+   <div class="col-md-4"></div>
+  <div class="col-md-4 col-md-offset-4">
+    <button mat-button-raised color="warn" (click)="closeDialog()">Padam</button>&emsp;&emsp;
+    <button mat-button-raised color="primary" (click)="closeDialog()">Hantar</button>
+  </div>
+</div>
