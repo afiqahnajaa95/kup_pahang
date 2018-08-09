@@ -15,6 +15,8 @@ export class IzinLaluComponent{
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   private itemsCollection: AngularFirestoreCollection<any>;
   items: Observable<any[]>;
+  items$: Observable<any[]>;
+  path: string;
   id: any;
   new: number = 0;
   izin: number = 0;
@@ -32,13 +34,34 @@ export class IzinLaluComponent{
   ){
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
-    this.itemsCollection = db.collection<any>('users/'+this.id+'/permohonan');
-    this.items = this.itemsCollection.valueChanges();
-    console.log(this.items);
-    this.items.subscribe((result)=>{
+    this.path = 'users/'+this.id+'/permohonan';
+    this.items$ = db.collection(this.path, ref => {
+      let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+      query = query.where('status', '==', 0);
+      return query;
+    }).valueChanges();
+    this.items$.subscribe((result)=>{
       console.log(result.length);
       this.new = result.length;
-    })
+    });
+    this.items$ = db.collection(this.path, ref => {
+      let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+      query = query.where('status', '==', 2);
+      return query;
+    }).valueChanges();
+    this.items$.subscribe((result)=>{
+      console.log(result.length);
+      this.permit = result.length;
+    });
+    this.items$ = db.collection(this.path, ref => {
+      let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+      query = query.where('status', '==', 1);
+      return query;
+    }).valueChanges();
+    this.items$.subscribe((result)=>{
+      console.log(result.length);
+      this.izin = result.length;
+    });
   }
 
   ngOnInit(){}

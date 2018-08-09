@@ -15,6 +15,7 @@ import { AdminBaruComponent } from './admin-baru/admin-baru.component';
 import { AdminIzinComponent } from './admin-izin/admin-izin.component';
 import { AdminIzinSemuaComponent } from './admin-izinsemua/admin-izinsemua.component';
 import { AdminPermitComponent } from './admin-permit/admin-permit.component';
+import { AdminPermitSemuaComponent } from './admin-permitsemua/admin-permitsemua.component';
 import { UserProfileComponent } from './userprofile/userprofile.component';
 import { MaterialModule } from '../material.module';
 import { CDKModule } from '../cdk.module';
@@ -34,6 +35,7 @@ import { PageNotFoundComponent } from '../pagenotfound/pagenotfound.component';
     AdminDashboardComponent,
     AdminSemuaComponent,
     AdminPermitComponent,
+    AdminPermitSemuaComponent,
     AdminIzinComponent,
     AdminIzinSemuaComponent,
     AdminBaruComponent,

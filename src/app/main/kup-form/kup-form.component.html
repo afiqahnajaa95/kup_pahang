@@ -394,15 +394,15 @@
       <table class="example-full-width" cellspacing="0">
         <tr>
           <td>
-            <p>Peta Penandaan Lokasi | {{ uploadPercent | async }}</p>
+            <p>Peta Penandaan Lokasi | {{ uploadPPL | async }}</p>
             <input type="file" (change)="uploadFile($event, 'ppl')"/>
           </td>
           <td>
-            <p>Lukisan Tapak</p>
+            <p>Lukisan Tapak | {{ uploadLT | async }}</p>
             <input type="file" (change)="uploadFile($event, 'lt')"/>
           </td>
           <td>
-            <p>Gambar Lokasi (sila kumpulkan kesemua gambar dan kemukaan di dalam bentuk pdf)</p>
+            <p>Gambar Lokasi | {{ uploadGL | async }} (sila kumpulkan kesemua gambar dan kemukaan di dalam bentuk pdf)</p>
             <input type="file" (change)="uploadFile($event, 'gl')"/>
           </td>
         </tr>
@@ -411,7 +411,7 @@
       <table class="example-full-width" cellspacing="0">
         <tr>
           <td>
-            <p>Surat Permohonan Izin Lalu (sila cetak, tandatangan dan upload kembali untuk permohonan izin lalu) - link ke muat turun surat permohonan izin lalu</p>
+            <p>Surat Permohonan Izin Lalu | {{ uploadSPIL | async }} (sila cetak, tandatangan dan upload kembali untuk permohonan izin lalu) - link ke muat turun surat permohonan izin lalu</p>
             <input type="file" (change)="uploadFile($event, 'spil')"/>
           </td>
         </tr>

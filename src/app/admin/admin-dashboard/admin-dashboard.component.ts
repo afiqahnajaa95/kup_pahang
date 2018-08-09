@@ -22,8 +22,10 @@ export class AdminDashboardComponent{
     permit: number = 0;
     cpc: number = 0;
     wang: number = 0;
+    path: string;
     private itemsCollection: AngularFirestoreCollection<any>;
     items: Observable<any[]>;
+    items$: Observable<any[]>;
     constructor(
       private route: ActivatedRoute,
       private router: Router,
@@ -31,17 +33,31 @@ export class AdminDashboardComponent{
     ){
       this.id = this.route.snapshot.paramMap.get('id');
       console.log(this.id);
-      this.itemsCollection = db.collection<any>('permitKerja');
-      this.items = this.itemsCollection.valueChanges();
-      console.log(this.items);
-      this.items.subscribe((result)=>{
+      this.path = 'permohonan';
+      this.items$ = db.collection(this.path, ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          query = query.where('status', '==', 2);
+          return query;
+        }).valueChanges();
+      this.items$.subscribe((result)=>{
         console.log(result.length);
         this.permit = result.length;
       });
-      this.itemsCollection = db.collection<any>('permohonanBaru');
-      this.items = this.itemsCollection.valueChanges();
-      console.log(this.items);
-      this.items.subscribe((result)=>{
+      this.items$ = db.collection(this.path, ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          query = query.where('status', '==', 1);
+          return query;
+        }).valueChanges();
+      this.items$.subscribe((result)=>{
+        console.log(result.length);
+        this.izin = result.length;
+      });
+      this.items$ = db.collection(this.path, ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          query = query.where('status', '==', 0);
+          return query;
+        }).valueChanges();
+      this.items$.subscribe((result)=>{
         console.log(result.length);
         this.new = result.length;
       });

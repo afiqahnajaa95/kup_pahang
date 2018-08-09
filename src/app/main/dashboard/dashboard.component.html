@@ -9,7 +9,7 @@
     <div class="stat">
       Izin Lalu
       <div class="text-success">
-        {{new}}
+        {{izin}}
       </div>
     </div>
     <div class="stat">
@@ -33,6 +33,14 @@
   </div>
 <br>
 
+<!-- <div *ngIf="items$ | async; let items; else loading">
+    <ul>
+      <li *ngFor="let item of items">
+        {{ item.userRef }}
+      </li>
+    </ul>
+    <div *ngIf="items.length === 0">No results, try clearing filters</div>
+  </div> -->
 <!-- TABLE -->
 <div class="content">
   <div class="example-container mat-elevation-z8">
@@ -41,7 +49,7 @@
       <button class="right-button" (click)="toPermohonan('/kupform')">Permohonan Baru</button>
     </div>
 
-    <mat-table #table [dataSource]="items">
+    <mat-table #table [dataSource]="items$">
 
       <ng-container matColumnDef="projname">
         <mat-header-cell *matHeaderCellDef> Nama Projek </mat-header-cell>

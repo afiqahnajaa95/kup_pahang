@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { format } from 'date-fns';
 
 export interface File { ppl: string, lt: string, gl: string, spil: string, id: string, userRef: string, time: string, company: string, projname: string};
-export interface Data { time: string, userRef: string, status: number, note: string};
+export interface Data { time: string, userRef: string, status: number, subStatus: number, statusText: string, note: string};
 export interface Save { izintime: string, izinref: string};
 
 
@@ -58,7 +58,7 @@ export class AdminSemuaComponent {
     console.log(this.id);
     this.path = this.route.snapshot.paramMap.get('file');
     console.log(this.path);
-    this.fileDoc = this.db.doc<File>('permohonanBaru/'+this.path);
+    this.fileDoc = this.db.doc<File>('permohonan/'+this.path);
     this.item = this.fileDoc.valueChanges();
     console.log(this.item);
     this.fileDoc.valueChanges().subscribe((result) => {
@@ -73,7 +73,7 @@ export class AdminSemuaComponent {
       this.project = result.projname;
     });
     console.log(this.items);
-    this.filesCollection = this.db.collection<File>('permohonanBaru/'+this.path+'/roadList');
+    this.filesCollection = this.db.collection<File>('permohonan/'+this.path+'/roadList');
     this.roads = this.filesCollection.valueChanges();
     console.log(this.roads);
   }
@@ -99,52 +99,42 @@ export class AdminSemuaComponent {
   }
 
   approveF(){
+    console.log("Updating Remarks");
+    for(var i=0; i<this.fieldArrayAct.length; ++i){
+      this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks/'+i);
+      this.itemDoc.set(this.fieldArrayAct[i]);
+      this.itemDoc = this.db.doc<Data>('permohonan/'+this.path+'/remarks/'+i);
+      this.itemDoc.set(this.fieldArrayAct[i]);
+    }
     console.log("Approved");
-    console.log("Creating Permit Kerja file");
-    this.saveCollection = this.db.collection<Save>('permitKerja');
-    this.saveCollection.add({izintime: this.fnsDate, izinref:''})
-      .then((refId)=>{
-        console.log(refId.id);
-        this.saveDoc = this.db.doc<Save>('permitKerja/'+refId.id);
-        this.saveDoc.update({izinref: refId.id});
-        this.saveDoc.update(this.pass.value);
-        for(var i=0; i<this.fieldArrayAct.length; ++i){
-          this.itemDoc = this.db.doc<Data>('permitKerja/'+refId.id+'/remarks/'+i);
-          this.itemDoc.set(this.fieldArrayAct[i]);
-        }
-      });
+    this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef);
+    this.itemDoc.update(this.pass.value);
+    this.itemDoc.update({status: 1, statusText: 'Izin Lalu'});
+    this.itemDoc = this.db.doc<Data>('permohonan/'+this.path);
+    this.itemDoc.update(this.pass.value);
+    this.itemDoc.update({status: 1, , statusText: 'Izin Lalu'})
+    .then((result)=>{
+      this.router.navigate(['/admindash', { id: this.id }])
+    });
   }
 
   declineF(){
+    console.log("Updating Remarks");
+    for(var i=0; i<this.fieldArrayAct.length; ++i){
+      this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks/'+i);
+      this.itemDoc.set(this.fieldArrayAct[i]);
+      this.itemDoc = this.db.doc<Data>('permohonan/'+this.path+'/remarks/'+i);
+      this.itemDoc.set(this.fieldArrayAct[i]);
+    }
     console.log("Declined");
-    this.itemsCollection = this.db.collection<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks');
-    this.itemsCollection.add({time: this.fnsDate, userRef: '', status: 2, note: ''})
-      .then((refId)=>{
-        console.log(refId.id);
-        this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks/'+refId.id);
-        this.itemDoc.update(this.pass.value);
-        for(var i=0; i<this.fieldArrayAct.length; ++i){
-          this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef+'/remarks/'+i);
-          this.itemDoc.set(this.fieldArrayAct[i]);
-        }
-      });
-    this.itemsCollection = this.db.collection<Data>('permohonanBaru/'+this.path+'/remarks');
-    this.itemsCollection.add({time: this.fnsDate, userRef: '', status: 2, note: ''})
-      .then((refId)=>{
-        console.log(refId.id);
-        this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path+'/remarks/'+refId.id);
-        this.itemDoc.update(this.pass.value);
-        for(var i=0; i<this.fieldArrayAct.length; ++i){
-          this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path+'/remarks/'+i);
-          this.itemDoc.set(this.fieldArrayAct[i]);
-        }
-      });
     this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef);
-    this.itemDoc.update({status: 2, note: this.pass.value.note});
-    this.itemDoc = this.db.doc<Data>('permohonanBaru/'+this.path);
-    this.itemDoc.update({status: 2, note: this.pass.value.note})
-      .then((result)=>{
-        this.router.navigate(['/adminbaru', { id: this.id }])
-      });
+    this.itemDoc.update(this.pass.value);
+    this.itemDoc.update({status: 1, subStatus: 1});
+    this.itemDoc = this.db.doc<Data>('permohonan/'+this.path);
+    this.itemDoc.update(this.pass.value);
+    this.itemDoc.update({status: 1, subStatus: 1})
+    .then((result)=>{
+      this.router.navigate(['/admindash', { id: this.id }])
+    });
   }
 }

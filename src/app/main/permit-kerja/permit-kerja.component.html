@@ -40,7 +40,7 @@
       Rekod Permohonan
     </div>
 
-    <mat-table #table [dataSource]="items">
+    <mat-table #table [dataSource]="items$">
 
       <ng-container matColumnDef="projname">
         <mat-header-cell *matHeaderCellDef> Nama Projek </mat-header-cell>
@@ -60,9 +60,9 @@
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="icon-warning" *ngIf='element.status==1; else elseBlock'>Pending</span>
+          <span class="icon-warning" *ngIf='element.subStatus==0; else elseBlock'>Pending</span>
           <ng-template #elseBlock>
-            <span class="icon-success" *ngIf='element.status==2'>Approved</span>
+            <span class="icon-success" *ngIf='element.subStatus==1'>Approved</span>
           </ng-template>
         </mat-cell>
       </ng-container>

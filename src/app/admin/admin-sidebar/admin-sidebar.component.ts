@@ -80,6 +80,6 @@ export class AdminSidebarComponent implements OnInit {
     logOut(){
       console.log("Logging Out");
       this.firebase.auth.signOut();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/adminlogin']);
     }
 }

@@ -32,7 +32,10 @@ export class KupFormComponent {
     fieldObject: any;
     public fieldArray: Array<any> = [];
     public newAttribute: any = {};
-    uploadPercent: Observable<number>;
+    uploadPPL: Observable<number>;
+    uploadGL: Observable<number>;
+    uploadLT: Observable<number>;
+    uploadSPIL: Observable<number>;
     downloadURL: Observable<string>;
 
     constructor(
@@ -47,7 +50,6 @@ export class KupFormComponent {
       console.log(this.fnsDate);
       this.id = this.route.snapshot.paramMap.get('id');
       console.log(this.id);
-      this.itemsCollection = db.collection<Item>('users/'+this.id+"/permohonan");
       this.itemDoc = db.doc<Item>('users/'+this.id);
       this.itemDoc.valueChanges().subscribe((result) =>{
       console.log(result);
@@ -59,6 +61,7 @@ export class KupFormComponent {
       this.firstFormGroup = this._formBuilder.group({
         id: [this.id],
         status: [0],
+        subStatus: [0],
         statusText: ['Permohonan Baru'],
         newutility: ['', Validators.required],
         projname: ['', Validators.required],
@@ -126,7 +129,15 @@ export class KupFormComponent {
       console.log(filePath);
       const ref = this.storage.ref(filePath);
       const task = ref.put(file);
-      this.uploadPercent = task.percentageChanges();
+      if(path == "ppl"){
+        this.uploadPPL = task.percentageChanges();
+      }else if(path == "lt"){
+        this.uploadLT = task.percentageChanges();
+      }else if(path == "gl"){
+        this.uploadGL = task.percentageChanges();
+      }else if(path == "spil"){
+        this.uploadSPIL = task.percentageChanges();
+      }
       task.snapshotChanges().pipe(
         finalize(() => {
             console.log(path);
@@ -157,9 +168,7 @@ export class KupFormComponent {
       console.log("Saving Data");
       this.firstFormGroup.value.startdate = format(this.firstFormGroup.value.startdate, 'DD/MM/YYYY');
       this.firstFormGroup.value.enddate = format(this.firstFormGroup.value.enddate, 'DD/MM/YYYY');
-      // console.log(this.firstFormGroup.value.startdate);
-      // console.log(this.date);
-      // console.log(this.fieldArray[0].roadname);
+      this.itemsCollection = this.db.collection<Item>('users/'+this.id+"/permohonan");
       this.itemsCollection.add({time: this.fnsDate, userRef: '', ref: ''})
         .then((refId)=>{
           console.log(refId.id);
@@ -177,11 +186,11 @@ export class KupFormComponent {
           };
         })
         .then((result) => {
-          this.itemsCollection = this.db.collection<Item>('permohonanBaru');
+          this.itemsCollection = this.db.collection<Item>('permohonan');
           this.itemsCollection.add({time: this.fnsDate, userRef: '', ref: ''})
             .then((refId)=>{
               console.log(refId.id);
-              this.itemDoc = this.db.doc<Item>('permohonanBaru/'+refId.id);
+              this.itemDoc = this.db.doc<Item>('permohonan/'+refId.id);
               this.itemDoc.update({time: this.fnsDate, userRef: this.refUser, ref: refId.id});
               this.itemDoc.update(this.firstFormGroup.value);
               this.itemDoc.update(this.secondFormGroup.value);
@@ -189,7 +198,7 @@ export class KupFormComponent {
               this.itemDoc.update(this.fourthFormGroup.value);
               this.itemDoc.update(this.fifthFormGroup.value);
               for(var i=0; i<this.fieldArray.length; ++i){
-                this.itemDoc = this.db.doc<Item>('permohonanBaru/'+refId.id+'/roadList/'+i);
+                this.itemDoc = this.db.doc<Item>('permohonan/'+refId.id+'/roadList/'+i);
                 this.itemDoc.set(this.fieldArray[i]);
               };
             })

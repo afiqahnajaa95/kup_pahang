@@ -1,9 +1,9 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 declare var $:any;
 
@@ -21,8 +21,12 @@ export class DashboardComponent{
     permit: number = 0;
     cpc: number = 0;
     wang: number = 0;
+    something: any;
+    path: string;
     private itemsCollection: AngularFirestoreCollection<any>;
+    private itemDoc: AngularFirestoreDocument<any>;
     items: Observable<any[]>;
+    items$: Observable<any[]>;
     constructor(
       private route: ActivatedRoute,
       private router: Router,
@@ -30,13 +34,35 @@ export class DashboardComponent{
     ){
       this.id = this.route.snapshot.paramMap.get('id');
       console.log(this.id);
-      this.itemsCollection = db.collection<any>('users/'+this.id+'/permohonan');
-      this.items = this.itemsCollection.valueChanges();
-      console.log(this.items);
-      this.items.subscribe((result)=>{
+      this.path = 'users/'+this.id+'/permohonan';
+      this.items$ = db.collection(this.path, ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          query = query.where('status', '==', 1);
+          return query;
+        }).valueChanges();
+      this.items$.subscribe((result)=>{
+        console.log(result.length);
+        this.izin = result.length;
+      });
+      this.items$ = db.collection(this.path, ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          query = query.where('status', '==', 2);
+          return query;
+        }).valueChanges();
+      this.items$.subscribe((result)=>{
+        console.log(result.length);
+        this.permit = result.length;
+      });
+      this.items$ = db.collection(this.path, ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          query = query.where('status', '==', 0);
+          return query;
+        }).valueChanges();
+      this.items$.subscribe((result)=>{
         console.log(result.length);
         this.new = result.length;
       });
+      this.items$ = db.collection(this.path).valueChanges();
     }
     displayedColumns = ['projname', 'company', 'date', 'status', 'comment'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);

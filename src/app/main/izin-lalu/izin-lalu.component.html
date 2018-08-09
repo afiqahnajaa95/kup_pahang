@@ -8,7 +8,7 @@
   <div class="stat">
     Izin Lalu
     <div class="text-success">
-      {{new}}
+      {{izin}}
     </div>
   </div>
   <div class="stat">
@@ -40,7 +40,7 @@
       Rekod Permohonan
     </div>
 
-    <mat-table #table [dataSource]="items">
+    <mat-table #table [dataSource]="items$">
 
       <ng-container matColumnDef="projname">
         <mat-header-cell *matHeaderCellDef> Nama Projek </mat-header-cell>
@@ -54,18 +54,15 @@
 
       <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef> Tarikh Memohon </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.time | date:'shortDate' }}</mat-cell>
+        <mat-cell *matCellDef="let element"> {{ element.time }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="icon-warning" *ngIf='element.status==0; else elseBlock'>Pending</span>
+          <span class="icon-warning" *ngIf='element.subStatus==0; else elseBlock'>Pending</span>
           <ng-template #elseBlock>
-            <span class="icon-success" *ngIf='element.status==1; else elseelseBlock'>Approved</span>
-          </ng-template>
-          <ng-template #elseelseBlock>
-            <span class="icon-danger" *ngIf='element.status==2'>Rejected</span>
+            <span class="icon-success" *ngIf='element.subStatus==1'>Declined</span>
           </ng-template>
         </mat-cell>
       </ng-container>

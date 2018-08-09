@@ -235,14 +235,8 @@
     <p><label>Catatan Kelulusan&emsp;</label></p>
     <p>{{ (item | async)?.note }}</p>
   </div>
-  <form [formGroup]="pass">
-    <p>Tarikh Penerimaan</p>
-    <mat-form-field class="example-full-width">
-      <input matInput [matDatepicker]="picker1" placeholder="Pilih tarikh" formControlName="confirmdate" required>
-      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-      <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
-  </form>
-  <hr>
-  <button mat-button class="approve" (click)="approveF()">Kemaskini Penerimaan</button>
+  <div class="content">
+    <p><label>Tarikh Penerimaan&emsp;</label></p>
+    <p>{{ (item | async)?.confirmdate }}</p>
+  </div>
 </mat-card>

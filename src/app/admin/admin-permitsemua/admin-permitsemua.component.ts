@@ -7,17 +7,17 @@ import { Observable } from 'rxjs';
 import { format } from 'date-fns';
 
 export interface File { ppl: string, lt: string, gl: string, spil: string, id: string, userRef: string, time: string, company: string, projname: string};
-export interface Data { time: string, userRef: string, status: number, subStatus: number, statusText: string};
+export interface Data { time: string, userRef: string, status: number};
 export interface Save { time: string, userRef: string, status: number, id: string, ref: string, fileRef: string, userFileRef: string, projname: string, company: string};
 
 
 @Component({
-  selector: 'admin-izinsemua',
-  templateUrl: './admin-izinsemua.component.html',
-  styleUrls: ['./admin-izinsemua.component.css']
+  selector: 'admin-permitsemua',
+  templateUrl: './admin-permitsemua.component.html',
+  styleUrls: ['./admin-permitsemua.component.css']
 })
 
-export class AdminIzinSemuaComponent {
+export class AdminPermitSemuaComponent {
   _ref:any;
   id: any;
   path: any;
@@ -87,19 +87,5 @@ export class AdminIzinSemuaComponent {
   }
   viewFile(){
     console.log("Opening file");
-  }
-  approveF(){
-    console.log("Updating document");
-    this.pass.value.confirmdate = format(this.pass.value.confirmdate, 'DD/MM/YYYY');
-    console.log(this.pass.value.confirmdate);
-    this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef);
-    this.itemDoc.update(this.pass.value);
-    this.itemDoc.update({status: 2, subStatus: 1, statusText: 'Permit Kerja'})
-    this.itemDoc = this.db.doc<Data>('permohonan/'+this.path);
-    this.itemDoc.update(this.pass.value);
-    this.itemDoc.update({status: 2, subStatus: 1, statusText: 'Permit Kerja'})
-    .then((result)=>{
-      this.router.navigate(['/adminlalu', { id: this.id }])
-    });
   }
 }

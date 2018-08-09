@@ -12,7 +12,7 @@
    <div class="stat">
      Izin Lalu
      <div class="text-success">
-       {{permit}}
+       {{izin}}
      </div>
    </div>
    <div class="stat">
@@ -149,7 +149,7 @@
       </mat-form-field>
     </div>
 
-    <mat-table #table [dataSource]="items">
+    <mat-table #table [dataSource]="items$">
 
       <ng-container matColumnDef="projname">
         <mat-header-cell *matHeaderCellDef> Nama Projek </mat-header-cell>
@@ -168,7 +168,12 @@
 
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.statusText}} </mat-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="icon-warning" *ngIf='element.subStatus==0; else elseBlock'>Pending</span>
+          <ng-template #elseBlock>
+            <span class="icon-danger" *ngIf='element.subStatus==1'>Declined</span>
+          </ng-template>
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="comment">
