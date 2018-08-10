@@ -14,6 +14,8 @@ import { CDKModule } from './cdk.module';
 import { KupLoginComponent }   from './kup-login/kup-login.component';
 import { KupSignupComponent }   from './kup-signup/kup-signup.component';
 import { KupRegisterComponent }   from './kup-register/kup-register.component';
+import { TrackFormComponent }   from './track-form/track-form.component';
+import { TrackFormResultComponent }   from './track-form-result/track-form-result.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
@@ -35,6 +37,8 @@ import { MatDialogModule, MatButtonModule, MatGridListModule } from '@angular/ma
     KupRegisterComponent,
     AdminLoginComponent,
     ForgotPasswordComponent,
+    TrackFormComponent,
+    TrackFormResultComponent
   ],
   imports: [
     BrowserModule,

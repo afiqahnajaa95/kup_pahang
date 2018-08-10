@@ -35,3 +35,7 @@ mat-card {
 mat-checkbox {
   font-weight: normal !important;
 }
+
+background {
+  color: grey;
+}

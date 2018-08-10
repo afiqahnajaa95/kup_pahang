@@ -8,6 +8,8 @@ import { MainComponent }   from './main/main.component';
 import { AdminComponent }   from './admin/admin.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { TrackFormComponent } from './track-form/track-form.component';
+import { TrackFormResultComponent } from './track-form-result/track-form-result.component';
 
 const approutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -20,6 +22,8 @@ const approutes: Routes = [
   { path: 'register', component: KupRegisterComponent },
   { path: 'adminlogin', component: AdminLoginComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'track-page', component: TrackFormComponent },
+  { path: 'track-result', component: TrackFormResultComponent },
 ];
 
 @NgModule({

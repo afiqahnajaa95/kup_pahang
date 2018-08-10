@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-xs-6 col-md-4"></div>
+  <div class="col-xs-6 col-md-4" align="center">
+        <div class="logo-img">
+          <br><br>
+            <img src="../../assets/img/kup-logo123.png" alt="" align="center" width="150">
+        </div>
+        <br><br>
+
+    <p><label><font size="3" align="center">Semak Status Permohonan Projek Anda</font></label></p><br>
+    <form [formGroup]="track" novalidate>
+        <div class="form-group">
+          <p>No. SSM atau Kad Pengenalan</p>
+            <input #textbox formControlName="ssm" required>
+        </div>
+        <div class="form-group">
+          <p>No. Fail Projek</p>
+            <input #textbox formControlName="filenum" required>
+        </div><br>
+        <button mat-raised-button color="primary" [routerLink]="'/track-result'" align="center">SEMAK</button>
+    </form>
+</div>
+</div>
