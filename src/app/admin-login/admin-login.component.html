@@ -1,33 +1,34 @@
-<div class="col-md-6 col-md-offset-3">
-        <div class="logo-img" >
+<div class="col-md-5"></div>
+<div class="col-md-3" align="center">
+        <div class="logo-img">
           <br><br>
             <img src="../../assets/img/kup-logo123.png" alt="" align="center" width="100">
         </div>
         <br><br>
 </div>
 <br><br>
-<div class="col-md-6 col-md-offset-3">
+
+<div class="col-md-5"></div>
+<div class="col-md-3" align="center">
   <mat-card>
-    <p><label>Sign in as KUP Admin</label></p>
-    <!-- {{login.value | json}} -->
+    <p><font size="2">Sign in as KUP Admin</font></p>
     <form [formGroup]="login">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" formControlName="email"/>
-            <label>Password</label>
-            <input type="password" class="form-control" formControlName="password"/><br>
-            <mat-checkbox required>
-              Keep me signed in
-            </mat-checkbox><br><br>
-            <button mat-button (click)="loginF()" align="center">SIGN IN</button>
-        </div>
+      <div class="form-group" align="center">
+          <input type="text" class="form-control" formControlName="email" placeholder="Email"><br>
+          <input type="password" class="form-control" formControlName="password" placeholder="Password"><br>
+          <mat-checkbox required><p style="font-weight: normal;"><font size="2">
+            Keep me signed in
+          </font></p></mat-checkbox><br><br>
+          <button mat-raised-button color="accent" (click)="loginF()" align="center">SIGN IN</button>
+      </div>
     </form>
   </mat-card>
 </div>
 
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-5"></div>
+<div class="col-md-3" align="center">
   <br><br>
-<a class="forgot-password" [routerLink]="''"><label>
-    FORGOT PASSWORD
- </label></a><br>
+  <a class="forgot-password" [routerLink]="'/forgot-password'"><label><font color="black">
+      FORGOT PASSWORD?
+   </font></label></a><br>
 </div>

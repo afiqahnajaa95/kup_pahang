@@ -8,7 +8,6 @@
         <table class="example-full-width" cellspacing="0"><tr>
           <td>
               <p>Kategori Pemasangan Utiliti Baru:</p>
-              <!-- {{ (data | async)?.email }} -->
               <mat-form-field class="example-full-width">
                 <mat-select placeholder="Pilih salah satu" formControlName="newutility" required>
                   <mat-option value="Korek Gali berjarak kurang daripada 100m">Korek Gali berjarak kurang daripada 100m</mat-option>
@@ -89,7 +88,7 @@
          </tr></table>
 
       <div style="float: right;">
-        <button mat-button matStepperNext>Next</button>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
       <br>
     </mat-card>
@@ -101,157 +100,149 @@
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>MAKLUMAT JALAN</ng-template>
       <mat-card>
-        <table class="example-full-width" border="0">
-                <tr>
-                  <td>Nama Jalan</td>
-                  <td>Koordinat Mula</td>
-                  <td>Koordinat Akhir</td>
-                  <td>Pihak yang Meluluskan</td>
-                  <td>Kaedah Kerja</td>
-                  <td>Panjang (m)</td>
-                  <td>Action</td>
-                </tr>
-            <tbody>
-                <tr *ngFor="let field of fieldArray; let i = index">
-                    <td>
-                        <input [(ngModel)]="field.roadname" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.roadname}}">
-                    </td>
-                    <td>
-                        <input [(ngModel)]="field.startcor" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.startcor}}">
-                    </td>
-                    <td>
-                        <input [(ngModel)]="field.endcor" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.endcor}}">
-                    </td>
-                    <br>
-                    <td>
-                      <mat-select [(ngModel)]="field.pihak" [ngModelOptions]="{standalone: true}" class="form-control" name="{{field.pihak}}">
-                        <mat-option>-- Majlis Perbandaran/ Majlis Daerah --</mat-option>
-                        <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
-                        <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
-                        <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
-                        <mat-option value="Majlis Perbandaran Temerloh">Majlis Perbandaran Temerloh</mat-option>
-                        <mat-option value="Majlis Daerah Jerantut">Majlis Daerah Jerantut</mat-option>
-                        <mat-option value="Majlis Daerah Rompin">Majlis Daerah Rompin</mat-option>
-                        <mat-option value="Majlis Daerah Raub">Majlis Daerah Raub</mat-option>
-                        <mat-option value="Majlis Daerah Lipis">Majlis Daerah Lipis</mat-option>
-                        <mat-option value="Majlis Daerah Pekan">Majlis Daerah Pekan</mat-option>
-                        <mat-option value="Majlis Daerah Cameron Highlands">Majlis Daerah Cameron Highlands</mat-option>
-                        <mat-option value="Majlis Daerah Bera">Majlis Daerah Bera</mat-option>
-                        <mat-option>-- Jabatan Kerja Raya --</mat-option>
-                        <mat-option value="JKR Kuantan">JKR Kuantan</mat-option>
-                        <mat-option value="JKR Bentong">JKR Bentong</mat-option>
-                        <mat-option value="JKR Maran">JKR Maran</mat-option>
-                        <mat-option value="JKR Temerloh">JKR Temerloh</mat-option>
-                        <mat-option value="JKR Jerantut">JKR Jerantut</mat-option>
-                        <mat-option value="JKR Rompin">JKR Rompin</mat-option>
-                        <mat-option value="JKR Raub">JKR Raub</mat-option>
-                        <mat-option value="JKR Lipis">JKR Lipis</mat-option>
-                        <mat-option value="JKR Pekan">JKR Pekan</mat-option>
-                        <mat-option value="JKR Cameron Highlands">JKR Cameron Highlands</mat-option>
-                        <mat-option value="JKR Bera">JKR Bera</mat-option>
-                      </mat-select>
-                    </td>
-                    <td>
-                      <mat-select [(ngModel)]="field.method" [ngModelOptions]="{standalone: true}" class="form-control" name="{{field.method}}">
-                        <mat-option>Pilih salah satu</mat-option>
-                        <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
-                        <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
-                        <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
-                        <mat-option value="Pemasangan Paip">Pemasangan Paip</mat-option>
-                        <mat-option value="Pemasangan Secara Terbuka">Pemasangan Secara Terbuka</mat-option>
-                        <mat-option value="Tiang">Tiang</mat-option>
-                        <mat-option value="Lain-lain">Lain-lain</mat-option>
-                      </mat-select>
-                    </td>
-                    <td>
-                        <input [(ngModel)]="field.length" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.length}}">
-                    </td>
-                    <td>
-                        <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input class="form-control" type="text" id="newAttributeRoadName" [(ngModel)]="newAttribute.roadname" [ngModelOptions]="{standalone: true}" name="newAttributeRoadName">
-                    </td>
-                    <td>
-                        <input class="form-control" type="text" id="newAttributeStartCor" [(ngModel)]="newAttribute.startcor" [ngModelOptions]="{standalone: true}" name="newAttributeStartCor">
-                    </td>
-                    <td>
-                        <input class="form-control" type="text" id="newAttributeEndCor" [(ngModel)]="newAttribute.endcor" [ngModelOptions]="{standalone: true}" name="newAttributeEndCor">
-                    </td>
-                    <td>
-                        <mat-select class="form-control" id="newAttributePihak" [(ngModel)]="newAttribute.pihak" [ngModelOptions]="{standalone: true}" name="newAttributePihak">
-                          <mat-option>-- Majlis Perbandaran/ Majlis Daerah --</mat-option>
-                          <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
-                          <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
-                          <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
-                          <mat-option value="Majlis Perbandaran Temerloh">Majlis Perbandaran Temerloh</mat-option>
-                          <mat-option value="Majlis Daerah Jerantut">Majlis Daerah Jerantut</mat-option>
-                          <mat-option value="Majlis Daerah Rompin">Majlis Daerah Rompin</mat-option>
-                          <mat-option value="Majlis Daerah Raub">Majlis Daerah Raub</mat-option>
-                          <mat-option value="Majlis Daerah Lipis">Majlis Daerah Lipis</mat-option>
-                          <mat-option value="Majlis Daerah Pekan">Majlis Daerah Pekan</mat-option>
-                          <mat-option value="Majlis Daerah Cameron Highlands">Majlis Daerah Cameron Highlands</mat-option>
-                          <mat-option value="Majlis Daerah Bera">Majlis Daerah Bera</mat-option>
-                          <mat-option>-- Jabatan Kerja Raya --</mat-option>
-                          <mat-option value="JKR Kuantan">JKR Kuantan</mat-option>
-                          <mat-option value="JKR Bentong">JKR Bentong</mat-option>
-                          <mat-option value="JKR Maran">JKR Maran</mat-option>
-                          <mat-option value="JKR Temerloh">JKR Temerloh</mat-option>
-                          <mat-option value="JKR Jerantut">JKR Jerantut</mat-option>
-                          <mat-option value="JKR Rompin">JKR Rompin</mat-option>
-                          <mat-option value="JKR Raub">JKR Raub</mat-option>
-                          <mat-option value="JKR Lipis">JKR Lipis</mat-option>
-                          <mat-option value="JKR Pekan">JKR Pekan</mat-option>
-                          <mat-option value="JKR Cameron Highlands">JKR Cameron Highlands</mat-option>
-                          <mat-option value="JKR Bera">JKR Bera</mat-option>
-                        </mat-select>
-                    </td>
-                    <td>
-                        <mat-select class="form-control" id="newAttributeMethod" [(ngModel)]="newAttribute.method" [ngModelOptions]="{standalone: true}" name="newAttributeMethod">
-                          <mat-option>Pilih salah satu</mat-option>
-                          <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
-                          <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
-                          <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
-                          <mat-option value="Pemasangan Paip">Pemasangan Paip</mat-option>
-                          <mat-option value="Pemasangan Secara Terbuka">Pemasangan Secara Terbuka</mat-option>
-                          <mat-option value="Tiang">Tiang</mat-option>
-                          <mat-option value="Lain-lain">Lain-lain</mat-option>
-                        </mat-select>
-                    </td>
-                    <td>
-                        <input class="form-control" type="text" id="newAttributeLength" [(ngModel)]="newAttribute.length" [ngModelOptions]="{standalone: true}" name="newAttributeLength">
-                    </td>
-                    <td>
-                        <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <table>
+    <thead>
+        <tr>
+          <td>Nama Jalan</td>
+          <td>Koordinat Mula</td>
+          <td>Koordinat Akhir</td>
+          <td>Pihak yang Meluluskan</td>
+          <td>Kaedah Kerja</td>
+          <td>Panjang (m)</td>
+          <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let field of fieldArray; let i = index">
+            <td><input [(ngModel)]="field.roadname" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.roadname}}" /></td>
+            <td><input [(ngModel)]="field.startcor" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.startcor}}" /></td>
+            <td><input [(ngModel)]="field.endcor" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.endcor}}" /></td>
+            <td><mat-select [(ngModel)]="field.pihak" [ngModelOptions]="{standalone: true}" class="form-control" name="{{field.pihak}}">
+              <mat-option><label>-- Majlis Perbandaran/ Majlis Daerah --</label></mat-option>
+              <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
+              <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
+              <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
+              <mat-option value="Majlis Perbandaran Temerloh">Majlis Perbandaran Temerloh</mat-option>
+              <mat-option value="Majlis Daerah Jerantut">Majlis Daerah Jerantut</mat-option>
+              <mat-option value="Majlis Daerah Rompin">Majlis Daerah Rompin</mat-option>
+              <mat-option value="Majlis Daerah Raub">Majlis Daerah Raub</mat-option>
+              <mat-option value="Majlis Daerah Lipis">Majlis Daerah Lipis</mat-option>
+              <mat-option value="Majlis Daerah Pekan">Majlis Daerah Pekan</mat-option>
+              <mat-option value="Majlis Daerah Cameron Highlands">Majlis Daerah Cameron Highlands</mat-option>
+              <mat-option value="Majlis Daerah Bera">Majlis Daerah Bera</mat-option>
+              <mat-option><label>-- Jabatan Kerja Raya --</label></mat-option>
+              <mat-option value="JKR Kuantan">JKR Kuantan</mat-option>
+              <mat-option value="JKR Bentong">JKR Bentong</mat-option>
+              <mat-option value="JKR Maran">JKR Maran</mat-option>
+              <mat-option value="JKR Temerloh">JKR Temerloh</mat-option>
+              <mat-option value="JKR Jerantut">JKR Jerantut</mat-option>
+              <mat-option value="JKR Rompin">JKR Rompin</mat-option>
+              <mat-option value="JKR Raub">JKR Raub</mat-option>
+              <mat-option value="JKR Lipis">JKR Lipis</mat-option>
+              <mat-option value="JKR Pekan">JKR Pekan</mat-option>
+              <mat-option value="JKR Cameron Highlands">JKR Cameron Highlands</mat-option>
+              <mat-option value="JKR Bera">JKR Bera</mat-option>
+            </mat-select></td>
+            <td><mat-select [(ngModel)]="field.method" [ngModelOptions]="{standalone: true}" class="form-control" name="{{field.method}}">
+               <mat-option>Pilih salah satu</mat-option>
+               <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
+               <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
+               <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
+               <mat-option value="Pemasangan Paip">Pemasangan Paip</mat-option>
+               <mat-option value="Pemasangan Secara Terbuka">Pemasangan Secara Terbuka</mat-option>
+               <mat-option value="Tiang">Tiang</mat-option>
+               <mat-option value="Lain-lain">Lain-lain</mat-option>
+             </mat-select></td>
+            <td><input [(ngModel)]="field.length" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.length}}"/></td>
+            <td><button mat-icon-button (click)="deleteFieldValue(i)"><i class="material-icons">
+              delete
+            </i></button></td>
+        </tr>
+        <tr>
+            <td><input class="form-control" type="text" id="newAttributeRoadName" [(ngModel)]="newAttribute.roadname" [ngModelOptions]="{standalone: true}" name="newAttributeRoadName" /></td>
+            <td><input class="form-control" type="text" id="newAttributeStartCor" [(ngModel)]="newAttribute.startcor" [ngModelOptions]="{standalone: true}" name="newAttributeStartCor" /></td>
+            <td><input class="form-control" type="text" id="newAttributeEndCor" [(ngModel)]="newAttribute.endcor" [ngModelOptions]="{standalone: true}" name="newAttributeEndCor" /></td>
+            <td><mat-select class="form-control" id="newAttributePihak" [(ngModel)]="newAttribute.pihak" [ngModelOptions]="{standalone: true}" name="newAttributePihak">
+              <mat-option><label>-- Majlis Perbandaran/ Majlis Daerah --</label></mat-option>
+              <mat-option value="Majlis Perbandaran Kuantan">Majlis Perbandaran Kuantan</mat-option>
+              <mat-option value="Majlis Perbandaran Bentong">Majlis Perbandaran Bentong</mat-option>
+              <mat-option value="Majlis Daerah Maran">Majlis Daerah Maran</mat-option>
+              <mat-option value="Majlis Perbandaran Temerloh">Majlis Perbandaran Temerloh</mat-option>
+              <mat-option value="Majlis Daerah Jerantut">Majlis Daerah Jerantut</mat-option>
+              <mat-option value="Majlis Daerah Rompin">Majlis Daerah Rompin</mat-option>
+              <mat-option value="Majlis Daerah Raub">Majlis Daerah Raub</mat-option>
+              <mat-option value="Majlis Daerah Lipis">Majlis Daerah Lipis</mat-option>
+              <mat-option value="Majlis Daerah Pekan">Majlis Daerah Pekan</mat-option>
+              <mat-option value="Majlis Daerah Cameron Highlands">Majlis Daerah Cameron Highlands</mat-option>
+              <mat-option value="Majlis Daerah Bera">Majlis Daerah Bera</mat-option>
+              <mat-option><label>-- Jabatan Kerja Raya --</label></mat-option>
+              <mat-option value="JKR Kuantan">JKR Kuantan</mat-option>
+              <mat-option value="JKR Bentong">JKR Bentong</mat-option>
+              <mat-option value="JKR Maran">JKR Maran</mat-option>
+              <mat-option value="JKR Temerloh">JKR Temerloh</mat-option>
+              <mat-option value="JKR Jerantut">JKR Jerantut</mat-option>
+              <mat-option value="JKR Rompin">JKR Rompin</mat-option>
+              <mat-option value="JKR Raub">JKR Raub</mat-option>
+              <mat-option value="JKR Lipis">JKR Lipis</mat-option>
+              <mat-option value="JKR Pekan">JKR Pekan</mat-option>
+              <mat-option value="JKR Cameron Highlands">JKR Cameron Highlands</mat-option>
+              <mat-option value="JKR Bera">JKR Bera</mat-option>
+            </mat-select></td>
+            <td><mat-select class="form-control" id="newAttributeMethod" [(ngModel)]="newAttribute.method" [ngModelOptions]="{standalone: true}" name="newAttributeMethod">
+              <mat-option>Pilih salah satu</mat-option>
+              <mat-option value="Pengorekan Terbuka (Bahu Jalan)">Pengorekan Terbuka (Bahu Jalan)</mat-option>
+              <mat-option value="Pengorekan Terbuka (Atas Jalan)">Pengorekan Terbuka (Atas Jalan)</mat-option>
+              <mat-option value="Penggerudian Secara Melintang (HDD)">Penggerudian Secara Melintang (HDD)</mat-option>
+              <mat-option value="Pemasangan Paip">Pemasangan Paip</mat-option>
+              <mat-option value="Pemasangan Secara Terbuka">Pemasangan Secara Terbuka</mat-option>
+              <mat-option value="Tiang">Tiang</mat-option>
+              <mat-option value="Lain-lain">Lain-lain</mat-option>
+            </mat-select></td>
+            <td><input class="form-control" type="text" id="newAttributeLength" [(ngModel)]="newAttribute.length" [ngModelOptions]="{standalone: true}" name="newAttributeLength" /></td>
+            <td><button mat-icon-button (click)="addFieldValue()"><i class="material-icons">
+              add_circle
+            </i></button></td>
+        </tr>
+    </tbody>
+</table>
 
-        <table class="example-full-width" cellspacing="0"><tr>
-           <td>
-             <p>Jumlah Panjang HDD (m):</p>
-             <mat-form-field class="example-full-width" align="left">
-               <input matInput placeholder="Sila Nyatakan" formControlName="hdd" required>
-           </mat-form-field></td>
-           <td>
-             <p>Ukuran Panjang Pengorek (m):</p>
-             <mat-form-field class="example-full-width">
-               <input matInput placeholder="Sila Nyatakan" formControlName="tunnelling" required>
-           </mat-form-field></td>
-           <td>
-             <p>Jumlah Jarak Keseluruhan (m):</p>
-             <mat-form-field class="example-full-width">
-               <input matInput placeholder="Sila Nyatakan" formControlName="total" required>
-           </mat-form-field></td>
-         </tr></table>
+<div class="row">
+   <div class="col-md-4"></div>
+  <div class="col-md-4 col-md-offset-4">
+    <p>Jumlah Panjang HDD (m):</p>
+    <mat-form-field class="example-full-width" align="left">
+      <input matInput placeholder="Sila Nyatakan" formControlName="hdd" required>
+    </mat-form-field>
+  </div>
+</div>
 
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+<div class="row">
+   <div class="col-md-4"></div>
+  <div class="col-md-4 col-md-offset-4">
+    <p>Ukuran Panjang Pengorek (m):</p>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Sila Nyatakan" formControlName="tunnelling" required>
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4"></div>
+  <div class="col-md-4 col-md-offset-4">
+    <p>Jumlah Jarak Keseluruhan (m):</p>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Sila Nyatakan" formControlName="total" required>
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="row">
+   <div class="col-md-4"></div>
+  <div class="col-md-4 col-md-offset-4">
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
+    </div>
     </mat-card>
     </form>
   </mat-step>
@@ -312,10 +303,13 @@
          </mat-form-field></td>
        </tr></table>
 
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+       <div class="row">
+          <div class="col-md-4"></div>
+         <div class="col-md-4 col-md-offset-4">
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
+    </div>
     </mat-card>
     </form>
   </mat-step>
@@ -379,10 +373,13 @@
            </mat-form-field></td>
          </tr></table>
 
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+         <div class="row">
+            <div class="col-md-4"></div>
+           <div class="col-md-4 col-md-offset-4">
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
+    </div>
       </mat-card>
     </form>
   </mat-step>
@@ -417,15 +414,18 @@
         </tr>
       </table>
       <br>
-      <mat-checkbox required>
-        Saya ingin mengesahkan bahawa semua maklumat yang dinyatakan di atas adalah benar<br>
+      <mat-checkbox required><p style="font-weight: normal;"><font size="2">
+        Saya ingin mengesahkan bahawa semua maklumat yang dinyatakan di atas adalah benar
         dan saya bersetuju dengan terma & syarat yang telah ditetapkan.
-      </mat-checkbox>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
-        <button mat-button (click)="saveFB()">Hantar</button>
+      </font></p></mat-checkbox>
+
+      <div class="row">
+         <div class="col-md-4"></div>
+        <div class="col-md-4 col-md-offset-4">
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" (click)="saveFB()">Hantar</button>
       </div>
+    </div>
     </form>
   </mat-step>
 </mat-horizontal-stepper>

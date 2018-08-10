@@ -112,7 +112,7 @@ export class AdminSemuaComponent {
     this.itemDoc.update({status: 1, statusText: 'Izin Lalu'});
     this.itemDoc = this.db.doc<Data>('permohonan/'+this.path);
     this.itemDoc.update(this.pass.value);
-    this.itemDoc.update({status: 1, , statusText: 'Izin Lalu'})
+    this.itemDoc.update({status: 1, statusText: 'Izin Lalu'})
     .then((result)=>{
       this.router.navigate(['/admindash', { id: this.id }])
     });

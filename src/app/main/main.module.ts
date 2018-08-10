@@ -10,7 +10,7 @@ import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
 import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import { DashboardComponent }   from './dashboard/dashboard.component';
-import { ProfileComponent, BatalFormComponent }   from './profile/profile.component';
+import { ProfileComponent }   from './profile/profile.component';
 import { IconsComponent }   from './icons/icons.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
 import { MaterialModule } from '../material.module';
@@ -38,8 +38,7 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     IzinLaluComponent,
     PermitKerjaComponent,
     SemuaComponent,
-    ProfileComponent,
-    BatalFormComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -68,8 +67,7 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     KupFormComponent,
     IzinLaluComponent,
     SemuaComponent,
-    ProfileComponent,
-    BatalFormComponent
+    ProfileComponent
   ],
   providers: [
     AlertService,
@@ -77,6 +75,6 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     UserService
   ],
   bootstrap: [MainComponent],
-  entryComponents: [BatalFormComponent]
+  entryComponents: []
 })
 export class MainModule { }

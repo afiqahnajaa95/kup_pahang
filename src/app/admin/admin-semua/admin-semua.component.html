@@ -224,7 +224,7 @@
           <input [(ngModel)]="field.catakt" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.catakt}}">
         </td>
         <td>
-          <button class="btn btn-default"  type="button" (click)="deleteRow(aktiviti, i)">Delete</button>
+          <button mat-raised-button color="warn" (click)="deleteRow(aktiviti, i)">Delete</button>
         </td>
       </tr>
       <tr>
@@ -241,7 +241,7 @@
           <input class="form-control" type="text" id="newAttributeCatatAktiviti" [(ngModel)]="newAttribute.catakt" [ngModelOptions]="{standalone: true}" name="newAttributeCatatAktiviti">
         </td>
         <td>
-          <button class="btn btn-default" type="button" (click)="addRow('aktiviti')">Tambah</button>
+          <button mat-raised-button color="primary" (click)="addRow('aktiviti')">Tambah</button>
         </td>
       </tr>
     </tbody>
@@ -256,43 +256,4 @@
   <hr>
   <button mat-button class="approve" (click)="approveF()">Disahkan</button>
   <button mat-button class="decline" (click)="declineF()">Tolak</button>
-  <!-- <table class="example-full-width" border="0">
-    <tr>
-      <th>Kelulusan</th>
-      <th>Catatan</th>
-      <th></th>
-    </tr>
-    <tbody>
-      <tr *ngFor="let field of fieldArrayPass; let i = index">
-        <td>
-          <mat-select [(ngModel)]="field.lulus" [ngModelOptions]="{standalone: true}" class="form-control" name="{{field.lulus}}">
-            <mat-option value="Diluluskan">Diluluskan</mat-option>
-            <mat-option value="Ditolak">Ditolak</mat-option>
-            <mat-option value="Ditangguhkan (KIV)">Ditangguhkan (KIV)</mat-option>
-          </mat-select>
-        </td>
-        <td>
-          <input [(ngModel)]="field.catlul" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="{{field.catlul}}">
-        </td>
-        <td>
-          <button class="btn btn-default"  type="button" (click)="deleteRow('lulus',i)">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <mat-select placeholder="Pilih salah satu kelulusan" class="form-control" id="newAttributeLulus" [(ngModel)]="newAttribute.lulus" [ngModelOptions]="{standalone: true}" name="newAttributeLulus">
-            <mat-option value="Diluluskan">Diluluskan</mat-option>
-            <mat-option value="Ditolak">Ditolak</mat-option>
-            <mat-option value="Ditangguhkan (KIV)">Ditangguhkan (KIV)</mat-option>
-          </mat-select>
-        </td>
-        <td>
-          <input class="form-control" type="text" id="newAttributeCatatLulus" [(ngModel)]="newAttribute.catlul" [ngModelOptions]="{standalone: true}" name="newAttributeCatatLulus">
-        </td>
-        <td>
-          <button class="btn btn-default" type="button" (click)="addRow('lulus')">Add</button>
-        </td>
-      </tr>
-    </tbody>
-  </table> -->
 </mat-card>
