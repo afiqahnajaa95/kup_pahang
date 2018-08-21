@@ -6,13 +6,13 @@
     </div>
   </div>
   <div class="stat">
-    Izin Lalu
+    Izin<br>Lalu
     <div class="text-success">
       {{izin}}
     </div>
   </div>
   <div class="stat">
-    Permit Kerja
+    Permit<br>Kerja
     <div class="text-success">
       {{permit}}
     </div>
@@ -60,9 +60,9 @@
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="icon-warning" *ngIf='element.subStatus==0; else elseBlock'>Pending</span>
+          <span class="icon-warning" *ngIf='element.subStatus==0; else elseBlock'>Dalam Proses</span>
           <ng-template #elseBlock>
-            <span class="icon-success" *ngIf='element.subStatus==1'>Declined</span>
+            <span class="icon-success" *ngIf='element.subStatus==1'>Ditolak</span>
           </ng-template>
         </mat-cell>
       </ng-container>

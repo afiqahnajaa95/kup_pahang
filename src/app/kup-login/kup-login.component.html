@@ -11,15 +11,15 @@
 <div class="col-md-5"></div>
 <div class="col-md-3" align="center">
   <mat-card>
-    <p><font size="2">Sign in with your KUP Account</font></p><br>
+    <p><font size="2">Log Masuk dengan Akaun KUP Anda</font></p><br>
     <form [formGroup]="login">
         <div class="form-group" align="center">
-            <input type="text" class="form-control" formControlName="email" placeholder="Email"><br>
-            <input type="password" class="form-control" formControlName="password" placeholder="Password"><br>
+            <input type="text" class="form-control" formControlName="email" placeholder="Emel"><br>
+            <input type="password" class="form-control" formControlName="password" placeholder="Kata Laluan"><br>
             <mat-checkbox required><p style="font-weight: normal;"><font size="2">
-              Keep me signed in
+              Benarkan saya masuk
             </font></p></mat-checkbox><br><br>
-            <button mat-raised-button color="accent" (click)="loginF()" align="center">SIGN IN</button>
+            <button mat-raised-button color="accent" (click)="loginF()" align="center">LOG MASUK</button>
         </div>
     </form>
   </mat-card>
@@ -29,10 +29,10 @@
 <div class="col-md-3" align="center">
   <br><br>
 <a class="forgot-password" [routerLink]="'/forgot-password'"><label><font color="black">
-    FORGOT PASSWORD
+    LUPA KATA LALUAN?
  </font></label></a><br>
-   <p><font color="black">Do not have an account?</font></p>
+   <p><font color="black">Tidak mempunyai KUP akaun?</font></p>
    <a class="create-account" [routerLink]="'/signup'"><label><font color="black">
-       CREATE AN ACCOUNT
+       DAFTAR MASUK
     </font></label></a>
 </div>

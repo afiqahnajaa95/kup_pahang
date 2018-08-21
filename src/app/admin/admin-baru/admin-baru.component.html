@@ -1,7 +1,3 @@
-<!-- <div class="content">
-<div class="container-fluid">
- <div class="row"> -->
-
  <div class="stat-container">
    <div class="stat">
      Permohonan Baru
@@ -10,13 +6,13 @@
      </div>
    </div>
    <div class="stat">
-     Izin Lalu
+     Izin<br>Lalu
      <div class="text-success">
        {{permit}}
      </div>
    </div>
    <div class="stat">
-     Permit Kerja
+     Permit<br>Kerja
      <div class="text-success">
        {{permit}}
      </div>
@@ -34,109 +30,6 @@
      </div>
    </div>
  </div>
-
-  <!-- <div class="col-lg-3 col-sm-6">
-   <div class="card">
-    <div class="content">
-     <div class="row">
-      <div class="col-md-5">
-       <div class="icon-big icon-success text-center">
-        <i class="ti-pencil-alt"></i>
-         </div>
-          </div>
-          <div class="col-md-7">
-            <div class="numbers">
-            <p>Permohonan Baru</p>
-               10
-            </div>
-          </div>
-        </div>
-       </div>
-      </div>
-     </div>
-
-  <div class="col-lg-3 col-sm-6">
-   <div class="card">
-    <div class="content">
-     <div class="row">
-      <div class="col-xs-5">
-       <div class="icon-big icon-success text-center">
-        <i class="ti-pencil-alt"></i>
-       </div>
-      </div>
-      <div class="col-xs-7">
-        <div class="numbers">
-          <p>Izin Lalu</p>
-              10
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-
-   <div class="col-lg-3 col-sm-6">
-    <div class="card">
-     <div class="content">
-      <div class="row">
-       <div class="col-xs-5">
-        <div class="icon-big icon-danger text-center">
-         <i class="ti-alert"></i>
-        </div>
-       </div>
-       <div class="col-xs-7">
-        <div class="numbers">
-         <p>Permit Kerja</p>
-            10
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-
-   <div class="col-lg-3 col-sm-6">
-    <div class="card">
-     <div class="content">
-      <div class="row">
-       <div class="col-xs-5">
-        <div class="icon-big icon-info text-center">
-         <i class="ti-thumb-up"></i>
-        </div>
-       </div>
-       <div class="col-xs-7">
-        <div class="numbers">
-         <p>Siap Kerja (CPC)</p>
-            10
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-
-   <div class="col-lg-3 col-sm-6">
-    <div class="card">
-     <div class="content">
-      <div class="row">
-       <div class="col-xs-5">
-        <div class="icon-big icon-info text-center">
-         <i class="ti-money"></i>
-        </div>
-       </div>
-       <div class="col-xs-7">
-        <div class="numbers">
-         <p>Wang Cagaran</p>
-            10
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div> -->
-
- <!-- </div>
-</div>-->
 <br>
 
 <!-- TABLE -->
@@ -169,12 +62,12 @@
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="icon-warning" *ngIf='element.status==0; else elseBlock'>Pending</span>
+          <span class="icon-warning" *ngIf='element.status==0; else elseBlock'>Dalam Proses</span>
           <ng-template #elseBlock>
-            <span class="icon-success" *ngIf='element.status==1; else elseelseBlock'>Approved</span>
+            <span class="icon-success" *ngIf='element.status==1; else elseelseBlock'>Diterima</span>
           </ng-template>
           <ng-template #elseelseBlock>
-            <span class="icon-danger" *ngIf='element.status==2'>Rejected</span>
+            <span class="icon-danger" *ngIf='element.status==2'>Ditolak</span>
           </ng-template>
         </mat-cell>
       </ng-container>
@@ -183,11 +76,6 @@
         <mat-header-cell *matHeaderCellDef> Ulasan </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.note}} </mat-cell>
       </ng-container>
-
-      <!-- <ng-container matColumnDef="date">
-        <mat-header-cell *matHeaderCellDef> Tarikh Memohon </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
-      </ng-container> -->
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

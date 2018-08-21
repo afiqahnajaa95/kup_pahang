@@ -74,17 +74,3 @@ export class AdminLoginComponent implements OnInit {
         });
     }
 }
-
-// @Component({
-//   selector: 'kup-register-dialog',
-//   templateUrl: 'kup-register-dialog.html',
-// })
-// export class KupRegisterDialog {
-//
-//   constructor(
-//     public dialogRef: MatDialogRef<KupRegisterDialog>,
-//     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
-// }

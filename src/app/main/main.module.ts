@@ -19,6 +19,13 @@ import { KupFormComponent }   from './kup-form/kup-form.component';
 import { IzinLaluComponent }   from './izin-lalu/izin-lalu.component';
 import { PermitKerjaComponent }   from './permit-kerja/permit-kerja.component';
 import { SemuaComponent }   from './semua/semua.component';
+import { PermohonanBaruComponent }   from './permohonan-baru/permohonan-baru.component';
+import { DitangguhkanKIVComponent }   from './ditangguhkan-kiv/ditangguhkan-kiv.component';
+import { MulaKerjaComponent }   from './mula-kerja/mula-kerja.component';
+import { SiapKerjaComponent }   from './siap-kerja/siap-kerja.component';
+import { UserBatalComponent }   from './user-batal/user-batal.component';
+import { UserDitolakComponent }   from './user-ditolak/user-ditolak.component';
+import { WangCagaranComponent }   from './wang-cagaran/wang-cagaran.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertService, AuthenticationService, UserService } from '../_services/index';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -38,7 +45,14 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     IzinLaluComponent,
     PermitKerjaComponent,
     SemuaComponent,
-    ProfileComponent
+    ProfileComponent,
+    PermohonanBaruComponent,
+    DitangguhkanKIVComponent,
+    MulaKerjaComponent,
+    SiapKerjaComponent,
+    UserBatalComponent,
+    UserDitolakComponent,
+    WangCagaranComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +81,14 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     KupFormComponent,
     IzinLaluComponent,
     SemuaComponent,
-    ProfileComponent
+    ProfileComponent,
+    PermohonanBaruComponent,
+    DitangguhkanKIVComponent,
+    MulaKerjaComponent,
+    SiapKerjaComponent,
+    UserBatalComponent,
+    UserDitolakComponent,
+    WangCagaranComponent
   ],
   providers: [
     AlertService,

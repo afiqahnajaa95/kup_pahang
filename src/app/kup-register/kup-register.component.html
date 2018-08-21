@@ -1,72 +1,74 @@
 <mat-card>
-  <div class="col-md-5"></div>
-  <div class="col-md-3" align="center">
+  <div class="col-md-5">
           <div class="logo-img">
             <br><br>
-              <img src="../../assets/img/kup-logo123.png" alt="" align="center" width="100">
+              <img src="../../assets/img/kup-logo123.png" alt="" align="center" width="150">
           </div>
           <br><br>
   </div>
-  <br><br>
+  <br><br><br><br><br><br><br>
   <!-- BAHAGIAN 1 -->
 <p><label>BORANG PENDAFTARAN PEMOHON KORIDOR UTILITI PAHANG</label></p>
 <p><label>Bahagian 1: Maklumat Pemohon</label></p><br>
 <form [formGroup]='data'>
   <table class="example-full-width" cellspacing="0"><tr>
     <td>
-      <p>Pendaftaran Sebagai:</p><br>
-      <mat-select placeholder="Pilih salah satu" formControlName="regas">
-        <mat-option value="Syarikat">Syarikat</mat-option>
-        <mat-option value="Individu">Individu</mat-option>
-        <mat-option value="Konsultan">Konsultan</mat-option>
-        <mat-option value="Kontraktor">Kontraktor</mat-option>
-        <mat-option value="Pemaju">Pemaju</mat-option>
-      </mat-select><br></td>
+      <p>Pendaftaran Sebagai:</p>
+      <select placeholder="Pilih salah satu" formControlName="regas" id="daftar" required>
+        <option value="Syarikat">Syarikat</option>
+        <option value="Individu">Individu</option>
+        <option value="Konsultan">Konsultan</option>
+        <option value="Kontraktor">Kontraktor</option>
+        <option value="Pemaju">Pemaju</option>
+      </select><br></td>
       <td><p>Nama Syarikat:</p>
-      <input textbox type="text" class="form-control" placeholder="" formControlName="co_name"></td>
+      <input #textbox size="40" placeholder="" formControlName="co_name" required></td>
       <td><p>No. Pendaftaran SSM:</p>
-      <input textbox type="text" class="form-control" placeholder="" formControlName="co_reg"></td>
+      <input #textbox size="40" placeholder="" formControlName="co_reg" required></td>
     </table>
     <table class="example-full-width" cellspacing="0"><tr>
       <td><p>Alamat Syarikat:</p>
-        <textarea textbox type="text" class="form-control" placeholder="" formControlName="co_add"></textarea></td>
+        <textarea #textbox size="40" placeholder="" formControlName="co_add" required></textarea></td>
       <td><p>Nama Pemohon:</p>
-        <input textbox type="text" class="form-control" placeholder="" formControlName="req_name"></td>
+        <input #textbox size="40" placeholder="" formControlName="req_name" required></td>
       <td><p>No. Kad Pengenalan:</p>
-        <input textbox type="text" class="form-control" placeholder="" formControlName="ic_no"></td>
+        <input #textbox size="40" placeholder="" formControlName="ic_no" required></td>
     </table>
     <table class="example-full-width" cellspacing="0"><tr>
       <td><p>Jawatan:</p>
-        <input textbox type="text" class="form-control" placeholder="" formControlName="req_pos"></td>
+        <input #textbox size="30" placeholder="" formControlName="req_pos" required></td>
       <td><p>Emel:</p>
-        <input textbox type="text" class="form-control" placeholder="" formControlName="email"></td>
+        <input #textbox size="30" placeholder="" formControlName="email" required></td>
       <td><p>No. Telefon:</p>
-        <input textbox type="text" class="form-control" placeholder="" formControlName="co_no"></td>
+        <input #textbox size="30" placeholder="" formControlName="co_no" required></td>
       <td><p>No. Faks:</p>
-        <input textbox type="text" class="form-control" placeholder="" formControlName="fax_no"></td>
+        <input #textbox size="30" placeholder="" formControlName="fax_no" required></td>
     </table>
-</form><br>
+<br>
+
+
 
 <!--BAHAGIAN 2-->
 <p><label>Bahagian 2: Muat Naik Dokumen Pemohon</label></p>
 <table class="example-full-width" cellspacing="0"><tr>
   <td><p>Surat Perakuan Wakil Syarikat</p>
-    <input type="file" (change)="uploadFile($event, '/spws')"></td>
+    <input type="file" (change)="uploadFile($event, '/spws')" required></td>
   <td><p>Salinan Kad Pengenalan Pemohon</p>
-    <input type="file" (change)="uploadFile($event, '/skpp')"></td>
+    <input type="file" (change)="uploadFile($event, '/skpp')" required></td>
    <td><p>Sijil Pendaftaran Perniagaan SSM</p>
-    <input type="file" (change)="uploadFile($event, '/spps')"></td>
+    <input type="file" (change)="uploadFile($event, '/spps')" required></td>
 </table><br>
 
 <mat-checkbox required><p style="font-weight: normal;"><font size="2">
 Saya memperaku bahawa semua maklumat yang dinyatakan di atas adalah benar
 dan bersetuju dengan terma dan syarat yang ditetapkan.
 </font></p></mat-checkbox><br><br>
+</form>
 
 <div class="row">
    <div class="col-md-4"></div>
    <div class="col-md-4 col-md-offset-4">
-     <button mat-raised-button color="primary" (click)="saveRegister()">Simpan</button>
+     <button mat-raised-button color="primary" [disabled]="data.invalid" (click)="saveRegister()">Simpan</button>
   </div>
 </div>
 </mat-card>

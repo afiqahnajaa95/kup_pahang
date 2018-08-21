@@ -16,6 +16,12 @@ import { AdminIzinComponent } from './admin-izin/admin-izin.component';
 import { AdminIzinSemuaComponent } from './admin-izinsemua/admin-izinsemua.component';
 import { AdminPermitComponent } from './admin-permit/admin-permit.component';
 import { AdminPermitSemuaComponent } from './admin-permitsemua/admin-permitsemua.component';
+import { AdminBatalComponent } from './admin-batal/admin-batal.component';
+import { AdminDitolakComponent } from './admin-ditolak/admin-ditolak.component';
+import { AdminKIVComponent } from './admin-kiv/admin-kiv.component';
+import { AdminMulaKerjaComponent } from './admin-mula-kerja/admin-mula-kerja.component';
+import { AdminSiapKerjaComponent } from './admin-siap-kerja/admin-siap-kerja.component';
+import { AdminWangCagaranComponent } from './admin-wang-cagaran/admin-wang-cagaran.component';
 import { UserProfileComponent } from './userprofile/userprofile.component';
 import { MaterialModule } from '../material.module';
 import { CDKModule } from '../cdk.module';
@@ -40,7 +46,13 @@ import { PageNotFoundComponent } from '../pagenotfound/pagenotfound.component';
     AdminIzinSemuaComponent,
     AdminBaruComponent,
     UserProfileComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AdminBatalComponent,
+    AdminDitolakComponent,
+    AdminKIVComponent,
+    AdminMulaKerjaComponent,
+    AdminSiapKerjaComponent,
+    AdminWangCagaranComponent
   ],
   imports: [
     BrowserModule,

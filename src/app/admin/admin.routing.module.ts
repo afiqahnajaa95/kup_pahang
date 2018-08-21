@@ -10,6 +10,12 @@ import { AdminPermitComponent } from './admin-permit/admin-permit.component';
 import { AdminPermitSemuaComponent } from './admin-permitsemua/admin-permitsemua.component';
 import { AdminIzinComponent } from './admin-izin/admin-izin.component';
 import { AdminIzinSemuaComponent } from './admin-izinsemua/admin-izinsemua.component';
+import { AdminBatalComponent } from './admin-batal/admin-batal.component';
+import { AdminDitolakComponent } from './admin-ditolak/admin-ditolak.component';
+import { AdminKIVComponent } from './admin-kiv/admin-kiv.component';
+import { AdminMulaKerjaComponent } from './admin-mula-kerja/admin-mula-kerja.component';
+import { AdminSiapKerjaComponent } from './admin-siap-kerja/admin-siap-kerja.component';
+import { AdminWangCagaranComponent } from './admin-wang-cagaran/admin-wang-cagaran.component';
 import { UserProfileComponent } from './userprofile/userprofile.component';
 import { PageNotFoundComponent } from '../pagenotfound/pagenotfound.component';
 
@@ -27,6 +33,12 @@ const AdminRoutes: Routes = [
     { path: 'adminizin', component: AdminIzinSemuaComponent },
     { path: 'adminbaru', component: AdminBaruComponent },
     { path: 'userprofile', component: UserProfileComponent },
+    { path: 'adminbatal', component: AdminBatalComponent },
+    { path: 'adminditolak', component: AdminDitolakComponent },
+    { path: 'adminKIV', component: AdminKIVComponent },
+    { path: 'adminmulakerja', component: AdminMulaKerjaComponent },
+    { path: 'adminsiapkerja', component: AdminSiapKerjaComponent },
+    { path: 'adminwangcagaran', component: AdminWangCagaranComponent },
     { path: '**', component: PageNotFoundComponent }
   ]
  }

@@ -53,22 +53,15 @@
     </div>
     <div>
       <button mat-button (click)="redirectTo('/dashboard')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Semua</button>
-      <button mat-button (click)="redirectTo('/kupform')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Permohonan Baru</button>
+      <button mat-button (click)="redirectTo('/permohonan-baru')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Permohonan Baru</button>
       <button mat-button (click)="redirectTo('/izinlalu')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Izin Lalu</button>
       <button mat-button (click)="redirectTo('/permitkerja')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Permit Kerja</button>
-      <button mat-button (click)="redirectTo('/#')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Mula Kerja</button>
-      <button mat-button (click)="redirectTo('/#')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Siap Kerja</button>
-      <button mat-button (click)="redirectTo('/#')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Wang Cagaran</button>
-      <button mat-button (click)="redirectTo('/#')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Ditangguhkan (KIV)</button>
-      <button mat-button (click)="redirectTo('/#')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Batal</button>
-      <button mat-button (click)="redirectTo('/#')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Ditolak</button>
+      <button mat-button (click)="redirectTo('/mula-kerja')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Mula Kerja</button>
+      <button mat-button (click)="redirectTo('/siap-kerja')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Siap Kerja</button>
+      <button mat-button (click)="redirectTo('/wang-cagaran')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Wang Cagaran</button>
+      <button mat-button (click)="redirectTo('/kiv')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Ditangguhkan (KIV)</button>
+      <button mat-button (click)="redirectTo('/user-batal')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Batal</button>
+      <button mat-button (click)="redirectTo('/user-ditolak')" style="padding: 5px 5px 5px 20px; width: 100%; text-align: left;">Ditolak</button>
     </div>
-    <!-- <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
-        <a (click)="selected([menuItem.path])">
-          <a [routerLink]="[menuItem.path]">
-          <i class="{{menuItem.icon}}"></i>
-          <p>{{menuItem.title}}</p>
-        </a>
-    </li> -->
   </ul>
 </div>
