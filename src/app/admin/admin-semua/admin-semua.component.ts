@@ -109,10 +109,10 @@ export class AdminSemuaComponent {
     console.log("Approved");
     this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef);
     this.itemDoc.update(this.pass.value);
-    this.itemDoc.update({status: 1, statusText: 'Izin Lalu'});
+    this.itemDoc.update({status: 1, statusText: 'Dalam Proses'});
     this.itemDoc = this.db.doc<Data>('permohonan/'+this.path);
     this.itemDoc.update(this.pass.value);
-    this.itemDoc.update({status: 1, statusText: 'Izin Lalu'})
+    this.itemDoc.update({status: 1, statusText: 'Dalam Proses'})
     .then((result)=>{
       this.router.navigate(['/admindash', { id: this.id }])
     });
@@ -129,10 +129,10 @@ export class AdminSemuaComponent {
     console.log("Declined");
     this.itemDoc = this.db.doc<Data>('users/'+this.userId+'/permohonan/'+this.userRef);
     this.itemDoc.update(this.pass.value);
-    this.itemDoc.update({status: 1, subStatus: 1});
+    this.itemDoc.update({status: 1, subStatus: 1, statusText: 'Ditolak'});
     this.itemDoc = this.db.doc<Data>('permohonan/'+this.path);
     this.itemDoc.update(this.pass.value);
-    this.itemDoc.update({status: 1, subStatus: 1})
+    this.itemDoc.update({status: 1, subStatus: 1, statusText: 'Ditolak'})
     .then((result)=>{
       this.router.navigate(['/admindash', { id: this.id }])
     });

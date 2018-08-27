@@ -16,13 +16,14 @@ export class UserDitolakComponent{
   private itemsCollection: AngularFirestoreCollection<any>;
   items: Observable<any[]>;
   items$: Observable<any[]>;
+  path: string;
   id: any;
   new: number = 0;
   izin: number = 0;
   permit: number = 0;
   cpc: number = 0;
   wang: number = 0;
-  path: string;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -45,21 +46,21 @@ export class UserDitolakComponent{
     });
     this.items$ = db.collection(this.path, ref => {
       let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-      query = query.where('status', '==', 1);
-      return query;
-    }).valueChanges();
-    this.items$.subscribe((result)=>{
-      console.log(result.length);
-      this.izin = result.length;
-    });
-    this.items$ = db.collection(this.path, ref => {
-      let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
       query = query.where('status', '==', 2);
       return query;
     }).valueChanges();
     this.items$.subscribe((result)=>{
       console.log(result.length);
       this.permit = result.length;
+    });
+    this.items$ = db.collection(this.path, ref => {
+      let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+      query = query.where('status', '==', 1);
+      return query;
+    }).valueChanges();
+    this.items$.subscribe((result)=>{
+      console.log(result.length);
+      this.izin = result.length;
     });
   }
 

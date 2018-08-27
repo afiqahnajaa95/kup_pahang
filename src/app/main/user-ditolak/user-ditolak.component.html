@@ -62,7 +62,7 @@
         <mat-cell *matCellDef="let element">
           <span class="icon-warning" *ngIf='element.subStatus==0; else elseBlock'>Dalam Proses</span>
           <ng-template #elseBlock>
-            <span class="icon-success" *ngIf='element.subStatus==1'>Diterima</span>
+            <span class="icon-danger" *ngIf='element.subStatus==1'>Ditolak</span>
           </ng-template>
         </mat-cell>
       </ng-container>

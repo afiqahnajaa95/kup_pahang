@@ -62,7 +62,7 @@
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="icon-warning" *ngIf='element.subStatus==0; else elseBlock'>Dalam Proses</span>
+          <span class="icon-warning" *ngIf='element.subStatus==0; else elseBlock'>Permohonan Baru</span>
           <ng-template #elseBlock>
             <span class="icon-danger" *ngIf='element.subStatus==1'>Ditolak</span>
           </ng-template>
